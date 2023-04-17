@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="relative w-full h-screen font-['Poppins', 'san-serif'] overflow-y-hidden">
+    <a href="./homepage.html" class="text-xl text-[#DC0D27] absolute top-[30px] left-[50px] z-10"><i class="fa-solid fa-house mr-2"></i> Home Page</a>
+    <div class="w-full flex justify-between h-full">
+        <div class="w-[75%] flex justify-center items-center form-container duration-300 relative">
+            <div class="flex flex-col items-center justify-center">
+                <div class="text-[#DC0D27] text-4xl font-bold mb-[50px] form-heading">LOGIN TO YOUR ACCOUNT</div>
+                <form action="" class="flex flex-col gap-5 items-center p-[30px]">
+                    <input type="text" name="" id="" placeholder="Name" class="w-[360px] bg-[#FFFFFF] border border-[#DC0D27cc] text-[18px] rounded-sm leading-10 pl-3 hidden">
+                    <input type="email" name="" id="" placeholder="Email" class="w-[360px] bg-[#FFFFFF] border border-[#DC0D27cc] text-[18px] rounded-sm leading-10 pl-3">
+                    <input type="password" name="" id="" placeholder="Password" class="w-[360px] bg-[#FFFFFF] border border-[#DC0D27cc] text-[18px] rounded-sm leading-10 pl-3">
+                    <input type="text" name="" id="" placeholder="Re-type Password" class="w-[360px] bg-[#FFFFFF] border border-[#DC0D27cc] text-[18px] rounded-sm leading-10 pl-3 hidden">
+                    <div class="w-full text-sm text-white cursor-pointer hover:text-[#DC0D27] text-right forget-password">Forget password?</div>
+                    <input type="submit" value="Sign In" class="w-[360px] bg-[#DC0D27] text-white px-[10px] text-[18px] rounded-lg leading-10 mt-4 hover:bg-[#DC0D27cc] cursor-pointer duration-300 submit">
+                </form>
+            </div>
+            <div class="brightness-75 absolute top-0 left-0 w-full h-full -z-[1]" style="background-image: url(../../assets/Image/bg.png);"></div>
+        </div>
+        <div class="w-[25%] h-full pt-[180px] bg-no-repeat bg-cover flex flex-col items-center switch-container duration-300" style="background-image: url(../../assets/Image/login.png);">
+            <div class="text-[#DC0D27] text-4xl font-bold mb-[10px] introduce-heading">NEW HERE?</div>
+            <div class="w-[300px] bg-transparent border-[3px] border-white text-white text-center px-[10px] text-xl rounded-lg leading-10 mt-4 hover:bg-[#DC0D27] hover:border-none cursor-pointer duration-300 switch">Sign Up</div>>
+        </div>
+    </div>
+</body>
+<script src="../../assets/JS/switchForm.js"></script>
+</html>
