@@ -7,8 +7,8 @@ const iconDel = document.querySelectorAll('.icon-close')
 const openFormAdd = document.querySelector('.add__movie')
 const titleForm = document.querySelector('.modal__title')
 const btnForm = document.querySelector('.btn-form')
-
-console.log(openFormAdd);
+const listIconMore = document.querySelectorAll('.icon-more')
+const myReview = document.querySelector('.my-review')
 
 btnDelMovie.forEach(item => {
     item.addEventListener('click', () => {
@@ -35,9 +35,19 @@ iconDel.forEach(item => {
 })
 
 openFormAdd.addEventListener('click', () => {
-    console.log(123);
     modal.classList.add('flex')
     modalUp.classList.add('block')
     titleForm.innerHTML = 'ADD MOVIE'
     btnForm.value = 'ADD'
 })
+
+listIconMore.forEach(iconMore => {
+    iconMore.addEventListener('click', () => {
+        window.location.assign("../../pages/Movie/DetailMovie.html")
+    })
+})
+
+myReview.addEventListener('click', () => {
+    window.location.assign("../../pages/Review/DetailReview.html")
+})
+
