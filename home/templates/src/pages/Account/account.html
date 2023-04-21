@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body class="w-full h-screen font-['Poppins', 'san-serif'] bg-black">
+    <!-- header -->
+    <div class="w-full bg-[#0F2133] text-[#F6F3F0] text-xl flex justify-between items-center fixed top-0 left-0 z-10">
+        <div class="flex gap-14 items-center ml-10">
+            <!-- logo -->
+            <div class="img w-[200px] h-[80px] bg-contain bg-no-repeat"
+                style="background-image: url(../../assets/Image/logo.png);"></div>
+            <!-- search -->
+            <div class="search w-[400px] bg-[#03111F] rounded-lg flex justify-between items-center p-2">
+                <i class="fa-solid fa-x opacity-70 hover:opacity-100 cursor-pointer hidden"></i>
+                <input type="text" name="" id="" placeholder="Search movies, TV, actors, more..."
+                    class="w-[80%] mx-auto bg-[#03111F] rounded-lg active:border-none focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass opacity-70 hover:opacity-100 cursor-pointer"></i>
+            </div>
+        </div>
+        <!-- sign in -->
+        <div class="flex gap-10 justify-center items-center mr-10">
+            <div>Hello, <span class="text-[#DC0D27]">Nguyen Van A</span></div>
+            <i class="fa-solid fa-circle-user text-3xl cursor-pointer"></i>
+            <div class="cursor-pointer">
+                <i class="fa-solid fa-heart relative text-3xl"></i>
+                <div
+                    class="w-[30px] h-[20px] flex justify-center items-center rounded-md bg-white absolute top-[15px] right-[18px] border border-[#0F2133] text-[#DC0D27]">
+                    3</div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full h-full pt-[150px] relative bg-black">
+        <!-- nav-bar -->
+        <div class="w-[20%] h-full ml-[80px] text-xl text-white flex flex-col fixed">
+            <div class="relative before:absolute before:h-full before:bottom-0 before:-left-3 before:border-[3px] before:border-solid before:border-[#ED1B34]">ACCOUNT SETTING</div>
+            <div class="w-[200px] h-[220px] mt-10 rounded-md bg-white text-black  ">
+                <div class="w-full p-5 font-semibold cursor-pointer text-black hover:text-black duration-200" onclick="changeFrame(1)">
+                    <i class="fa-solid fa-user-gear"></i>
+                    Profile setting</div>
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200" onclick="changeFrame(2)">
+                    <i class="fa-solid fa-user-lock"></i>
+                    Password</div>
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200" onclick="changeFrame(3)">
+                    <i class="fa-solid fa-bell"></i>
+                    Notifications</div>
+            </div>
+        </div>
+        <!-- content -->
+        <iframe src="./setting.html" class="w-[80%] h-full absolute right-0 overflow-y-auto"
+            id="iframe"></iframe>
+    </div>
+    <script>
+        let linkToTickets = "./setting.html";
+        let linkToParking = "./password.html";
+        let linkToStatistics = "./notification.html";
+        const frame = document.querySelector("#iframe")
+        function changeFrame(index) {
+            if (index == 1) {
+                frame.src = linkToTickets;
+            }
+            else if (index == 2) {
+                frame.src = linkToParking;
+            }
+            else if (index == 3) {
+                frame.src = linkToStatistics;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
