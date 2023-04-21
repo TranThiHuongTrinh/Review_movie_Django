@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../../../dist/output.css" rel="stylesheet">
+    <link href="../../../dist/output_ViewAllMovie.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body class="relative">
+    <header class="header">
+        <div class="header__search">
+            <img src="../../assets/img/logo.png" alt="logo" />
+            <div class="relative">
+                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
+                <i class="fa-solid fa-magnifying-glass icon-search top-5"></i>
+            </div>
+        </div>
+        <div class="header__navbar">
+            <p>HELLO, <span class="text-[#DC0D27]">NGUYEN VAN A</span></p>   
+            <div class="group header__user-wrap">
+                <i class="fa-regular fa-user"></i>        
+                <div class="header__user-list group-hover:block">
+                    <ul class="header__user-list-item">
+                        <li class="header__user-item">
+                            <span class="header__user-title">Account</span>
+                            <i class="fa-solid fa-user"></i>
+                        </li>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </li>
+                        <li class="header__user-item">
+                            <span class="header__user-title">Sign out</span>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="group header__movie-wrap">
+                <span class="header__movie-notice">3</span>
+                <i class="fa-regular fa-heart icon-heart"></i>
+                <div class="header__movie-list group-hover:block">
+                    <h4 class="header__movie-heading">New Movies Added</h4>
+                    <ul class="header__movie-list-item">
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <button class="btn-small float-right">MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="content">
+        <div class="flex justify-between">
+            <h1 class="content__heading">FAVOURITE MOVIE LIST</h1>
+            <div class="add__movie">
+                <i class="fa-sharp fa-solid fa-plus icon-add"></i>
+            </div>
+        </div>
+        <ul class="content__movie-list">
+            <li class="content__movie-item">
+                <div class="content__movie-img group">
+                    <img src="../../assets/img/die_hard.png" alt="movie"/>
+                    <div class="icon-detail group-hover:block">
+                        <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
+                    </div>
+                </div>
+                <div class="movie__info">
+                    <div class="movie__rating">
+                        <h1 class="movie__name">DIE HARD</h1>
+                        <div>
+                            <i class="fa-solid fa-tomato icon-tomato"></i>
+                            <span class="text-2xl">7.4/10</span>
+                        </div>
+                    </div>
+                    <ul class="movie__genre">
+                        <li>Genre : </li>
+                       <li class="movie__genre-item bg-[#1692BB]">SCI-FI</li>
+                       <li class="movie__genre-item bg-[#F5B50A]">ACTION</li> 
+                    </ul>
+                    <p class="movie__decription">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? .... 
+                    </p>
+                </div>
+                <button class="btn-small del__movie">DELETE</button>
+                <button class="btn-small update__movie">UPDATE</button>
+            </li>
+            <li class="content__movie-item">
+                <div class="content__movie-img group">
+                    <img src="../../assets/img/die_hard.png" alt="movie"/>
+                    <div class="icon-detail group-hover:block">
+                        <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
+                    </div>
+                </div>
+                <div class="movie__info">
+                    <div class="movie__rating">
+                        <h1 class="movie__name">DIE HARD</h1>
+                        <div>
+                            <i class="fa-solid fa-tomato icon-tomato"></i>
+                            <span class="text-2xl">7.4/10</span>
+                        </div>
+                    </div>
+                    <ul class="movie__genre">
+                        <li>Genre : </li>
+                       <li class="movie__genre-item bg-[#1692BB]">SCI-FI</li>
+                       <li class="movie__genre-item bg-[#F5B50A]">ACTION</li> 
+                    </ul>
+                    <p class="movie__decription">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? .... 
+                    </p>
+                </div>
+                <button class="btn-small del__movie">DELETE</button>
+                <button class="btn-small update__movie">UPDATE</button>
+            </li>
+            <li class="content__movie-item">
+                <div class="content__movie-img group">
+                    <img src="../../assets/img/die_hard.png" alt="movie"/>
+                    <div class="icon-detail group-hover:block">
+                        <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
+                    </div>
+                </div>
+                <div class="movie__info">
+                    <div class="movie__rating">
+                        <h1 class="movie__name">DIE HARD</h1>
+                        <div>
+                            <i class="fa-solid fa-tomato icon-tomato"></i>
+                            <span class="text-2xl">7.4/10</span>
+                        </div>
+                    </div>
+                    <ul class="movie__genre">
+                        <li>Genre : </li>
+                       <li class="movie__genre-item bg-[#1692BB]">SCI-FI</li>
+                       <li class="movie__genre-item bg-[#F5B50A]">ACTION</li> 
+                    </ul>
+                    <p class="movie__decription">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? .... 
+                    </p>
+                </div>
+                <button class="btn-small del__movie">DELETE</button>
+                <button class="btn-small update__movie">UPDATE</button>
+            </li>
+        </ul>
+        <div class="btn__change-movie">
+            <button class="btn-medium">PREV</button>
+            <button class="btn-medium">NEXT</button>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal__del">
+            <i class="fa-solid fa-xmark icon-close"></i>
+            <p class="modal__del-text">Are you sure about deleting this movie?</p>
+            <div class="btn__choose">
+                <button class="btn-medium">YES</button>
+                <button class="btn-medium">NO</button>
+            </div>
+        </div>
+
+        <div class="modal__add">
+            <div class="text-white">
+                <h1 class="modal__title">ADD MOVIE</h1>
+                <i class="fa-solid fa-xmark icon-close"></i>
+            </div>
+            <form class="form__movie">
+                <div class="form__movie-name">
+                    <label>Movie's name: <span>*</span></label><br/>
+                    <input type="text" placeholder="Insert movie’s name here" />
+                </div>
+                <div class="form__movie-decription">
+                    <label>Decription: <span>*</span></label><br/>
+                    <input type="text" placeholder="Insert description here" />
+                </div>
+                <div class="form__movie-genre">
+                    <label>Movie's genre:</label><br/>
+                    <select>
+                        <option value="">Action</option>
+                    </select>
+                </div>
+                <div class="form__movie-video">
+                    <label>Upload video:</label><br/>
+                    <input type="file" id="video" name="video" accept="video/*">
+                </div>
+                <input class="btn-medium btn-form" type="submit" value="ADD" />
+            </form>
+        </div>
+    </div>
+
+    <script src="../../assets/js/movie.js"></script>
+</body>
+</html>
