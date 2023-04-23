@@ -31,12 +31,12 @@
             </div>
         </div>
         <div class="header__navbar">
-            <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
+            <p>HELLO, <span class="text-[#DC0D27]">NGUYEN VAN A</span></p>   
             <div class="group header__user-wrap">
                 <i class="fa-regular fa-user"></i>        
                 <div class="header__user-list z-10 group-hover:block">
                     <ul class="header__user-list-item">
-                        <li class="header__user-item account">
+                        <li class="header__user-item">
                             <span class="header__user-title">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
@@ -44,7 +44,7 @@
                             <span class="header__user-title my-review">My review</span>
                             <i class="fa-solid fa-clipboard-list"></i>
                         </li>
-                        <li class="header__user-item signout">
+                        <li class="header__user-item">
                             <span class="header__user-title">Sign out</span>
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </li>
@@ -81,10 +81,7 @@
     
     <div class="content" style="padding-top: 10%;">
         <div class="flex justify-between">
-            <h1 class="content__heading">MOVIE LIST</h1>
-            <div class="add__movie">
-                <i class="fa-sharp fa-solid fa-plus icon-add"></i>
-            </div>
+            <h1 class="content__heading">FAVOURITE MOVIE LIST</h1>
         </div>
         <ul class="content__movie-list">
         </ul>
@@ -103,41 +100,9 @@
                 <button class="btn-medium">NO</button>
             </div>
         </div>
-
-        <div class="modal__add">
-            <div class="text-white">
-                <h1 class="modal__title">ADD MOVIE</h1>
-                <i class="fa-solid fa-xmark icon-close"></i>
-            </div>
-            <form class="form__movie">
-                <div class="form__movie-name">
-                    <label>Movie's name: <span>*</span></label><br/>
-                    <input class="input-text input-name" type="text" placeholder="Insert movie’s name here" />
-                </div>
-                <div class="form__movie-decription">
-                    <label>Decription: <span>*</span></label><br/>
-                    <input class="input-text input-decription" type="text" placeholder="Insert description here" />
-                </div>
-                <div class="form__movie-genre">
-                    <label>Movie's genre:</label><br/>
-                    <select class="select-genre">
-                        <option value="">Action</option>
-                    </select>
-                </div>
-                <div class="form__movie-video">
-                    <label>Upload video:</label><br/>
-                    <input class="input-text input-img" type="file" id="video" name="video" accept="video/*">
-                </div>
-                <input class="btn-medium btn-form" type="submit" value="ADD" />
-            </form>
-        </div>
     </div>
 
-    <!-- <script src="../../assets/js/movie.js"></script> -->
-    <script src="../../assets/js/Account/getUserName.js" type="module"></script>
-    <script src="../../assets/js/Account/signOut.js" type="module"></script>
-    <script src="../../assets/js/Account/openForm.js"></script>
-    <script src="../../assets/JS/Movie/movie.js"></script>
-    <script src="../../assets/js/UI/changeForm.js"></script>
+    <script src="../../assets/JS/Movie/favouriteMovie.js"></script>
+    <<script src="../../assets/js/UI/changeForm.js"></script>
 </body>
 </html>

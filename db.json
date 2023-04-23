@@ -22,55 +22,88 @@
             "id": 1,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 2,
-            "name": "TETRIS",
+            "name": "The Revenant",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/theRevenant.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 3,
-            "name": "TETRIS",
+            "name": "Die Hard",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/dieHard.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 4,
-            "name": "TETRIS",
+            "name": "The Walk",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/theWalk.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 5,
-            "name": "TETRIS",
+            "name": "Interestella",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/interestella.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 6,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
             "release": "31/3/2023"
+        },
+        {
+            "id": 7,
+            "name": "The Revenant",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/img/theRevenant.png",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 8,
+            "name": "Die Hard",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/img/dieHard.png",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 9,
+            "name": "The Walk",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/img/theWalk.png",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         }
     ],
     "reviews": [

@@ -17,11 +17,14 @@
     .header__search {
         @apply flex items-center;
     }
+    .header__search img {
+        @apply h-[100px] p-5;
+    }
     .input-search {
         @apply bg-[#03111F] py-1 px-12 rounded-2xl;
     }
     .icon-search {
-        @apply absolute right-2 top-2;
+        @apply absolute right-2 top-5;
     }
     .header__navbar {
         @apply flex items-center gap-6 text-xl;
@@ -51,7 +54,7 @@
         @apply text-[#CCCCCC] text-base p-2;
     }
     .header__movie-list {
-        @apply absolute p-3 hidden top-[130%] bg-white w-[300px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
+        @apply absolute p-3 hidden top-[130%] z-10 shadow-xl bg-white w-[300px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
     }
     .header__movie-item {
         @apply flex gap-8 mt-3 p-1 items-center font-semibold hover:bg-[#f8f8f8] text-black;

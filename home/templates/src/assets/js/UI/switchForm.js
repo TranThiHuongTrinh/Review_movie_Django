@@ -7,6 +7,7 @@ const formContainer = document.querySelector('.form-container')
 const switchContainer = document.querySelector('.switch-container')
 const name = document.querySelector('input[placeholder="Name"]')
 const retype = document.querySelector('input[placeholder="Re-type Password"]')
+
 let isSignIn = false
 switch_btn.addEventListener('click', function (e) {
     e.preventDefault()
@@ -42,5 +43,4 @@ switch_btn.addEventListener('click', function (e) {
 })
 submit_btn.addEventListener('click', function (e) {
     e.preventDefault()
-    console.log("submit nè");
 })
