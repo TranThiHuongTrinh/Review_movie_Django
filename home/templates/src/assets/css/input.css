@@ -54,7 +54,7 @@
         @apply text-[#CCCCCC] text-base p-2;
     }
     .header__movie-list {
-        @apply absolute p-3 hidden top-[130%] bg-white w-[300px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
+        @apply absolute p-3 hidden top-[130%] z-10 shadow-xl bg-white w-[300px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
     }
     .header__movie-item {
         @apply flex gap-8 mt-3 p-1 items-center font-semibold hover:bg-[#f8f8f8] text-black;

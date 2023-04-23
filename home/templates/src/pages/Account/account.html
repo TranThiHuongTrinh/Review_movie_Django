@@ -8,36 +8,68 @@
     <link rel="stylesheet" href="../assets/CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../../../dist/output.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body class="w-full h-screen font-['Poppins', 'san-serif'] bg-black">
     <!-- header -->
-    <div class="w-full bg-[#0F2133] text-[#F6F3F0] text-xl flex justify-between items-center fixed top-0 left-0 z-10">
-        <div class="flex gap-14 items-center ml-10">
-            <!-- logo -->
-            <div class="img w-[200px] h-[80px] bg-contain bg-no-repeat"
-                style="background-image: url(../../assets/Image/logo.png);"></div>
-            <!-- search -->
-            <div class="search w-[400px] bg-[#03111F] rounded-lg flex justify-between items-center p-2">
-                <i class="fa-solid fa-x opacity-70 hover:opacity-100 cursor-pointer hidden"></i>
-                <input type="text" name="" id="" placeholder="Search movies, TV, actors, more..."
-                    class="w-[80%] mx-auto bg-[#03111F] rounded-lg active:border-none focus:outline-none">
-                <i class="fa-solid fa-magnifying-glass opacity-70 hover:opacity-100 cursor-pointer"></i>
+    <header class="header">
+        <div class="header__search">
+            <img src="../../assets/img/logo.png" alt="logo" />
+            <div class="relative">
+                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
+                <i class="fa-solid fa-magnifying-glass icon-search top-5"></i>
             </div>
         </div>
-        <!-- sign in -->
-        <div class="flex gap-10 justify-center items-center mr-10">
-            <div>Hello, <span class="text-[#DC0D27]">Nguyen Van A</span></div>
-            <i class="fa-solid fa-circle-user text-3xl cursor-pointer"></i>
-            <div class="cursor-pointer">
-                <i class="fa-solid fa-heart relative text-3xl"></i>
-                <div
-                    class="w-[30px] h-[20px] flex justify-center items-center rounded-md bg-white absolute top-[15px] right-[18px] border border-[#0F2133] text-[#DC0D27]">
-                    3</div>
+        <div class="header__navbar">
+            <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
+            <div class="group header__user-wrap">
+                <i class="fa-regular fa-user"></i>        
+                <div class="header__user-list group-hover:block">
+                    <ul class="header__user-list-item">
+                        <li class="header__user-item account">
+                            <span class="header__user-title">Account</span>
+                            <i class="fa-solid fa-user"></i>
+                        </li>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </li>
+                        <li class="header__user-item signout">
+                            <span class="header__user-title">Sign out</span>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="group header__movie-wrap">
+                <span class="header__movie-notice">3</span>
+                <i class="fa-regular fa-heart icon-heart"></i>
+                <div class="header__movie-list group-hover:block">
+                    <h4 class="header__movie-heading">New Movies Added</h4>
+                    <ul class="header__movie-list-item">
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <button class="btn-small float-right">MORE</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
     <div class="w-full h-full pt-[150px] relative bg-black">
         <!-- nav-bar -->
         <div class="w-[20%] h-full ml-[80px] text-xl text-white flex flex-col fixed">
@@ -76,7 +108,8 @@
         }
 
     </script>
-
+    <script src="../../assets/js/Account/getUserName.js" type="module"></script>
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
 </body>
 
 </html>
