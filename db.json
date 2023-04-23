@@ -1,0 +1,131 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "nva@gmail.com",
+            "username": "Nguyen Van A",
+            "password": "123456",
+            "img": "",
+            "isAdmin": false
+        },
+        {
+            "id": 2,
+            "email": "nvb@gmail.com",
+            "username": "Nguyen Van B",
+            "password": "123456",
+            "img": "",
+            "isAdmin": true
+        }
+    ],
+    "movies": [
+        {
+            "id": 1,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 2,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 3,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 4,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 5,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        },
+        {
+            "id": 6,
+            "name": "TETRIS",
+            "genre": "Mystery & thriller/Biography",
+            "img": "../../assets/Image/tetris.jpg",
+            "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+            "runtime": "1h 58m",
+            "release": "31/3/2023"
+        }
+    ],
+    "reviews": [
+        {
+            "id": 1,
+            "id_user": 1,
+            "id_movie": 1,
+            "content": "phim hay lam",
+            "rating": 8,
+            "time": "02/04/2023"
+        },
+        {
+            "id": 2,
+            "id_user": 1,
+            "id_movie": 2,
+            "content": "phim hay lam",
+            "rating": 8,
+            "time": "02/04/2023"
+        },
+        {
+            "id": 3,
+            "id_user": 1,
+            "id_movie": 3,
+            "content": "phim hay lam",
+            "rating": 8,
+            "time": "02/04/2023"
+        },{
+            "id": 4,
+            "id_user": 1,
+            "id_movie": 4,
+            "content": "phim hay lam",
+            "rating": 8,
+            "time": "02/04/2023"
+        }
+    ],
+    "favouriteMovies": [
+        {
+            "id": 1,
+            "id_movie": 1,
+            "id_user": 1
+        },
+        {
+            "id": 2,
+            "id_movie": 2,
+            "id_user": 1
+        },
+        {
+            "id": 3,
+            "id_movie": 4,
+            "id_user": 1
+        },
+        {
+            "id": 4,
+            "id_movie": 6,
+            "id_user": 1
+        }
+    ]
+}
