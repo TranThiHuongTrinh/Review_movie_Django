@@ -25,7 +25,8 @@
             "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 2,
@@ -34,7 +35,8 @@
             "img": "../../assets/img/theRevenant.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 3,
@@ -43,7 +45,8 @@
             "img": "../../assets/img/dieHard.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 4,
@@ -52,7 +55,8 @@
             "img": "../../assets/img/theWalk.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 5,
@@ -61,7 +65,8 @@
             "img": "../../assets/img/interestella.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 6,
@@ -97,7 +102,8 @@
             "img": "../../assets/img/theWalk.png",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         }
     ],
     "reviews": [
