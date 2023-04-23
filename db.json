@@ -22,55 +22,61 @@
             "id": 1,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 2,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 3,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 4,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 5,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         },
         {
             "id": 6,
             "name": "TETRIS",
             "genre": "Mystery & thriller/Biography",
-            "img": "../../assets/Image/tetris.jpg",
+            "img": "../../assets/img/tetris.jpg",
             "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
             "runtime": "1h 58m",
-            "release": "31/3/2023"
+            "release": "31/3/2023",
+            "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
         }
     ],
     "reviews": [

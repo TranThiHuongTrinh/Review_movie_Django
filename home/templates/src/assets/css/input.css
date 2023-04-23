@@ -17,11 +17,14 @@
     .header__search {
         @apply flex items-center;
     }
+    .header__search img {
+        @apply h-[100px] p-5;
+    }
     .input-search {
         @apply bg-[#03111F] py-1 px-12 rounded-2xl;
     }
     .icon-search {
-        @apply absolute right-2 top-2;
+        @apply absolute right-2 top-5;
     }
     .header__navbar {
         @apply flex items-center gap-6 text-xl;

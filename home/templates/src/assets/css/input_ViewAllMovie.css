@@ -5,7 +5,7 @@
 @layer components {
     /* Content */
     .content {
-        @apply bg-black text-white p-16;
+        @apply bg-black text-white p-16 mt-[100px];
     }
     .add__movie {
         @apply text-white text-3xl border border-white p-3 cursor-pointer;
