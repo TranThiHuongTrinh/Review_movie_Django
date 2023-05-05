@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .content__detail {
+        @apply w-[100%] bg-black py-12 flex flex-col justify-center items-center;
+    }
+    .preview__movie {
+         @apply relative flex justify-center hover:opacity-95;
+    }
+    .icon-play {
+        @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-8xl text-white cursor-pointer;
+    }
+
+    /* movie info */
+    .movie__info {
+        @apply mt-16 w-[80%] text-white;
+    }
+    .movie__title {
+        @apply relative text-xl before:absolute before:left-[-8px]  before:w-[10px] before:h-[30px] before:bg-[#FF2A23] mb-8 pl-4;
+    }
+    .movie__info-container {
+        @apply flex gap-32 text-2xl;
+    }
+    .movie__info-detail {
+        @apply bg-white text-black rounded py-4 px-8 flex flex-col gap-8 w-[50%];
+    }
+    .movie__info-name {
+        @apply text-[#DC0D27] text-3xl font-semibold
+    }
+    .movie__genre-label, .movie__release-label, .movie__runtime-label {
+        @apply font-bold;
+    }
+
+    /* rate and preview */
+    .movie__review {
+        @apply mt-16 w-[80%] text-white;
+    }
+    .moview__review-detail {
+        @apply bg-white py-4 px-16 flex flex-col items-end gap-8;
+    }
+    .movie__rate {
+        @apply text-[#D9D9D9] text-2xl cursor-pointer;
+    }
+    .moview__review-text {
+        @apply w-[100%] bg-[#CCCCCC] text-black flex justify-center items-center outline-none rounded p-6;
+    }
+}
