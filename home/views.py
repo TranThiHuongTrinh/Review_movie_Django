@@ -15,9 +15,13 @@ class MovieViewSet(viewsets.ModelViewSet):
     # .....(DELETE) --> xoa phim
 
 def index(request):
+    taisan = ["dien thoai", "may tinh", "may bay"]
     return render(request,template_name='home.html', context={
         'name': 'trinh'
-    })
+    }, taisan = {'taisan': taisan})
+
+def allMovie(request):
+    return render(request,'src/pages/Movie/temViewAllmovie.html' )
 
 
 def welcome(request, year):

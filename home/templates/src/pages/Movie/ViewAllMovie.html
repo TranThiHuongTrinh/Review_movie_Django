@@ -81,11 +81,17 @@
     
     <div class="content" style="padding-top: 10%;">
         <div class="flex justify-between">
-            <h1 class="content__heading">MOVIE LIST</h1>
+            <h1 class="content__heading">MOVIE LIST</h1>         
             <div class="add__movie">
                 <i class="fa-sharp fa-solid fa-plus icon-add"></i>
             </div>
         </div>
+        <ol>
+            <li>
+                {% block listMovie %}
+                {% endblock %}
+            </li>
+        </ol>
         <ul class="content__movie-list">
         </ul>
         <!-- <div class="btn__change-movie">

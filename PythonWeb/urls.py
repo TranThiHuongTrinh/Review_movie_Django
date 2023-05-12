@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    # path('',views.home, name='home'),
     path('', include('home.urls')),
+    path('listMovie/', include('home.urls') ),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
