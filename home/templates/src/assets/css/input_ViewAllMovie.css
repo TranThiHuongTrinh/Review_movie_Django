@@ -16,6 +16,9 @@
     .content__movie-img {
         @apply h-[300px] relative cursor-pointer hover:opacity-80;
     }
+    .content__movie-img img {
+        @apply w-[200px] h-full;
+    }
     .icon-detail {
         @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 hidden;
     }
