@@ -8,10 +8,8 @@ const modalUp = document.querySelector('.modal__add')
 const btnNo = document.querySelector('.btn-no')
 
 
-const imgMovie = document.querySelector('.movie-img')
 const inputMovie = document.querySelector('.input-img')
 openFormAdd.addEventListener('click', () => {
-    imgMovie.style.display = "none"
     modal.classList.add('flex')
     modalUp.classList.add('block')
     titleForm.innerHTML = 'ADD MOVIE'

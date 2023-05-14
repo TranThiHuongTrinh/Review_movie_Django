@@ -16,7 +16,7 @@ function renderMovie(movie){
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="movie"/>
+                <img src=${movie.img} alt="movie" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -64,8 +64,4 @@ favouriteMoviesByIdUser.forEach(favouriteMovie => {
 });
 
 showMovieList(moviesByFavouriteMovies)
-
-
-
-
 

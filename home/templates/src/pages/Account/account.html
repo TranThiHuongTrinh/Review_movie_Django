@@ -47,7 +47,7 @@
             <div class="group header__movie-wrap">
                 <span class="header__movie-notice">3</span>
                 <i class="fa-regular fa-heart icon-heart"></i>
-                <div class="header__movie-list group-hover:block">
+                <div class="header__movie-list z-10 shadow-md group-hover:block">
                     <h4 class="header__movie-heading">New Movies Added</h4>
                     <ul class="header__movie-list-item">
                         <li class="header__movie-item">
@@ -75,13 +75,13 @@
         <div class="w-[20%] h-full ml-[80px] text-xl text-white flex flex-col fixed">
             <div class="relative before:absolute before:h-full before:bottom-0 before:-left-3 before:border-[3px] before:border-solid before:border-[#ED1B34]">ACCOUNT SETTING</div>
             <div class="w-[200px] h-[220px] mt-10 rounded-md bg-white text-black  ">
-                <div class="w-full p-5 font-semibold cursor-pointer text-black hover:text-black duration-200" onclick="changeFrame(1)">
+                <div class="w-full p-5 font-semibold cursor-pointer  hover:text-black duration-200 setting" onclick="changeFrame(1)">
                     <i class="fa-solid fa-user-gear"></i>
                     Profile setting</div>
-                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200" onclick="changeFrame(2)">
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 password" onclick="changeFrame(2)">
                     <i class="fa-solid fa-user-lock"></i>
                     Password</div>
-                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200" onclick="changeFrame(3)">
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 noti" onclick="changeFrame(3)">
                     <i class="fa-solid fa-bell"></i>
                     Notifications</div>
             </div>
@@ -91,19 +91,31 @@
             id="iframe"></iframe>
     </div>
     <script>
-        let linkToTickets = "./setting.html";
-        let linkToParking = "./password.html";
-        let linkToStatistics = "./notification.html";
+        const linkToTickets = "./setting.html";
+        const linkToParking = "./password.html";
+        const linkToStatistics = "./notification.html";
         const frame = document.querySelector("#iframe")
+        const setting = document.querySelector('.setting')
+        const password = document.querySelector('.password')
+        const noti = document.querySelector('.noti')
         function changeFrame(index) {
             if (index == 1) {
                 frame.src = linkToTickets;
+                setting.classList.remove('text-[#ccc]')
+                password.classList.remove('text-black')
+                noti.classList.remove('text-black')
             }
             else if (index == 2) {
                 frame.src = linkToParking;
+                password.classList.add('text-black')
+                setting.classList.add('text-[#ccc]')
+                noti.classList.remove('text-black')
             }
             else if (index == 3) {
                 frame.src = linkToStatistics;
+                noti.classList.add('text-black')
+                setting.classList.add('text-[#ccc]')
+                password.classList.remove('text-black')
             }
         }
 

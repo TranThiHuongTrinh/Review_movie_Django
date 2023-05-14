@@ -8,6 +8,7 @@ const titleForm = document.querySelector('.modal__title')
 const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
 const btnMore = document.querySelector('.btn-more')
+const add_btn = document.querySelector('.add__movie')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
 let listMovie = await getMovie()
@@ -41,8 +42,8 @@ function renderMovieAdmin(movie){
             <div class="movie__info">
                 <div class="movie__rating">
                     <h1 class="movie__name">${movie.name}</h1>
-                    <div>
-                        <i class="fa-solid fa-tomato icon-tomato"></i>
+                    <div style="display:flex; align-items: center; gap: 10px;">
+                        <img src="../.././assets/img/tomato.png" alt="" style="max-width: 40px;"/>
                         <span class="text-2xl">7.4/10</span>
                     </div>
                 </div>
@@ -62,8 +63,9 @@ function renderMovieAdmin(movie){
 }
 
 function renderMovieUser(movie){
+    add_btn.style.display = 'none'
     return `
-        <li class="content__movie-item">
+        <li class="content__movie-item justify-normal gap-[150px]">
             <div class="content__movie-img group">
                 <img src=${movie.img} alt="" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block" data-id="${movie.id}">
@@ -73,8 +75,8 @@ function renderMovieUser(movie){
             <div class="movie__info">
                 <div class="movie__rating">
                     <h1 class="movie__name">${movie.name}</h1>
-                    <div>
-                        <i class="fa-solid fa-tomato icon-tomato"></i>
+                    <div style="display:flex; align-items: center; gap: 10px;">
+                        <img src="../.././assets/img/tomato.png" alt="" style="max-width: 40px;"/>
                         <span class="text-2xl">7.4/10</span>
                     </div>
                 </div>
@@ -164,18 +166,6 @@ const checkInputs = () => {
     return check
 }
 
-const imgMovie = document.querySelector('.movie-img')
-const inputImg = document.querySelector('.input-img')
-inputImg.addEventListener('change', showPreview)
-
-function showPreview(event) {
-    if(event.target.files.length > 0){
-        console.log(URL.createObjectURL(event.target.files[0]), "123");
-        let src = URL.createObjectURL(event.target.files[0])
-        imgMovie.src = src
-    }
-}
-
 const getValueInput = () => {
     let name = inputs[0].value
     let genre = selectGenre.value
@@ -227,8 +217,7 @@ const loadDataForm = (id) => {
     movieUp = movie
     inputs[0].value = movie.name
     selectGenre.value = movie.genre
-    imgMovie.style.display = "inline-block"
-    imgMovie.src = movie.img
+    inputs[1].placehoder = movie.img
     inputs[2].value = movie.decription
     inputs[3].value = movie.link
     inputs[4].value = movie.runtime

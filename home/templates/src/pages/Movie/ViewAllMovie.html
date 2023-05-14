@@ -24,7 +24,7 @@
 <body class="relative">
     <header class="header">
         <div class="header__search">
-            <img src="../../assets/img/logo.png" alt="logo" />
+            <img src="../../assets/img/logo.png" alt="logo"/>
             <div class="relative">
                 <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
                 <i class="fa-solid fa-magnifying-glass icon-search"></i>
@@ -79,13 +79,19 @@
         </div>
     </header>
     
-    <div class="content" style="padding-top: 10%;">
+    <div class="content" style="padding-top: 5%;">
         <div class="flex justify-between">
-            <h1 class="content__heading">MOVIE LIST</h1>
+            <h1 class="content__heading">MOVIE LIST</h1>         
             <div class="add__movie">
                 <i class="fa-sharp fa-solid fa-plus icon-add"></i>
             </div>
         </div>
+        <ol>
+            <li>
+                {% block listMovie %}
+                {% endblock %}
+            </li>
+        </ol>
         <ul class="content__movie-list">
         </ul>
         <!-- <div class="btn__change-movie">
@@ -110,17 +116,17 @@
                 <i class="fa-solid fa-xmark icon-close"></i>
             </div>
             <form class="form__movie">
-                <div class="form__movie-name">
-                    <label >Movie's name: <span>*</span></label>
-                    <input class="input-text input-name input-form" type="text" placeholder="Insert movie’s name here" style="width: unset;"/>
+                <div class="form__movie-name" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Movie's name: <span>*</span></label>
+                    <input class="input-text input-name input-form" type="text" placeholder="Insert movie's name here" style="width: 68%;"/>
                 </div>
                 <!-- <div class="form__movie-decription">
                     <label>Decription: <span>*</span></label>
                     <input class="input-text input-decription" type="text" placeholder="Insert description here" />
                 </div> -->
-                <div class="form__movie-genre">
-                    <label>Movie's genre:</label>
-                    <select class="select-genre" style="width: unset;">
+                <div class="form__movie-genre" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Movie's genre:</label>
+                    <select class="select-genre" style="width: 68%;">
                         <option value="action">Action</option>
                         <option value="magic">Magic</option>
                         <option value="drama">Drama</option>
@@ -132,26 +138,25 @@
                         <option value="thriller">Thriller</option>
                     </select>
                 </div>
-                <div class="form__movie-img">
-                    <label>Select image:</label>
-                    <img src="" class="movie-img" style="display: inline-block; width: 100px; height: 100px;"/>
-                    <input class="input-text input-img input-form" type="file" id="img" name="img" accept="image/*" style="width: unset;">
+                <div class="form__movie-img" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Select image:</label>
+                    <input class="input-text input-img input-form" type="file" id="img" name="img" accept="image/*" style="width: 68%; ">
                 </div>
-                <div class="form__movie-decription">
-                    <label>Decription:</label>
-                    <input class="input-text input-form" type="text" placeholder="Decription" style="width: unset;">
+                <div class="form__movie-decription" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Decription:</label>
+                    <input class="input-text input-form" type="text" placeholder="Decription" style="width: 68%;">
                 </div>
-                <div class="form__movie-video">
-                    <label>Link video:</label>
-                    <input class="input-text input-form" type="text" placeholder="Link video" style="width: unset;">
+                <div class="form__movie-video" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Link video:</label>
+                    <input class="input-text input-form" type="text" placeholder="Link video" style="width: 68%;">
                 </div>
-                <div class="form__movie-runtime">
-                    <label>Run time:</label>
-                    <input class="input-text input-form" type="text" placeholder="Run time" style="width: unset;">
+                <div class="form__movie-runtime" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Run time:</label>
+                    <input class="input-text input-form" type="text" placeholder="Run time" style="width: 68%;">
                 </div>
-                <div class="form__movie-release">
-                    <label>Run time:</label>
-                    <input type="date" class="input-form" style="width: unset;">
+                <div class="form__movie-release" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="width: 32%;">Release:</label>
+                    <input type="date" class="input-form" style="width: 68%;">
                 </div>
                 <input class="btn-medium btn-form" type="submit" value="ADD" />
             </form>
