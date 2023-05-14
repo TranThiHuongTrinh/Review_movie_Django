@@ -11,7 +11,7 @@ function renderMovie(movie){
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="movie"/>
+                <img src=${movie.img} alt="movie" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -67,8 +67,13 @@ async function getFavouriteMoviesByUserId(userId) {
     const favouriteMoviesData = movies.filter(movie => favouriteMovieIds.includes(movie.id));
     return favouriteMoviesData;
 }
+function getInfor() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    // console.log(currentUser);
+    return currentUser
+}
+const userId = getInfor().id;
 
-const userId = 1;
 getFavouriteMoviesByUserId(userId)
     .then(result => showMovieList(result));
 
