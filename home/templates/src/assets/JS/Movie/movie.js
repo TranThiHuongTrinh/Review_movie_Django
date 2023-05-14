@@ -1,5 +1,6 @@
 import {getMovie, getMovieByIdMovie} from "./getMovie.js"
 import { delItem, addItem, updateItem } from "../handles/handles.js"
+import userCurrent from "./index.js"
 
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
@@ -7,24 +8,20 @@ const modalUp = document.querySelector('.modal__add')
 const titleForm = document.querySelector('.modal__title')
 const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
-const btnMore = document.querySelector('.btn-more')
 const add_btn = document.querySelector('.add__movie')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
 let listMovie = await getMovie()
 let idDel = 1
 let idUp = 1
-let idUser = 1
+let idUser = null
+if(userCurrent) idUser = userCurrent.id
 let checkUp = false
 let movieUp = null
 let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
 
-function getInfor() {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    return currentUser
-}
 // let isAdmin = getInfor().isAdmin
-let isAdmin = false
+let isAdmin = userCurrent ? userCurrent.isAdmin : false
 
 const movieAPI = "http://localhost:3000/movies"
 
@@ -113,6 +110,13 @@ const handleDel = (id) => {
 }
 
 showMovieList(listMovie)
+
+const wrapFavouriteMovie = document.querySelector('.header__movie-wrap')
+if(userCurrent) {
+    wrapFavouriteMovie.style.display = "block"
+} else {
+    wrapFavouriteMovie.style.display = "none"
+}
 
 function openFormUp () {
     modal.classList.add('flex')
@@ -240,18 +244,8 @@ inputSearch.addEventListener("input", (e) => {
 const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
-        const id = btnDetail.getAttribute("data-id");
-        window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        const id = e.target.getAttribute('data-id');
+        if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
     })
-})
-
-
-
-
-
-
-console.log(btnMore);
-btnMore.addEventListener('click', function(e) {
-    e.preventDefault()
-    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewMovieFavourite.html?id=${idUser}`;
 })
