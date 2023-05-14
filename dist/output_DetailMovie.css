@@ -516,21 +516,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-/* Content */
+/* movie info */
 
-/* modal delete */
-
-/* modal add */
-
-input, select {
-  margin-top: 0.75rem;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-  padding: 0.75rem;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-
+/* rate and preview */

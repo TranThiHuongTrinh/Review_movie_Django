@@ -81,29 +81,14 @@
 
     <div class="content__detail">
         <div class="preview__movie">
-            <img class="preview__movie-img" src="../../assets/img/detail_movie.png"/>
-            <i class="fa-regular fa-circle-play icon-play"></i>
+            <iframe class="preview__movie-youtube" width="1024" height="500" src="https://www.youtube.com/embed/9H8CjHTNCtg" frameborder="0" allowfullscreen></iframe>
+            <!-- <img class="preview__movie-img" src="../../assets/img/detail_movie.png"/> -->
+            <!-- <i class="fa-regular fa-circle-play icon-play"></i> -->
         </div>
         <div class="movie__info">
             <h1 class="movie__title">WHAT TO KNOW</h1>
             <div class="movie__info-container">
-                <img src="../../assets/img/movie_know.png"/>
-                <div class="movie__info-detail">
-                    <h1 class="movie__info-name">THE REVENANT</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem velit asperiores unde impedit quos dolor est sint, inventore maiores quisquam, suscipit perferendis at? Quo, quos eaque. Nihil magnam vitae fuga?</p>
-                    <div class="movie__genre">
-                        <span class="movie__genre-label">Genre :</span>
-                        <span class="movie__genre-detail">Action</span>
-                    </div>
-                    <div class="movie__release">
-                        <span class="movie__release-label">Release Date :</span>
-                        <span class="movie__release-detail">Mar 24, 2023</span>
-                    </div>
-                    <div class="movie__runtime">
-                        <span class="movie__runtime-label">Runtime :</span>
-                        <span class="movie__runtime-detail">2h49</span>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <div class="movie__review">
@@ -120,79 +105,31 @@
                 <button class="btn-medium">Submit</button>
             </div>
         </div>
+        <div class="flex">
+            <h1 class="movie__title text-white">CRITIC REVIEWS</h1>
+            <div class="add__review text-white">
+                <i class="fa-sharp fa-solid fa-plus icon-add cursor-pointer"></i>
+            </div>
+        </div>
         <ul class="movie__review-list">
-            <li>
-                <h1 class="movie__title text-white">CRITIC REVIEWS</h1>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
             <li class="movie__review-btn ">
                 <button class="btn-medium">Prev</button>
                 <button class="btn-medium">Next</button>
             </li>
         </ul>
+
+        <div class="modal__add">
+            <textarea class="text-review" name="" id=""  cols="30" rows="10"></textarea>
+            <div class="movie__rate">
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+            </div>
+            <button class="btn-add-review text-white">SEND</button>
+        </div>
     </div>
+    <script src="../../assets/JS/Movie/detailMovie.js" type="module"></script>
 </body>
 </html>

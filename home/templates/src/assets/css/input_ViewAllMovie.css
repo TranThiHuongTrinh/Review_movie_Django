@@ -85,7 +85,7 @@
         @apply border-none bg-[#DC0D27] text-white
     }
     input, select {
-        @apply w-full p-3 mt-3 border border-black outline-none rounded
+        @apply p-3 mt-3 border border-black outline-none rounded
     }
 }
 

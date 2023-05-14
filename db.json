@@ -4,8 +4,8 @@
       "id": 1,
       "email": "nva@gmail.com",
       "username": "Nguyen Van A",
-      "password": "hehe",
-      "img": "../../assets/img/interestella.png",
+      "password": "123456",
+      "img": "",
       "isAdmin": false
     },
     {
@@ -15,33 +15,17 @@
       "password": "123456",
       "img": "",
       "isAdmin": true
-    },
-    {
-      "id": 3,
-      "email": "dothinhodut@gmail.com",
-      "username": "Do Thi Nho",
-      "password": "123456",
-      "img": "../../assets/img/acc.png",
-      "isAdmin": false
-    },
-    {
-      "id": 4,
-      "email": "thuytien180902@gmail.com",
-      "username": "Ho Thuy Tien",
-      "password": "123",
-      "img": "../../assets/img/acc.png",
-      "isAdmin": false
     }
   ],
   "movies": [
     {
       "id": 1,
       "name": "TETRIS",
-      "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/tetris.jpg",
+      "genre": "horror",
+      "img": "../../assets/img/die_hard.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -51,7 +35,7 @@
       "img": "../../assets/img/theRevenant.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -61,7 +45,7 @@
       "img": "../../assets/img/dieHard.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -71,7 +55,7 @@
       "img": "../../assets/img/theWalk.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -81,7 +65,7 @@
       "img": "../../assets/img/interestella.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -91,7 +75,7 @@
       "img": "../../assets/img/tetris.jpg",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
     },
     {
@@ -101,7 +85,7 @@
       "img": "../../assets/img/theRevenant.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023"
+      "release": "2023-03-31"
     },
     {
       "id": 8,
@@ -110,7 +94,7 @@
       "img": "../../assets/img/dieHard.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023"
+      "release": "2023-03-31"
     },
     {
       "id": 9,
@@ -119,42 +103,54 @@
       "img": "../../assets/img/theWalk.png",
       "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
       "runtime": "1h 58m",
-      "release": "31/3/2023",
+      "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
+    },
+    {
+      "id": 10,
+      "name": "Lật mặt",
+      "genre": "action",
+      "img": "../../assets/img/die_hard.png",
+      "link": "https://youtu.be/LIbEVokOnQQ",
+      "runtime": "1h38p",
+      "release": "2023-05-12",
+      "decription": " Phim Chiếu Rạp 2021 - Lật Mặt FULL HD - Quách Ngọc Tuyên,Hứa Minh Đạt, Mạc Văn Khoa, Thanh Tân"
+    },
+    {
+      "id": 11,
+      "name": "Avartar",
+      "genre": "action",
+      "img": "../../assets/img/interstella.png",
+      "link": "https://youtu.be/9lKfTWZUojw",
+      "runtime": "1h50p",
+      "release": "2023-05-27",
+      "decription": "Dòng Chảy Của Nước "
     }
   ],
   "reviews": [
     {
-      "id": 1,
-      "id_user": 1,
-      "id_movie": 1,
+      "idUser": 1,
+      "idMovie": 2,
       "content": "phim hay lam",
-      "rating": 8,
-      "time": "02/04/2023"
+      "rating": 0,
+      "time": "2023-05-12T21:27:41.951Z",
+      "id": 2
     },
     {
-      "id": 2,
-      "id_user": 1,
-      "id_movie": 2,
-      "content": "phim hay lam",
-      "rating": 8,
-      "time": "02/04/2023"
+      "idUser": 1,
+      "idMovie": 3,
+      "content": "phim hay quá",
+      "rating": 4,
+      "time": "2023-05-12T21:30:30.734Z",
+      "id": 3
     },
     {
-      "id": 3,
-      "id_user": 1,
-      "id_movie": 3,
-      "content": "phim hay lam",
-      "rating": 8,
-      "time": "02/04/2023"
-    },
-    {
-      "id": 4,
-      "id_user": 1,
-      "id_movie": 4,
-      "content": "phim hay lam",
-      "rating": 8,
-      "time": "02/04/2023"
+      "idUser": 1,
+      "idMovie": "4",
+      "content": "phim đỉnh",
+      "rating": 3,
+      "time": "2023-05-12T21:41:13.487Z",
+      "id": 4
     }
   ],
   "favouriteMovies": [
