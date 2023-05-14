@@ -68,15 +68,15 @@
     </header>
 
     <div class="content__detail">
+        <div class="flex justify-between w-full text-white">
+            <h1 class="movie__title text-white">MY REVIEWS</h1>
+            <div class="relative">
+                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
+                <i class="fa-solid fa-magnifying-glass icon-search"></i>
+            </div>
+        </div>
         <ul class="movie__review-list">
-            <li class="flex justify-between text-white">
-                <h1 class="movie__title text-white">MY REVIEWS</h1>
-                <div class="relative">
-                    <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                    <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                </div>
-            </li>
-            <li class="movie__review-item">
+            <!-- <li class="movie__review-item">
                 <img src="../../assets/img/avatar_review.png" />
                 <div class="user__info">
                     <h1 class="user__name">Felix Vasquez Jr.</h1>
@@ -160,8 +160,20 @@
                 <button class="btn-small page-btn">1</button>
                 <button class="btn-small page-btn">2</button>
                 <button class="btn-small page-btn">3</button>
-            </li>
+            </li> -->
         </ul>
+        <div class="modal__update">
+            <textarea class="text-review" name="" id=""  cols="30" rows="10"></textarea>
+            <div class="movie__rate">
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+                <i class="fa-regular fa-star icon-rating"></i>
+            </div>
+            <button class="btn-update-review text-white">SEND</button>
+        </div>
     </div>
+    <script src="../../assets/JS/Review/review.js" type="module"></script>
 </body>
 </html>

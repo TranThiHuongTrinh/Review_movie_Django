@@ -1,5 +1,5 @@
-import {getInfor} from './index.js'
+// import {getInfor} from './index.js'
 
-const name_user = document.querySelector('.name-user')
+// const name_user = document.querySelector('.name-user')
 
-name_user.innerHTML = (getInfor().username).toUpperCase()
+// name_user.innerHTML = (getInfor().username).toUpperCase()
