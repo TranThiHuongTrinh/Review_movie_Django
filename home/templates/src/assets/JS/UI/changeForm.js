@@ -1,5 +1,4 @@
 const listIconMore = document.querySelectorAll('.icon-more')
-const myReview = document.querySelector('.my-review')
 const openFormAdd = document.querySelector('.add__movie')
 const iconCloseList = document.querySelectorAll('.icon-close')
 const modal = document.querySelector('.modal')
@@ -24,15 +23,11 @@ iconCloseList.forEach(iconClose => {
     })
 })
 
-listIconMore.forEach(iconMore => {
-    iconMore.addEventListener('click', () => {
-        window.location.assign("../../pages/Movie/DetailMovie.html")
-    })
-})
-
-myReview.addEventListener('click', () => {
-    window.location.assign("../../pages/Review/DetailReview.html")
-})
+// listIconMore.forEach(iconMore => {
+//     iconMore.addEventListener('click', () => {
+//         window.location.assign("../../pages/Movie/DetailMovie.html")
+//     })
+// })
 
 btnNo.addEventListener('click', (e) => {
     modalDel.classList.remove('flex')

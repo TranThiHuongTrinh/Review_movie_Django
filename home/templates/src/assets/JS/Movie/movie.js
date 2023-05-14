@@ -8,7 +8,6 @@ const modalUp = document.querySelector('.modal__add')
 const titleForm = document.querySelector('.modal__title')
 const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
-const btnMore = document.querySelector('.btn-more')
 const add_btn = document.querySelector('.add__movie')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
@@ -245,14 +244,10 @@ inputSearch.addEventListener("input", (e) => {
 const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
-        const id = btnDetail.getAttribute("data-id");
-        window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        const id = e.target.getAttribute('data-id');
+        if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
     })
 })
 
 
-btnMore.addEventListener('click', function(e) {
-    e.preventDefault()
-    if(userCurrent) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewMovieFavourite.html?id=${idUser}`;
-    else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
-})
