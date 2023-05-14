@@ -5,7 +5,7 @@
       "email": "nva@gmail.com",
       "username": "Nguyen Van A",
       "password": "123456",
-      "img": "",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/acc.png",
       "isAdmin": false
     },
     {
@@ -13,7 +13,7 @@
       "email": "nvb@gmail.com",
       "username": "Nguyen Van B",
       "password": "123456",
-      "img": "",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/acc.png",
       "isAdmin": true
     }
   ],
@@ -22,8 +22,8 @@
       "id": 1,
       "name": "TETRIS",
       "genre": "horror",
-      "img": "../../assets/img/die_hard.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/die_hard.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -32,8 +32,8 @@
       "id": 2,
       "name": "The Revenant",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/theRevenant.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/theRevenant.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -42,8 +42,8 @@
       "id": 3,
       "name": "Die Hard",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/dieHard.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/dieHard.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -52,8 +52,8 @@
       "id": 4,
       "name": "The Walk",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/theWalk.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/theWalk.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -62,8 +62,8 @@
       "id": 5,
       "name": "Interestella",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/interestella.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/interestella.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -72,8 +72,8 @@
       "id": 6,
       "name": "TETRIS",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/tetris.jpg",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/tetris.jpg",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -82,8 +82,8 @@
       "id": 7,
       "name": "The Revenant",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/theRevenant.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/theRevenant.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31"
     },
@@ -91,8 +91,8 @@
       "id": 8,
       "name": "Die Hard",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/dieHard.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/dieHard.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31"
     },
@@ -100,8 +100,8 @@
       "id": 9,
       "name": "The Walk",
       "genre": "Mystery & thriller/Biography",
-      "img": "../../assets/img/theWalk.png",
-      "link": "https://www.youtube.com/watch?v=-BLM1naCfME",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/theWalk.png",
+      "link": "https://www.youtube.com/embed/9H8CjHTNCtg",
       "runtime": "1h 58m",
       "release": "2023-03-31",
       "decription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, fugit reiciendis? ...."
@@ -110,7 +110,7 @@
       "id": 10,
       "name": "Lật mặt",
       "genre": "action",
-      "img": "../../assets/img/die_hard.png",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/die_hard.png",
       "link": "https://youtu.be/LIbEVokOnQQ",
       "runtime": "1h38p",
       "release": "2023-05-12",
@@ -120,7 +120,7 @@
       "id": 11,
       "name": "Avartar",
       "genre": "action",
-      "img": "../../assets/img/interstella.png",
+      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/interstella.png",
       "link": "https://youtu.be/9lKfTWZUojw",
       "runtime": "1h50p",
       "release": "2023-05-27",
@@ -151,14 +151,25 @@
       "rating": 3,
       "time": "2023-05-12T21:41:13.487Z",
       "id": 4
+    },
+    {
+      "idUser": 1,
+      "idMovie": 1,
+      "content": "phim cuốn lắm",
+      "rating": 4,
+      "time": "2023-05-14T09:25:44.884Z",
+      "id": 5
+    },
+    {
+      "idUser": 1,
+      "idMovie": 1,
+      "content": "phim quá tuyệt vời",
+      "rating": 3,
+      "time": "2023-05-14T09:59:16.183Z",
+      "id": 6
     }
   ],
   "favouriteMovies": [
-    {
-      "id": 1,
-      "id_movie": 1,
-      "id_user": 1
-    },
     {
       "id": 2,
       "id_movie": 2,

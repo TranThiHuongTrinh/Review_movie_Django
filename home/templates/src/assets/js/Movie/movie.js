@@ -7,14 +7,13 @@ const modalUp = document.querySelector('.modal__add')
 const titleForm = document.querySelector('.modal__title')
 const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
-const listInput = document.querySelectorAll('.input-text')
-const genreMovieinput = document.querySelector('.select-genre')
 const btnMore = document.querySelector('.btn-more')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
 let listMovie = await getMovie()
 let idDel = 1
 let idUp = 1
+let idUser = 1
 let checkUp = false
 let movieUp = null
 let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
@@ -24,7 +23,7 @@ function getInfor() {
     return currentUser
 }
 // let isAdmin = getInfor().isAdmin
-let isAdmin = true
+let isAdmin = false
 
 const movieAPI = "http://localhost:3000/movies"
 
@@ -204,7 +203,6 @@ const handleSubmit = () => {
             "run_time": runtime,
             "release": release,
           }
-        console.log(window.location.origin);
         if(checkUp == false) addItem(data, movieAPI)
         else updateItem(idUp, data, movieAPI)
     } else {
@@ -263,7 +261,8 @@ btnsDetail.forEach(btnDetail => {
 
 
 
-// btnMore.addEventListener('click', function(e) {
-//     e.preventDefault()
-//     window.location.href = "http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewMovieFavourite.html";
-// })
+console.log(btnMore);
+btnMore.addEventListener('click', function(e) {
+    e.preventDefault()
+    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewMovieFavourite.html?id=${idUser}`;
+})

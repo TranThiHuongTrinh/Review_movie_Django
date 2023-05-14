@@ -18,7 +18,7 @@ export const getListReviewByIdUser = (idUser) => {
 
 
 export const getListReviewByIdMovie = (idMovie) => {
-  return reviews.filter(review => review.id_movie === idMovie)
+  return reviews.filter(review => review.idMovie == idMovie)
 }
 
 export const getReviewByIdRview = (idReview) => {
@@ -26,7 +26,7 @@ export const getReviewByIdRview = (idReview) => {
 }
 
 export const getReviewByIdMovie = (idMovie) => {
-    return reviews.find(review => review.id_movie === idMovie)
+    return reviews.find(review => review.idMovie === idMovie)
 };
 
 

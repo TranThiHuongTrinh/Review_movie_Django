@@ -1,3 +1,14 @@
+// Get 
+export const getData = async (api) => {
+  try {
+    const response = await fetch(api);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 // Add
 export const addItem = async (itemData, api) => {
     try {

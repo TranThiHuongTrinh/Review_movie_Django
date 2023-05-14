@@ -8,6 +8,7 @@
     <link href="../../../dist/output.css" rel="stylesheet">
     <link href="../../../dist/output_detailMovie.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         *{
             margin: 0;
@@ -90,26 +91,26 @@
             <div class="movie__info-container">
                 
             </div>
+            <i class="fa-regular fa-heart btn-heart cursor-pointer text-lg mt-6"></i>
+            <span class="ml-4">Đã thích ( <span class="text-favourite">0</span> )</span>
         </div>
+        
         <div class="movie__review">
             <h1 class="movie__title">RATE AND REVIEW</h1>
             <div class="moview__review-detail">
                 <div class="movie__rate">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
                 </div>
                 <textarea  rows="3" cols="20" class="moview__review-text" placeholder="WHAT DID YOU THINK OF THE MOVIE? (OPTIONAL)"></textarea>
-                <button class="btn-medium">Submit</button>
+                <button class="btn-medium btn-add-review">Submit</button>
             </div>
         </div>
         <div class="flex">
             <h1 class="movie__title text-white">CRITIC REVIEWS</h1>
-            <div class="add__review text-white">
-                <i class="fa-sharp fa-solid fa-plus icon-add cursor-pointer"></i>
-            </div>
         </div>
         <ul class="movie__review-list">
             <li class="movie__review-btn ">
@@ -117,18 +118,7 @@
                 <button class="btn-medium">Next</button>
             </li>
         </ul>
-
-        <div class="modal__add">
-            <textarea class="text-review" name="" id=""  cols="30" rows="10"></textarea>
-            <div class="movie__rate">
-                <i class="fa-regular fa-star icon-rating"></i>
-                <i class="fa-regular fa-star icon-rating"></i>
-                <i class="fa-regular fa-star icon-rating"></i>
-                <i class="fa-regular fa-star icon-rating"></i>
-                <i class="fa-regular fa-star icon-rating"></i>
-            </div>
-            <button class="btn-add-review text-white">SEND</button>
-        </div>
+        
     </div>
     <script src="../../assets/JS/Movie/detailMovie.js" type="module"></script>
 </body>
