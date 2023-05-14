@@ -2,6 +2,7 @@ import {getListReviewByIdMovie} from '../Review/getReview.js'
 import {getMovieByIdMovie, getFavouriteMoviesByMovieId, getFavouriteMovies, getFavouriteMovieByUserIdAndMovieId} from './getMovie.js'
 import {getUserById} from '../Account/getUser.js'
 import { addItem, delItem } from '../handles/handles.js'
+import userCurrent from './index.js'
 
 const reviewApi = "http://localhost:3000/reviews"
 const favouriteMovieAPI = "http://localhost:3000/favouriteMovies"
@@ -13,7 +14,7 @@ const previewMovie = document.querySelector('.preview__movie-youtube')
 const reviewsByIdMovie = getListReviewByIdMovie(idMovie)
 const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
-const idUser = 1
+const idUser = userCurrent.id
 const favouriteMoviesByIdMovie = getFavouriteMoviesByMovieId(idMovie)
 const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')

@@ -1,5 +1,6 @@
 const movieURL = "http://localhost:3000/movies"
 const movieItems = document.querySelector('.movie-list')
+const btnViewMovie = document.querySelector('.btn-viewmovie')
 let list_Movie = []
 
 function main() {
@@ -38,4 +39,11 @@ function showMovies(list_Movie) {
         movieItems.innerHTML += htmls
     }
 }
+
+
+
+btnViewMovie.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewAllMovie.html`;
+})
 main()
