@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'ckeditor',
     'ckeditor_uploader',
+    'corsheaders',
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -54,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'PythonWeb.urls'
@@ -72,6 +76,17 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+ALLOWED_HOSTS = ['172.20.10.6',
+                 '172.20.10.9',
+                 '172.21.3.105',
+                 '127.0.0.1',
+                 'localhost',
+                 ]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:5500',
 ]
 
 WSGI_APPLICATION = 'PythonWeb.wsgi.application'

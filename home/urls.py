@@ -12,6 +12,17 @@ router.register('home', views.MovieViewSet)
 # /movies/{course_id} - DELETE
 
 urlpatterns = [
+    path('movies/', views.movie_list),
+    path('movies/add/', views.add_movie),
+    path('movies/<int:movie_id>/', views.get_movie),
+    path('movies/<int:id_movie>/update/', views.update_movie),
+
+    path('movies/<int:id_movie>/reviews/', views.review_list, name='review_list'),
+    path('movies/<int:id_movie>/reviews/add/', views.add_review, name='create_review'),
+    path('movies/<int:id_review>/update/',views.update_review, name='update_review'),
+
+    path('<int:id_user>/fovariteMovies/', views.favoriteMoviesList, name = 'list_favovite_movies'),
+
     path('', include(router.urls)),
     # path('homee/', views.index, name='index'),
     # path('admin/', admin_site.urls),
