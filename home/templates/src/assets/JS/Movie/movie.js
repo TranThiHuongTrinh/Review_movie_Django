@@ -1,4 +1,4 @@
-import {getMovie, getMovieByIdMovie} from "./getMovie.js"
+import {getMovie} from "./getMovie.js"
 import { delItem, addItem, updateItem } from "../handles/handles.js"
 import userCurrent from "./index.js"
 
@@ -21,9 +21,9 @@ let movieUp = null
 let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
 
 // let isAdmin = getInfor().isAdmin
-let isAdmin = userCurrent ? userCurrent.isAdmin : false
+let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
-const movieAPI = "http://localhost:3000/movies"
+const movieAPI = "http://192.168.38.108:8000/api/movies/"
 
 
 
@@ -197,7 +197,8 @@ const handleSubmit = () => {
             "run_time": runtime,
             "release": release,
           }
-        if(checkUp == false) addItem(data, movieAPI)
+          console.log(data);
+        if(checkUp == false) addItem(data, `${movieAPI}add/`)
         else updateItem(idUp, data, movieAPI)
     } else {
         alert('Nhập đầy đủ thông tin')

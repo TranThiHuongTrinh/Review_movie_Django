@@ -1,6 +1,6 @@
 export const getUser = async () => {
     try {
-      const response = await fetch('http://localhost:3000/users');
+      const response = await fetch('http://192.168.38.108:8000/api/users/');
       const data = await response.json();
       return data;
     } catch (error) {

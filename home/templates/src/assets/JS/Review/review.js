@@ -2,7 +2,7 @@ import {getListReviewByIdUser, getReviewByIdRview} from './getReview.js'
 import {getMovieByIdMovie} from '../Movie/getMovie.js'
 import { delItem, updateItem } from '../handles/handles.js'
 
-const reviewAPI = " http://localhost:3000/reviews"
+const reviewAPI = " http://192.168.38.108:8000/api/reviews/"
 const idUser = 1
 let idUp = 1
 let countRating = 0

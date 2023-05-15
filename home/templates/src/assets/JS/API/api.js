@@ -1,5 +1,5 @@
-export const userApi = " http://localhost:3000/users"
-export const movieApi = "http://localhost:3000/movies"
-export const reviewApi = "http://localhost:3000/reviews"
-export const favouriteMovieApi = "http://localhost:3000/favouriteMovies"
+export const userApi = " http://192.168.38.108:8000/api/users/"
+export const movieApi = "http://192.168.38.108:8000/api/movies/"
+export const reviewApi = "http://192.168.38.108:8000/api/reviews/"
+export const favouriteMovieApi = "http://192.168.38.108:8000/api/favouriteMovies/"
 

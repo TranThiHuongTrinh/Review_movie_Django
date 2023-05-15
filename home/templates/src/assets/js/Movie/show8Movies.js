@@ -1,5 +1,5 @@
 
-const movieURL = "http://localhost:3000/movies"
+const movieURL = "http://192.168.38.108:8000/api/movies/"
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))

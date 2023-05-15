@@ -1,6 +1,6 @@
 let list_Users = []
 
-const userURL = "http://localhost:3000/users"
+const userURL = "http://192.168.38.108:8000/api/users/"
 
 function main() {
     getData()
