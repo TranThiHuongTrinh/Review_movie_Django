@@ -4,14 +4,13 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 class User(AbstractUser):
-    img = models.ImageField(upload_to ='user/%Y/%m')
-
+    img = models.TextField(null = True)
 
 class Movie(models.Model):
     name = models.CharField(null=False, max_length=100, unique =True)
     genre = models.TextField(null=False)
     description = models.TextField(null=False, default="")
-    image = models.ImageField(upload_to='movie/%Y%m',blank = True)
+    image = models.TextField(null = True)
     link_video = models.TextField(null=False)
     run_time = models.TextField(null=False)
     release = models.TextField(null=False)
