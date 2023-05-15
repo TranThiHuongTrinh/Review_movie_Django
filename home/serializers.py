@@ -1,10 +1,10 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Movie, Review, Favorite_movie
+from .models import Movie, Review, Favorite_movie, Notification
 
 class MovieSerializer(ModelSerializer):
     class Meta:
         model = Movie
-        fields =["id", "name", "genre", "image", "image", "link_video", "run_time", "release"]
+        fields =["id", "name", "genre", "image", "link_video", "run_time", "release"]
 
 class ReviewSerializer(ModelSerializer):
     class Meta:
@@ -16,3 +16,7 @@ class FavoriteMovieSerializer(ModelSerializer):
         model = Favorite_movie
         fields = '__all__'
 
+class NotificationSerializer(ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = '__all__'

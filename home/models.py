@@ -38,9 +38,9 @@ class Favorite_movie(models.Model):
     class Meta:
         db_table = 'favorite_movie'
 class Notification(models.Model):
-    uer = models.ForeignKey(User, related_name="notifications", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="notifications", on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, related_name="notifications", on_delete=models.CASCADE)
     content = models.TextField(null = False)
     status = models.BooleanField(default=False)
     def __str__(self):
-            return self.title
+            return self.content

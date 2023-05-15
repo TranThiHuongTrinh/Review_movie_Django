@@ -21,7 +21,10 @@ urlpatterns = [
     path('movies/<int:id_movie>/reviews/add/', views.add_review, name='create_review'),
     path('movies/<int:id_review>/update/',views.update_review, name='update_review'),
 
-    path('<int:id_user>/fovariteMovies/', views.favoriteMoviesList, name = 'list_favovite_movies'),
+    path('/<int:id_user>/fovariteMovies/', views.favoriteMoviesList, name = 'list_favovite_movies'),
+    
+    path('notifications/', views.notifications_list, name = 'notifications_list'),
+    path('notifications/<int:id_user>/add/', views.add_notification, name = 'add_notification'),
 
     path('', include(router.urls)),
     # path('homee/', views.index, name='index'),
