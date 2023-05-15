@@ -8,6 +8,7 @@
     <link href="../../../dist/output.css" rel="stylesheet">
     <link href="../../../dist/output_detailMovie.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         *{
             margin: 0;
@@ -27,16 +28,16 @@
             <img src="../../assets/img/logo.png" alt="logo" />
             <div class="relative">
                 <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                <i class="fa-solid fa-magnifying-glass icon-search"></i>
+                <i class="fa-solid fa-magnifying-glass icon-search top-[10px]"></i>
             </div>
         </div>
         <div class="header__navbar">
-            <p>HELLO, <span class="text-[#DC0D27]">NGUYEN VAN A</span></p>   
+            <p>HELLO, <span class="text-[#DC0D27] name-user">NGUYEN VAN A</span></p>   
             <div class="group header__user-wrap">
                 <i class="fa-regular fa-user"></i>        
                 <div class="header__user-list z-10 group-hover:block">
                     <ul class="header__user-list-item">
-                        <li class="header__user-item">
+                        <li class="header__user-item account">
                             <span class="header__user-title">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
@@ -58,21 +59,9 @@
                 <div class="header__movie-list  z-10 group-hover:block">
                     <h4 class="header__movie-heading">New Movies Added</h4>
                     <ul class="header__movie-list-item">
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
                     </ul>
                     <div class="mt-4">
-                        <button class="btn-small float-right">MORE</button>
+                        <button class="btn-small float-right btn-more">MORE</button>
                     </div>
                 </div>
             </div>
@@ -81,118 +70,47 @@
 
     <div class="content__detail">
         <div class="preview__movie">
-            <img class="preview__movie-img" src="../../assets/img/detail_movie.png"/>
-            <i class="fa-regular fa-circle-play icon-play"></i>
+            <iframe class="preview__movie-youtube" width="1024" height="500" src="https://www.youtube.com/embed/9H8CjHTNCtg" frameborder="0" allowfullscreen></iframe>
+            <!-- <img class="preview__movie-img" src="../../assets/img/detail_movie.png"/> -->
+            <!-- <i class="fa-regular fa-circle-play icon-play"></i> -->
         </div>
         <div class="movie__info">
             <h1 class="movie__title">WHAT TO KNOW</h1>
             <div class="movie__info-container">
-                <img src="../../assets/img/movie_know.png"/>
-                <div class="movie__info-detail">
-                    <h1 class="movie__info-name">THE REVENANT</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem velit asperiores unde impedit quos dolor est sint, inventore maiores quisquam, suscipit perferendis at? Quo, quos eaque. Nihil magnam vitae fuga?</p>
-                    <div class="movie__genre">
-                        <span class="movie__genre-label">Genre :</span>
-                        <span class="movie__genre-detail">Action</span>
-                    </div>
-                    <div class="movie__release">
-                        <span class="movie__release-label">Release Date :</span>
-                        <span class="movie__release-detail">Mar 24, 2023</span>
-                    </div>
-                    <div class="movie__runtime">
-                        <span class="movie__runtime-label">Runtime :</span>
-                        <span class="movie__runtime-detail">2h49</span>
-                    </div>
-                </div>
+                
             </div>
+            <i class="fa-regular fa-heart btn-heart cursor-pointer text-lg mt-6"></i>
+            <span class="ml-4">Đã thích ( <span class="text-favourite">0</span> )</span>
         </div>
+        
         <div class="movie__review">
             <h1 class="movie__title">RATE AND REVIEW</h1>
             <div class="moview__review-detail">
                 <div class="movie__rate">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
+                    <i class="fa-regular fa-star icon-rating"></i>
                 </div>
                 <textarea  rows="3" cols="20" class="moview__review-text" placeholder="WHAT DID YOU THINK OF THE MOVIE? (OPTIONAL)"></textarea>
-                <button class="btn-medium">Submit</button>
+                <button class="btn-medium btn-add-review">Submit</button>
             </div>
         </div>
+        <div class="w-[80%] mt-12">
+            <h1 class="movie__title text-white">CRITIC REVIEWS</h1>
+        </div>
         <ul class="movie__review-list">
-            <li>
-                <h1 class="movie__title text-white">CRITIC REVIEWS</h1>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
-            <li class="movie__review-item">
-                <img src="../../assets/img/avatar_review.png" />
-                <div class="user__info">
-                    <h1 class="user__name">Felix Vasquez Jr.</h1>
-                    <div class="user__rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-               <p class="review__text">
-                An absolutely excellent, masterful final lap for the series with Reeves dedicating himself to the action movie art form.
-               </p>
-            </li>
             <li class="movie__review-btn ">
                 <button class="btn-medium">Prev</button>
                 <button class="btn-medium">Next</button>
             </li>
         </ul>
+        
     </div>
+    <script src="../../assets/JS/Movie/detailMovie.js" type="module"></script>
+    <script src="../../assets/JS/Movie/index.js" type="module"></script>
+    <script src="../../assets/JS/Account/openForm.js"></script>
+
 </body>
 </html>

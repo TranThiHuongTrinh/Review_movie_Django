@@ -1,5 +1,8 @@
-const movieURL = "http://localhost:3000/movies"
+
+const movieURL = "http://172.20.10.6:8000/api/movies/"
 const movieItems = document.querySelector('.movie-list')
+const btnViewMovie = document.querySelector('.btn-viewmovie')
+let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
 let list_Movie = []
 
 function main() {
@@ -12,12 +15,12 @@ function getData(callback) {
     })
     .then(function (response) {
         list_Movie = response
-        console.log(response);
         return response
     })
     .then(callback)
 }
 function showMovies(list_Movie) {
+    console.log(list_Movie);
     for(let i = 0; i < 8; i++) {
         const htmls = `<div class="w-[250px] h-[340px] relative group/film">
         <img src="${list_Movie[i].img}" alt="" class="w-full h-full">
@@ -32,10 +35,22 @@ function showMovies(list_Movie) {
         </div>
         <!-- overlay -->
         <div class="w-full h-full absolute top-0 left-0 bg-[#cccccc99] opacity-0 duration-300 group-hover/film:opacity-100">
-            <div class="w-[120px] h-[50px] rounded-xl bg-[#ED1B34] flex items-center justify-center absolute top-[50%] left-[25%] cursor-pointer opacity-80 hover:opacity-100">READ MORE</div>
+            <div class="w-[120px] h-[50px] rounded-xl bg-[#ED1B34] flex items-center justify-center absolute top-[50%] left-[25%] cursor-pointer opacity-80 hover:opacity-100" data-id="${list_Movie[i].id}" onclick="handleReadMore(event)">READ MORE</div>
         </div>
     </div>`
         movieItems.innerHTML += htmls
     }
 }
+
+const handleReadMore = (e) => {
+    const id = e.target.getAttribute('data-id');
+    if(userCurrent) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+    else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
+
+}
+
+btnViewMovie.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewAllMovie.html`;
+})
 main()

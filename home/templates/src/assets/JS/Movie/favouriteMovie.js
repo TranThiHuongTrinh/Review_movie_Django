@@ -1,17 +1,23 @@
+import { getData } from "../handles/handles"
+import {movieApi} from "../API/api.js"
+
+
 const listMovieHtml = document.querySelector('.content__movie-list')
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
 const iconClose = document.querySelector('.icon-close')
+const params = new URLSearchParams(window.location.search);
+const userId = params.get('id');
 
-const movieAPI = "http://localhost:3000/movies"
-const favouriteMovieAPI = "http://localhost:3000/favouriteMovies"
 
+const movies = await getMovie(movieApi)
+const favouriteMoviesByIdUser = await getFavouriteMoviesByUserId(userId)
 
 function renderMovie(movie){
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="movie"/>
+                <img src=${movie.img} alt="movie" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -33,7 +39,6 @@ function renderMovie(movie){
                     ${movie.decription}
                 </p>
             </div>
-            <button class="btn-small del__movie" onclick="openFormDel()">DELETE</button>
         </li>
     `
 }
@@ -44,10 +49,6 @@ function showMovieList(listMovie){
     listMovieHtml.innerHTML = htmls.join('')
 }
 
-function openFormDel () {
-    modal.classList.add('flex')
-    modalDel.classList.add('flex')
-}
 
 iconClose.addEventListener('click', () => {
     modalDel.classList.remove('flex')
@@ -55,21 +56,13 @@ iconClose.addEventListener('click', () => {
     modalUp.classList.remove('block')
 })
 
-async function getData(api){
-    const response = await fetch(api);
-    const jsonData = await response.json();
-    return jsonData
-}
 
-async function getFavouriteMoviesByUserId(userId) {
-    const [movies, favouriteMovies] = await Promise.all([getData(movieAPI), getData(favouriteMovieAPI)]);
-    const favouriteMovieIds = favouriteMovies.filter(favMovie => favMovie.id_user === userId).map(favMovie => favMovie.id_movie);
-    const favouriteMoviesData = movies.filter(movie => favouriteMovieIds.includes(movie.id));
-    return favouriteMoviesData;
-}
+let moviesByFavouriteMovies = []
 
-const userId = 1;
-getFavouriteMoviesByUserId(userId)
-    .then(result => showMovieList(result));
+favouriteMoviesByIdUser.forEach(favouriteMovie => {
+    const movie = movies.find(movie => movie.id == favouriteMovie.id_movie)
+    moviesByFavouriteMovies.push(movie)
+});
 
+showMovieList(moviesByFavouriteMovies)
 

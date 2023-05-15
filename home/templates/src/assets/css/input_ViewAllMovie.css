@@ -16,6 +16,9 @@
     .content__movie-img {
         @apply h-[300px] relative cursor-pointer hover:opacity-80;
     }
+    .content__movie-img img {
+        @apply w-[200px] h-full;
+    }
     .icon-detail {
         @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 hidden;
     }
@@ -23,7 +26,7 @@
         @apply px-28;
     }
     .content__movie-item {
-        @apply flex mt-16 justify-between;
+        @apply flex mt-16 justify-between gap-[100px];
     }
     .movie__rating {
         @apply flex justify-between;
@@ -82,7 +85,7 @@
         @apply border-none bg-[#DC0D27] text-white
     }
     input, select {
-        @apply w-full p-3 mt-3 border border-black outline-none rounded
+        @apply p-3 mt-3 border border-black outline-none rounded
     }
 }
 

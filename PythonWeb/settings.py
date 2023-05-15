@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-pg$+8o=0^4-^iv%2o7u018ro($1d&2b_&kic#)i4o6-5_s)aeg
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5500', 
+    'http://127.0.0.1:5500', 
+]
 
 # Application definition
 

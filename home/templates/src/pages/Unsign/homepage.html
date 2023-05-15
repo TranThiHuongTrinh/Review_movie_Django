@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="../../../dist/output.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../../assets/css/dist/output.css">
     <title>Document</title>
@@ -36,6 +37,41 @@
             <a href="./formSignIn.html" class="mr-10 cursor-pointer signin bg-[#DD003F] w-[120px] h-[50px] rounded-3xl flex justify-center items-center font-semibold hover:bg-[#dd003fcc] hover:text-[#dcf836] duration-200">
                 Sign In
             </a>
+            <div class="header__navbar mr-8 hidden">
+                <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
+                <div class="group header__user-wrap">
+                    <i class="fa-regular fa-user"></i>        
+                    <div class="header__user-list z-10 group-hover:block">
+                        <ul class="header__user-list-item">
+                            <li class="header__user-item account">
+                                <span class="header__user-title">Account</span>
+                                <i class="fa-solid fa-user"></i>
+                            </li>
+                            <li class="header__user-item">
+                                <span class="header__user-title my-review">My review</span>
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </li>
+                            <li class="header__user-item signout">
+                                <span class="header__user-title">Sign out</span>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="group header__movie-wrap">
+                    <span class="header__movie-notice">3</span>
+                    <i class="fa-regular fa-heart icon-heart"></i>
+                    <div class="header__movie-list  z-10 group-hover:block">
+                        <h4 class="header__movie-heading">New Movies Added</h4>
+                        <ul class="header__movie-list-item">
+                        </ul>
+                        <div class="mt-4">
+                            <button class="btn-small float-right btn-more">MORE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- slider -->
         <div class="w-full h-[750px] bg-cover bg-no-repeat flex justify-center items-center"
@@ -80,7 +116,7 @@
                     <div
                         class="relative before:absolute before:h-full before:bottom-0 before:-left-3 before:border-[3px] before:border-solid before:border-[#ED1B34]">
                         MOVIES</div>
-                    <div class="cursor-pointer opacity-70 duration-200 hover:opacity-100">VIEW ALL ></div>
+                    <div class="cursor-pointer opacity-70 duration-200 hover:opacity-100 btn-viewmovie">VIEW ALL ></div>
                 </div>
                 <!-- list film -->
                 <div class="mt-10 grid grid-cols-4 grid-flow-row gap-20 movie-list">
@@ -163,6 +199,22 @@
         </div>
     </div>
     <script src="../../assets/js/Movie/show8Movies.js"></script>
+    <script src="../../assets/JS/Movie/index.js" type="module"></script>
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
+    <script src="../../assets/JS/Account/openForm.js"></script>
+
+    <script>
+        const btnSignIn = document.querySelector('.signin')
+        const user = JSON.parse(sessionStorage.getItem("currentUser"));
+        const headerAccNav = document.querySelector('.header__navbar')
+        if (user) {
+            btnSignIn.classList.add('hidden')
+            headerAccNav.classList.remove('hidden')
+        } else {
+            btnSignIn.classList.remove('hidden')
+            headerAccNav.classList.add('hidden')
+        }
+    </script>
 </body>
 
-</html>
+</html> 

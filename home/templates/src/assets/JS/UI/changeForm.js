@@ -1,10 +1,13 @@
 const listIconMore = document.querySelectorAll('.icon-more')
-const myReview = document.querySelector('.my-review')
 const openFormAdd = document.querySelector('.add__movie')
 const iconCloseList = document.querySelectorAll('.icon-close')
+const modal = document.querySelector('.modal')
+const modalDel = document.querySelector('.modal__del')
+const modalUp = document.querySelector('.modal__add')
+const btnNo = document.querySelector('.btn-no')
 
-console.log(iconCloseList);
 
+const inputMovie = document.querySelector('.input-img')
 openFormAdd.addEventListener('click', () => {
     modal.classList.add('flex')
     modalUp.classList.add('block')
@@ -20,13 +23,15 @@ iconCloseList.forEach(iconClose => {
     })
 })
 
-listIconMore.forEach(iconMore => {
-    iconMore.addEventListener('click', () => {
-        window.location.assign("../../pages/Movie/DetailMovie.html")
-    })
-})
+// listIconMore.forEach(iconMore => {
+//     iconMore.addEventListener('click', () => {
+//         window.location.assign("../../pages/Movie/DetailMovie.html")
+//     })
+// })
 
-myReview.addEventListener('click', () => {
-    window.location.assign("../../pages/Review/DetailReview.html")
+btnNo.addEventListener('click', (e) => {
+    modalDel.classList.remove('flex')
+    modal.classList.remove('flex')
+    modalUp.classList.remove('block')
 })
 
