@@ -2,7 +2,7 @@ let list_Users = []
 const email = document.querySelector('#email')
 const password = document.querySelector('#password')
 
-const userURL = "http://localhost:3000/users"
+const userURL = "http://172.20.10.6:8000/api/users/"
 
 function main() {
     getData()
@@ -14,12 +14,14 @@ function getData() {
     })
     .then(function (response) {
         list_Users = response
-        // console.log(response);
+        console.log(response);
     })
 }
 
-export function submitSignInForm() {
-    const account = list_Users.find(acc => acc.email == email.value && acc.password == password.value);
+export function submitSignInForm(email, password) {
+    console.log(email, password);
+    const account = list_Users.find(acc => acc.email == email && acc.password == password);
+    console.log(account);
     if (account) {
         sessionStorage.setItem("currentUser", JSON.stringify(account));
         window.location.href = ("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html");
@@ -46,12 +48,10 @@ export function handleEdit(acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
-        console.log(response.json());
         sessionStorage.setItem("currentUser", JSON.stringify(acc));
         return response.json();
     }).then(function (response) {
         list_Users = list_Users.map(acc => acc.id == response.id ? response : acc)
-        // console.log(list_Users);
         showData(list_Users);
     })
 }

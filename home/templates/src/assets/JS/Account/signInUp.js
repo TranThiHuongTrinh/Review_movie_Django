@@ -6,12 +6,11 @@ const password = document.querySelector('#password')
 const username = document.querySelector('#name')
 const re_password = document.querySelector('#re-password')
 let data = {}
-console.log(submit_btn);
 submit_btn.addEventListener('click', (event) => {
     event.preventDefault();
     console.log(submit_btn.classList.contains('signUp'));
     if(submit_btn.classList.contains('signIn')) {
-        submitSignInForm()
+        submitSignInForm(email.value, password.value)
     }
     if(submit_btn.classList.contains('signUp')) {
         if(password.value === re_password.value) {

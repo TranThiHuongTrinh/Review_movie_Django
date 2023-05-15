@@ -1,25 +1,20 @@
-import {getListReviewByIdMovie} from '../Review/getReview.js'
-import {getMovieByIdMovie, getFavouriteMoviesByMovieId, getFavouriteMovies, getFavouriteMovieByUserIdAndMovieId} from './getMovie.js'
-import {getUserById} from '../Account/getUser.js'
-import { addItem, delItem } from '../handles/handles.js'
+import {getData ,addItem, delItem } from '../handles/handles.js'
+import { movieApi, reviewMovieApi, favouriteMovieAPI  } from '../API/api.js'
 import userCurrent from './index.js'
 
-const reviewApi = "http://localhost:3000/reviews"
-const favouriteMovieAPI = "http://localhost:3000/favouriteMovies"
 const movieInfo = document.querySelector('.movie__info-container')
 const params = new URLSearchParams(window.location.search);
 const idMovie = params.get('id');
-const movie = getMovieByIdMovie(idMovie)
+const movie = getData(`${movieApi}${idMovie}/`)
 const previewMovie = document.querySelector('.preview__movie-youtube')
-const reviewsByIdMovie = getListReviewByIdMovie(idMovie)
+const reviewsByIdMovie = getData(`${reviewMovieApi}${idMovie}/`)
 const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
 const idUser = userCurrent.id
-const favouriteMoviesByIdMovie = getFavouriteMoviesByMovieId(idMovie)
+const favouriteMoviesByIdMovie = getData(`${favouriteMovieAPI}${idMovie}/`)
 const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')
-const favouriteMovies = await getFavouriteMovies()
-const favouriteMovieByIdMovieAndIdUser = getFavouriteMovieByUserIdAndMovieId(idUser, idMovie)
+const favouriteMovieByIdMovieAndIdUser = getData(`${favouriteMovieAPI}${idMovie}/${idUser}/`)
 textHeart.innerHTML = countHeart
 
 
@@ -47,8 +42,8 @@ function renderMovieInfor(movie){
 
 function renderReviewMovie(review, user){
     return `
-        <li class="movie__review-item">
-            <img src=${user.img} />
+        <li class="movie__review-item items-center">
+            <img src=${user.img} class="w-[100px] h-[100px]"/>
             <div class="user__info">
                 <h1 class="user__name">${user.username}</h1>
                 <div class="user__rating">
@@ -72,9 +67,9 @@ function renderRating(review){
 
 function showReviewsMovie(reviews){
     let htmls = ""
-    htmls += reviews.map(review => {
+    reviews.forEach(review => {
         const user = getUserById(review.idUser)
-        return renderReviewMovie(review, user)
+        htmls += renderReviewMovie(review, user)
     })
     return htmls
 }
@@ -127,7 +122,6 @@ ratings.forEach((rating, index) => {
 // add favourite movie
 const handleAddFavouriteMovie = () => {
     const data = {
-        "id": favouriteMovies[favouriteMovies.length - 1] + 1,
         "id_movie": Number(idMovie),
         "id_user": idUser
     }

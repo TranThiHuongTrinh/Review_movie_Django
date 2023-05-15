@@ -1,4 +1,5 @@
-import {getMovie, getFavouriteMovies, getFavouriteMoviesByUserId, getMovieByIdMovie} from './getMovie.js'
+import { getData } from "../handles/handles"
+import {movieApi} from "../API/api.js"
 
 
 const listMovieHtml = document.querySelector('.content__movie-list')
@@ -9,7 +10,7 @@ const params = new URLSearchParams(window.location.search);
 const userId = params.get('id');
 
 
-const movies = await getMovie()
+const movies = await getMovie(movieApi)
 const favouriteMoviesByIdUser = await getFavouriteMoviesByUserId(userId)
 
 function renderMovie(movie){

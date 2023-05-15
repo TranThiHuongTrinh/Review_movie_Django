@@ -1,6 +1,6 @@
-import {getMovie, getMovieByIdMovie} from "./getMovie.js"
-import { delItem, addItem, updateItem } from "../handles/handles.js"
+import {getData ,delItem, addItem, updateItem } from "../handles/handles.js"
 import userCurrent from "./index.js"
+import { movieApi } from "../API/api.js"
 
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
@@ -11,19 +11,18 @@ const movieFavourite = document.querySelector('.header__movie-wrap')
 const add_btn = document.querySelector('.add__movie')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
-let listMovie = await getMovie()
+let listMovie = await getData(movieApi)
 let idDel = 1
 let idUp = 1
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
 let checkUp = false
-let movieUp = null
-let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
+let pathImg = "../../assets/img"
 
 // let isAdmin = getInfor().isAdmin
 let isAdmin = userCurrent ? userCurrent.isAdmin : false
 
-const movieAPI = "http://localhost:3000/movies"
+const movieAPI = "http://172.20.10.9:8000/api/movies/"
 
 
 
@@ -217,7 +216,7 @@ formAdd.addEventListener('submit', (e) => {
 // load data form
 const loadDataForm = (id) => {
     checkUp = true
-    const movie = getMovieByIdMovie(id)
+    const movie = getData(`${movieAPI}${id}/`)
     movieUp = movie
     inputs[0].value = movie.name
     selectGenre.value = movie.genre
@@ -240,11 +239,10 @@ inputSearch.addEventListener("input", (e) => {
 })
 
 // Chuyển hướng đến detail movie
-
 const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
-        const id = e.target.getAttribute('data-id');
+        const id = btnDetail.dataset.id
         if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
         else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
     })

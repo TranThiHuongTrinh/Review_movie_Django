@@ -1,5 +1,5 @@
 
-const movieURL = "http://localhost:3000/movies"
+const movieURL = "http://172.20.10.6:8000/api/movies/"
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -15,12 +15,12 @@ function getData(callback) {
     })
     .then(function (response) {
         list_Movie = response
-        console.log(response);
         return response
     })
     .then(callback)
 }
 function showMovies(list_Movie) {
+    console.log(list_Movie);
     for(let i = 0; i < 8; i++) {
         const htmls = `<div class="w-[250px] h-[340px] relative group/film">
         <img src="${list_Movie[i].img}" alt="" class="w-full h-full">
