@@ -1,6 +1,4 @@
 let list_Users = []
-const email = document.querySelector('#email')
-const password = document.querySelector('#password')
 
 const userURL = "http://localhost:3000/users"
 
@@ -18,8 +16,9 @@ function getData() {
     })
 }
 
-export function submitSignInForm() {
-    const account = list_Users.find(acc => acc.email == email.value && acc.password == password.value);
+export function submitSignInForm(e, email, password) {
+    e.preventDefault()
+    const account = list_Users.find(acc => acc.email == email && acc.password == password);
     if (account) {
         sessionStorage.setItem("currentUser", JSON.stringify(account));
         window.location.href = ("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html");
@@ -55,7 +54,8 @@ export function handleEdit(acc) {
         showData(list_Users);
     })
 }
-export function submitSignUpForm(acc) {
+export function submitSignUpForm(e, acc) {
+    e.preventDefault();
     acc.id = list_Users.length + 1
     fetch(userURL, {
         method: 'POST',
@@ -68,6 +68,8 @@ export function submitSignUpForm(acc) {
         return response.json();
     }).then(function (response) {
         list_Users.push(response)
+        sessionStorage.setItem("currentUser", JSON.stringify(acc));
+        window.location.href = ("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html");
     })
 }
   

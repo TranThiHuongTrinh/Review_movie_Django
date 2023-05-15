@@ -8,13 +8,16 @@ let idUp = 1
 let countRating = 0
 const reviewsShow = document.querySelector('.movie__review-list')
 let reviewsByIdUser = getListReviewByIdUser(idUser)
-
+const textReview = document.querySelector('.text-review')
+const ratings = document.querySelectorAll('.icon-rating')
+const modal = document.querySelector('.modal__edit')
+const close_modal = document.querySelector('.icon-close')
 
 // show tất cả review của 1 user -> show tất cả review của tất cả film mà user đó review
 function renderReviewUser(review, movie){
     return `
-    <li class="movie__review-item">
-        <img src=${movie.img} />
+    <li class="movie__review-item"  style="gap: 50px;">
+        <img src=${movie.img} style="width: 150px;" />
         <div class="user__info">
             <h1 class="user__name">${movie.name}</h1>
             <div class="user__rating">
@@ -28,9 +31,9 @@ function renderReviewUser(review, movie){
         <p class="review__text">
            ${review.content}
         </p>
-        <div class="review__change">
-            <i class="fa-solid fa-pen-to-square btn-up" data-id="${review.id}"></i>
-            <i class="fa-solid fa-trash btn-del" data-id="${review.id}"></i>
+        <div class="review__change" style="cursor: unset;">
+            <i class="fa-solid fa-pen-to-square btn-up" data-id="${review.id}" style="height: 25px; cursor: pointer"></i>
+            <i class="fa-solid fa-trash btn-del" data-id="${review.id}"  style="height: 25px; cursor: pointer"></i>
         </div>
     </li>
     `
@@ -69,6 +72,7 @@ const handleDel = (id) => {
 
 const handleUp = (id) => {
     const review = reviewsByIdUser.find(item => item.id == id)
+    console.log(id, reviewsByIdUser);
     const now = new Date();
     if(countRating == 0) countRating = review.rating
     const data = {
@@ -83,8 +87,6 @@ const handleUp = (id) => {
     reviewsShow.innerHTML = showReviewsUser(reviewsByIdUser)
 }
 
-const textReview = document.querySelector('.text-review')
-const ratings = document.querySelectorAll('.icon-rating')
 const uploadData = (id) => {
     idUp = id
     const review = reviewsByIdUser.find(item => item.id == id)
@@ -128,10 +130,19 @@ const btnUpdateRview = document.querySelector('.btn-update-review')
 btnsUp.forEach(btnUp => {
     btnUp.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
+        modal.style.display = 'block'
+        document.body.style.overflow = 'hidden'
         uploadData(id)
     })
 })
-
+close_modal.addEventListener('click', () => {
+    modal.style.display = 'none'
+    document.body.style.overflow = 'unset'
+})
+modal.addEventListener('click', () => {
+    modal.style.display = 'none'
+    document.body.style.overflow = 'unset'
+})
 btnUpdateRview.addEventListener('click', (e) => {
     handleUp(idUp)
 })

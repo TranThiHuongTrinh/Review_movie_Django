@@ -45,10 +45,10 @@ function renderMovieInfor(movie){
     `
 }
 
-function renderReviewMovie(review, user){
+function renderReviewMovie(review, user) {
     return `
         <li class="movie__review-item">
-            <img src=${user.img} />
+            <img src=${user.img}/>
             <div class="user__info">
                 <h1 class="user__name">${user.username}</h1>
                 <div class="user__rating">

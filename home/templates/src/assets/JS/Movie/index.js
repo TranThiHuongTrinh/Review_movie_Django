@@ -4,7 +4,6 @@ const btnMore = document.querySelector('.btn-more')
 const myReview = document.querySelector('.my-review')
 
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
-
 if(userCurrent) {
     wrapFavouriteMovie.style.display = "block"
     nameUser.innerHTML = userCurrent.username

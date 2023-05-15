@@ -214,19 +214,7 @@
     <script src="../../assets/JS/Movie/index.js" type="module"></script>
     <script src="../../assets/js/Account/signOut.js" type="module"></script>
     <script src="../../assets/JS/Account/openForm.js"></script>
-
-    <script>
-        const btnSignIn = document.querySelector('.signin')
-        const user = JSON.parse(sessionStorage.getItem("currentUser"));
-        const headerAccNav = document.querySelector('.header__navbar')
-        if (user) {
-            btnSignIn.classList.add('hidden')
-            headerAccNav.classList.remove('hidden')
-        } else {
-            btnSignIn.classList.remove('hidden')
-            headerAccNav.classList.add('hidden')
-        }
-    </script>
+    <script src="../../assets/JS/UI/showHeaderAcc.js"></script>
 </body>
 
 </html> 

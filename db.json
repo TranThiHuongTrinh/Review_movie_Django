@@ -5,8 +5,7 @@
       "email": "nva@gmail.com",
       "username": "Nguyen Van A",
       "password": "123456",
-      "img": "http://127.0.0.1:5500/home/templates/src/assets/img/acc.png",
-      "isAdmin": false
+      "img": ""
     },
     {
       "id": 2,
@@ -15,6 +14,22 @@
       "password": "123456",
       "img": "http://127.0.0.1:5500/home/templates/src/assets/img/acc.png",
       "isAdmin": true
+    },
+    {
+      "id": 3,
+      "email": "thuytien180902@gmail.com",
+      "username": "Ho Thuy Tien",
+      "password": "123456",
+      "img": "../../assets/img/acc.png",
+      "is_superuser": false
+    },
+    {
+      "id": 4,
+      "email": "dothinhodut@gmail.com",
+      "username": "Do Thi Nho",
+      "password": "123456",
+      "img": "../../assets/img/acc.png",
+      "is_superuser": false
     }
   ],
   "movies": [
@@ -130,18 +145,10 @@
   "reviews": [
     {
       "idUser": 1,
-      "idMovie": 2,
-      "content": "phim hay lam",
-      "rating": 0,
-      "time": "2023-05-12T21:27:41.951Z",
-      "id": 2
-    },
-    {
-      "idUser": 1,
-      "idMovie": 3,
-      "content": "phim hay quá",
+      "idMovie": "3",
+      "content": "phim hay quá hehe",
       "rating": 4,
-      "time": "2023-05-12T21:30:30.734Z",
+      "time": "2023-05-15T17:18:44.148Z",
       "id": 3
     },
     {
