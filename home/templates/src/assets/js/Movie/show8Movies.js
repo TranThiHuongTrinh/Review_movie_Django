@@ -1,5 +1,5 @@
 
-const movieURL = "http://172.20.10.6:8000/api/movies/"
+const movieURL = "http://127.0.0.1:8000/api/movies/"
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -44,13 +44,13 @@ function showMovies(list_Movie) {
 
 const handleReadMore = (e) => {
     const id = e.target.getAttribute('data-id');
-    if(userCurrent) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-    else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
+    if(userCurrent) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+    else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
 
 }
 
 btnViewMovie.addEventListener('click', (e) => {
     e.preventDefault()
-    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewAllMovie.html`;
+    window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/ViewAllMovie.html`;
 })
 main()

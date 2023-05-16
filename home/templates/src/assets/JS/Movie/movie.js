@@ -18,11 +18,12 @@ let idUser = null
 if(userCurrent) idUser = userCurrent.id
 let checkUp = false
 let pathImg = "../../assets/img"
+let movieUp = null
 
 // let isAdmin = getInfor().isAdmin
-let isAdmin = userCurrent ? userCurrent.isAdmin : false
+let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
-const movieAPI = "http://172.20.10.9:8000/api/movies/"
+const movieAPI = "http://127.0.0.1:8000/api/movies/"
 
 
 
@@ -183,6 +184,15 @@ const getValueInput = () => {
     return [name, genre, img_src, decription, link_video, runtime, release]
 }
 
+const setValueInputEmpty = () => {
+    inputs[0].value = ""
+    inputs[1].files[0].name = ""
+    inputs[2].value = ""
+    inputs[3].value = ""
+    inputs[4].value = ""
+    inputs[5].value = ""
+}
+
 // Add item
 const handleSubmit = () => {
     if(checkInputs()) {
@@ -196,8 +206,9 @@ const handleSubmit = () => {
             "run_time": runtime,
             "release": release,
           }
-        if(checkUp == false) addItem(data, movieAPI)
+        if(checkUp == false) addItem(data, `${movieAPI}add/`)
         else updateItem(idUp, data, movieAPI)
+        setValueInputEmpty()
     } else {
         alert('Nhập đầy đủ thông tin')
     }
@@ -243,7 +254,7 @@ const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
         const id = btnDetail.dataset.id
-        if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-        else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
+        if(idUser) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
     })
 })

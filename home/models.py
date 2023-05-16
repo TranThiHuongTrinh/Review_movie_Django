@@ -21,7 +21,7 @@ class Movie(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User,related_name="reviews", on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie,related_name="reviews", on_delete=models.CASCADE)
-    content = RichTextField()
+    content = models.TextField(null=False)
     rating = models.IntegerField(null=True)
     time = models.DateTimeField(auto_now= True)
 

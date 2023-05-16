@@ -52,6 +52,17 @@ def add_user(request):
         print(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# create favoritemovie
+@api_view(['POST'])
+def add_favoriteMovie(request):
+    serializer = FavoriteMovieSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # get movie detail
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
@@ -65,6 +76,18 @@ def get_movie(request, movie_id):
     print(serializer.data)
     return Response(serializer.data)
 
+# get review  detail
+@api_view(['GET'])
+@renderer_classes([JSONRenderer])
+def review_get(request, id_review):
+    try:
+        review = Review.objects.get(id=id_review)
+    except Review.DoesNotExist:
+        return Response({'error': 'review not found'}, status=404)
+
+    serializer = ReviewSerializer(review)
+    print(serializer.data)
+    return Response(serializer.data)
 # get user detail
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
@@ -91,7 +114,50 @@ def update_movie(request, id_movie):
         return Response(serializer.data)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+# delete movie
+@api_view(['DELETE'])
+def delete_movie(request, id_movie):
+    try:
+        movie = Movie.objects.get(id=id_movie)
+        movie.delete()
+        return Response({'message': 'Movie deleted successfully.'})
+    except Movie.DoesNotExist:
+        return Response({'error': 'Movie not found.'}, status=404)
+    except Exception:
+        return Response({'error': 'Internal server error.'}, status=500)
+# delete user
+@api_view(['DELETE'])
+def delete_user(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+        user.delete()
+        return Response({'message': 'user deleted successfully.'})
+    except User.DoesNotExist:
+        return Response({'error': 'user not found.'}, status=404)
+    except Exception:
+        return Response({'error': 'Internal server error.'}, status=500)
+# delete review
+@api_view(['DELETE'])
+def delete_review(request, review_id):
+    try:
+        review = Review.objects.get(id=review_id)
+        review.delete()
+        return Response({'message': 'review deleted successfully.'})
+    except Review.DoesNotExist:
+        return Response({'error': 'Review not found.'}, status=404)
+    except Exception:
+        return Response({'error': 'Internal server error.'}, status=500)
+# delete favoriteMovie
+@api_view(['DELETE'])
+def delete_fovariteMovie(request, fovariteMovie_id):
+    try:
+        fovariteMovie = Favorite_movie.objects.get(id=fovariteMovie_id)
+        fovariteMovie.delete()
+        return Response({'message': 'FavoriteMovie deleted successfully.'})
+    except Favorite_movie.DoesNotExist:
+        return Response({'error': 'FavoriteMovie not found.'}, status=404)
+    except Exception:
+        return Response({'error': 'Internal server error.'}, status=500)
 #update user
 @api_view(['PUT'])
 def update_user(request, user_id):
@@ -129,19 +195,15 @@ def review_list_by_user_id_and_movie_id(request, id_user, id_movie):
     reviews = Review.objects.filter(user_id=id_user, movie_id = id_movie)
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
-#add review 
+#create review 
 @api_view(['POST'])
-def add_review(request, id_movie):
-    try:
-        movie = Movie.objects.get(id=id_movie)
-    except Movie.DoesNotExist:
-        return Response({'error': 'Movie not found'}, status=404)
-
+def add_review(request):
     serializer = ReviewSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(movie=movie)
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+        serializer.save()
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 # update review 
 @api_view(['PUT'])
 def update_review(request, id_review):
@@ -168,7 +230,7 @@ def favoriteMoviesList(request, id_user):
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
 def favoriteMoviesListByIdMovie(request, id_movie):
-    favoriteMoviesList = Favorite_movie.objects.filter(user_id=id_movie)
+    favoriteMoviesList = Favorite_movie.objects.filter(movie_id=id_movie)
     serializer = FavoriteMovieSerializer(favoriteMoviesList, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -176,7 +238,7 @@ def favoriteMoviesListByIdMovie(request, id_movie):
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
 def favoriteMoviesListByIdMovieAndUserId(request, id_movie, id_user):
-    favoriteMoviesList = Favorite_movie.objects.filter(user_id=id_movie, movie_id = id_user)
+    favoriteMoviesList = Favorite_movie.objects.filter(user_id=id_user, movie_id = id_movie)
     serializer = FavoriteMovieSerializer(favoriteMoviesList, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 # show notification list 

@@ -1,4 +1,4 @@
-export const getReviews = async () => {
+{% comment %} export const getReviews = async () => {
     try {
       const response = await fetch('http://localhost:3000/reviews');
       const data = await response.json();
@@ -30,4 +30,4 @@ export const getReviewByIdMovie = (idMovie) => {
 };
 
 
-
+ {% endcomment %}

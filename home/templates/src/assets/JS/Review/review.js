@@ -1,13 +1,12 @@
-import {getListReviewByIdUser, getReviewByIdRview} from './getReview.js'
-import {getMovieByIdMovie} from '../Movie/getMovie.js'
-import { delItem, updateItem } from '../handles/handles.js'
-
-const reviewAPI = " http://localhost:3000/reviews"
-const idUser = 1
+import { delItem, updateItem, getData } from '../handles/handles.js'
+import {movieApi, reviewMovieApi, reviewApi} from '../API/api.js'
+import userCurrent from "../Movie/index.js"
+const idUser = userCurrent.id
+console.log(idUser);
 let idUp = 1
 let countRating = 0
 const reviewsShow = document.querySelector('.movie__review-list')
-let reviewsByIdUser = getListReviewByIdUser(idUser)
+let reviewsByIdUser = await getData(`${reviewMovieApi}${idUser}/`)
 
 
 // show tất cả review của 1 user -> show tất cả review của tất cả film mà user đó review
@@ -40,7 +39,8 @@ function renderReviewUser(review, movie){
 function showReviewsUser(reviews) {
     let htmls = ""
     reviews.forEach(review => {
-        htmls += renderReviewUser(review, getMovieByIdMovie(review.idMovie))
+        const movie = getData(`${movieApi}${review.movie_id}`)
+        htmls += renderReviewUser(review, movie)
     });
     return htmls
 }
@@ -123,7 +123,7 @@ btnsDel.forEach(btnDel => {
     })
 })
 
-const btnUpdateRview = document.querySelector('.btn-update-review')
+// const btnUpdateRview = document.querySelector('.btn-update-review')
 
 btnsUp.forEach(btnUp => {
     btnUp.addEventListener('click', (e) => {
@@ -132,9 +132,9 @@ btnsUp.forEach(btnUp => {
     })
 })
 
-btnUpdateRview.addEventListener('click', (e) => {
-    handleUp(idUp)
-})
+// btnUpdateRview.addEventListener('click', (e) => {
+//     handleUp(idUp)
+// })
 
 
 
