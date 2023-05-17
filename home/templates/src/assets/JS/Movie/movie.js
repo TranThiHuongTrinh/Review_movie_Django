@@ -12,21 +12,19 @@ const movieFavourite = document.querySelector('.header__movie-wrap')
 const add_btn = document.querySelector('.add__movie')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
-let listMovie = await getMovie()
+let listMovie = await getData(movieApi)
 let idDel = 1
 let idUp = 1
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
 let checkUp = false
+let pathImg = "../../assets/img"
 let movieUp = null
-let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
 
 // let isAdmin = getInfor().isAdmin
 let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
 // const movieAPI = "http://192.168.38.108:8000/api/movies/"
-
-
 
 function renderMovieAdmin(movie){
     return `
@@ -210,6 +208,15 @@ const getValueInput = () => {
     return [name, genre, img_src, decription, link_video, runtime, release]
 }
 
+const setValueInputEmpty = () => {
+    inputs[0].value = ""
+    inputs[1].files[0].name = ""
+    inputs[2].value = ""
+    inputs[3].value = ""
+    inputs[4].value = ""
+    inputs[5].value = ""
+}
+
 // Add item
 const handleSubmit = () => {
     if(checkInputs()) {
@@ -276,7 +283,6 @@ inputSearch.addEventListener("input", (e) => {
 })
 
 // Chuyển hướng đến detail movie
-
 const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {

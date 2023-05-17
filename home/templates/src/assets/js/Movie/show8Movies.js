@@ -20,6 +20,7 @@ function getData(callback) {
     .then(callback)
 }
 function showMovies(list_Movie) {
+    console.log(list_Movie);
     for(let i = 0; i < 8; i++) {
         const htmls = `<div class="w-[250px] h-[340px] relative group/film">
         <img src="${list_Movie[i].image}" alt="" class="w-full h-full">
@@ -43,13 +44,13 @@ function showMovies(list_Movie) {
 
 const handleReadMore = (e) => {
     const id = e.target.getAttribute('data-id');
-    if(userCurrent) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-    else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
+    if(userCurrent) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+    else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
 
 }
 
 btnViewMovie.addEventListener('click', (e) => {
     e.preventDefault()
-    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewAllMovie.html`;
+    window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/ViewAllMovie.html`;
 })
 main()

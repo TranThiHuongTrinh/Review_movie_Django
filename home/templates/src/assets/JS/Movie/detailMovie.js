@@ -9,7 +9,7 @@ import renderRating from '../Rating/rating.js'
 const movieInfo = document.querySelector('.movie__info-container')
 const params = new URLSearchParams(window.location.search);
 const idMovie = params.get('id');
-const movie = getMovieByIdMovie(idMovie)
+const movie = await getData(`${movieApi}${idMovie}/`)
 const previewMovie = document.querySelector('.preview__movie-youtube')
 // const reviewsByIdMovie = getReviewsByIdMovie(idMovie)
 const reviewContainer = document.querySelector('.movie__review-list')
@@ -19,7 +19,6 @@ const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
 const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')
 const favouriteMovieByIdMovieAndIdUser = await getFavouriteMoviesByIds(idMovie, idUser)
-textHeart.innerHTML = countHeart
 
 
 function renderMovieInfor(movie){

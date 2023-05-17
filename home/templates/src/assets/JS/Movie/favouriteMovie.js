@@ -1,6 +1,5 @@
 import {getMovie, getFavouriteMoviesByIdUser} from './getMovie.js'
 
-
 const listMovieHtml = document.querySelector('.content__movie-list')
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
@@ -8,12 +7,9 @@ const iconClose = document.querySelector('.icon-close')
 const params = new URLSearchParams(window.location.search);
 const userId = params.get('id');
 
-
-
 const movies = await getMovie()
 const favouriteMoviesByIdUser = await getFavouriteMoviesByIdUser(userId)
 
-console.log(favouriteMoviesByIdUser);
 
 function renderMovie(movie){
     console.log(movie);

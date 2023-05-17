@@ -1,4 +1,3 @@
-
 import {getReviewByIdUser, getReviewByIdReview} from './getReview.js'
 import {getMovieByIdMovie} from '../Movie/getMovie.js'
 import { delItem, updateItem } from '../handles/handles.js'
@@ -8,6 +7,7 @@ import { reviewApi, reviewMovieApi, reviewUserApi } from '../API/api.js'
 
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
+
 let idUp = 1
 let countRating = 0
 const reviewsShow = document.querySelector('.movie__review-list')
@@ -121,7 +121,7 @@ btnsDel.forEach(btnDel => {
     })
 })
 
-const btnUpdateRview = document.querySelector('.btn-update-review')
+// const btnUpdateRview = document.querySelector('.btn-update-review')
 
 btnsUp.forEach(btnUp => {
     btnUp.addEventListener('click', (e) => {
@@ -138,7 +138,6 @@ close_modal.addEventListener('click', () => {
 btnUpdateRview.addEventListener('click', (e) => {
     handleUp(idUp)
 })
-
 
 
 
