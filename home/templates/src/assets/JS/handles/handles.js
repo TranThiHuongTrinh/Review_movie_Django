@@ -20,6 +20,7 @@ export const addItem = async (itemData, api) => {
           body: JSON.stringify(itemData)
         });
         const newItem = await response.json();
+        return newItem;
       } catch (error) {
         console.log(error);
       }
@@ -27,9 +28,8 @@ export const addItem = async (itemData, api) => {
 
 //Update
 export const updateItem = async (id, itemData, api) => {
-  console.log(itemData);
   try {
-      const response = await fetch(`${api}/${id}`, {
+      const response = await fetch(`${api}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -46,9 +46,10 @@ export const updateItem = async (id, itemData, api) => {
 // delete 
 export const delItem = async (id, api) => {
     try {
-      const response = await fetch(`${api}/${id}`, {
+      const response = await fetch(`${api}`, {
         method: 'DELETE'
       });
+      window.location.reload()
     } catch (error) {
       console.log(error);
     }

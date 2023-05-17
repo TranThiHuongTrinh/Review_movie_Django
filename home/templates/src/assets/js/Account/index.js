@@ -1,15 +1,13 @@
+import { userApi } from "../API/api.js"
+
+
 let list_Users = []
-const email = document.querySelector('#email')
-const password = document.querySelector('#password')
-
-const userURL = "http://127.0.0.1:8000/api/users/"
-
 
 function main() {
     getData()
 }
 function getData() {
-    fetch(userURL)
+    fetch(userApi)
     .then(function (response) {
         return response.json()
     })
@@ -19,9 +17,9 @@ function getData() {
     })
 }
 
-export function submitSignInForm(email, password) {
+export function submitSignInForm(e, email, password) {
+    e.preventDefault()
     const account = list_Users.find(acc => acc.email == email && acc.password == password);
-    // console.log(account);
     if (account) {
         sessionStorage.setItem("currentUser", JSON.stringify(account));
         window.location.href = ("http://127.0.0.1:5501/home/templates/src/pages/Unsign/homepage.html");
@@ -40,7 +38,7 @@ export function getInfor() {
     return currentUser
 }
 export function handleEdit(acc) {
-    fetch(userURL + '/' + acc.id, {
+    fetch(`${userApi}update/${acc.id}/`, {
         method: 'PUT',
         body:
             JSON.stringify(acc),
@@ -49,15 +47,13 @@ export function handleEdit(acc) {
         },
     }).then((response) => {
         sessionStorage.setItem("currentUser", JSON.stringify(acc));
-        return response.json();
-    }).then(function (response) {
         list_Users = list_Users.map(acc => acc.id == response.id ? response : acc)
-        showData(list_Users);
+        alert("Update successfully");
     })
 }
-export function submitSignUpForm(acc) {
-    acc.id = list_Users.length + 1
-    fetch(userURL + "add/", {
+export function submitSignUpForm(e, acc) {
+    e.preventDefault();
+    fetch(`${userApi}add/`, {
         method: 'POST',
         body:
             JSON.stringify(acc),
@@ -65,11 +61,12 @@ export function submitSignUpForm(acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
+        console.log(acc);
         return response.json();
     }).then(function (response) {
         list_Users.push(response)
         sessionStorage.setItem("currentUser", JSON.stringify(acc));
-        window.location.href = ("http://127.0.0.1:5501/home/templates/src/pages/Unsign/homepage.html");
+        window.location.reload()
     })
 }
   

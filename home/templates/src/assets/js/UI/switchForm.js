@@ -5,14 +5,18 @@ const switch_btn = document.querySelector('.switch')
 const formContainer = document.querySelector('.form-container')
 const switchContainer = document.querySelector('.switch-container')
 const name = document.querySelector('input[placeholder="Name"]')
+const errName = document.querySelector('.errName')
 const retype = document.querySelector('input[placeholder="Re-type Password"]')
+const errRePassword = document.querySelector('.errRePassword')
 
 let isSignIn = false
 switch_btn.addEventListener('click', function (e) {
     e.preventDefault()
     setTimeout(function () {
         name.classList.toggle('hidden')
+        errName.classList.toggle('hidden')
         retype.classList.toggle('hidden')
+        errRePassword.classList.toggle('hidden')
     }, 200)
 
     if (isSignIn) {

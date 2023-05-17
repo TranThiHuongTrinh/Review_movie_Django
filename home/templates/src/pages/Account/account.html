@@ -19,20 +19,20 @@
             <img src="../../assets/img/logo.png" alt="logo" />
             <div class="relative">
                 <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                <i class="fa-solid fa-magnifying-glass icon-search top-5"></i>
+                <i class="fa-solid fa-magnifying-glass icon-search" style="top: 0.55rem;"></i>
             </div>
         </div>
         <div class="header__navbar">
             <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
             <div class="group header__user-wrap">
                 <i class="fa-regular fa-user"></i>        
-                <div class="header__user-list group-hover:block">
+                <div class="header__user-list z-10 group-hover:block">
                     <ul class="header__user-list-item">
                         <li class="header__user-item account">
-                            <span class="header__user-title">Account</span>
+                            <span class="header__user-title my-review">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
-                        <li class="header__user-item my-review">
+                        <li class="header__user-item">
                             <span class="header__user-title">My review</span>
                             <i class="fa-solid fa-clipboard-list"></i>
                         </li>
@@ -45,26 +45,14 @@
             </div>
             
             <div class="group header__movie-wrap">
-                <span class="header__movie-notice">3</span>
+                <span class="header__movie-notice"></span>
                 <i class="fa-regular fa-heart icon-heart"></i>
-                <div class="header__movie-list z-10 shadow-md group-hover:block">
+                <div class="header__movie-list z-10 group-hover:block">
                     <h4 class="header__movie-heading">New Movies Added</h4>
                     <ul class="header__movie-list-item">
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
-                        <li class="header__movie-item">
-                            <img src="../../assets/img/movie.png" alt="movie" />
-                            <span class="header__movie-title text-black">Die hard</span>
-                        </li>
                     </ul>
                     <div class="mt-4">
-                        <button class="btn-small float-right">MORE</button>
+                        <button class="btn-small float-right btn-more">MORE</button>
                     </div>
                 </div>
             </div>
@@ -74,16 +62,13 @@
         <!-- nav-bar -->
         <div class="w-[20%] h-full ml-[80px] text-xl text-white flex flex-col fixed">
             <div class="relative before:absolute before:h-full before:bottom-0 before:-left-3 before:border-[3px] before:border-solid before:border-[#ED1B34]">ACCOUNT SETTING</div>
-            <div class="w-[200px] h-[220px] mt-10 rounded-md bg-white text-black  ">
+            <div class="w-[200px] h-[160px] mt-10 rounded-md bg-white text-black  ">
                 <div class="w-full p-5 font-semibold cursor-pointer  hover:text-black duration-200 setting" onclick="changeFrame(1)">
                     <i class="fa-solid fa-user-gear"></i>
                     Profile setting</div>
                 <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 password" onclick="changeFrame(2)">
                     <i class="fa-solid fa-user-lock"></i>
                     Password</div>
-                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 noti" onclick="changeFrame(3)">
-                    <i class="fa-solid fa-bell"></i>
-                    Notifications</div>
             </div>
         </div>
         <!-- content -->
@@ -122,6 +107,8 @@
     </script>
     <script src="../../assets/js/Account/getUserName.js" type="module"></script>
     <script src="../../assets/js/Account/signOut.js" type="module"></script>
+    <script src="../../assets/JS/Movie/index.js" type="module"></script>
+
 </body>
 
 </html>

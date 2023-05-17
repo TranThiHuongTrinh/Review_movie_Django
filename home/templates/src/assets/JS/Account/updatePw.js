@@ -1,6 +1,6 @@
 import {getInfor, handleEdit} from './index.js'
 
-const acc = JSON.parse(localStorage.getItem("currentUser"))
+const acc = JSON.parse(sessionStorage.getItem("currentUser"))
 const submitBtn = document.querySelector('.save_btn')
 let data = {}
 
@@ -19,7 +19,7 @@ submitBtn.addEventListener("click", (e) => {
             "username": acc.username,
             "password": new_password.value,
             "img": acc.img,
-            "isAdmin": acc.isAdmin
+            "is_superuser": acc.is_superuser
         }
         handleEdit(data)
     }

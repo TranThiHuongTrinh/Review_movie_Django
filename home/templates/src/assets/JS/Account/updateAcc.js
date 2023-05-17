@@ -7,8 +7,7 @@ const email = document.getElementById('email')
 const submitBtn = document.querySelector('.save_btn')
 const ava_input = document.querySelector('#ava-input')
 const ava_img = document.querySelector('.ava')
-const upload = document.querySelector('.browse-img')
-const acc = JSON.parse(localStorage.getItem("currentUser"))
+const acc = JSON.parse(sessionStorage.getItem("currentUser"))
 let imgUrl = ''
 let data = {}
 
@@ -30,7 +29,7 @@ submitBtn.addEventListener("click", (e) => {
         "username": name.value,
         "password": acc.password,
         "img": imgUrl,
-        "isAdmin": acc.isAdmin
+        "is_superuser": acc.is_superuser
     }
     handleEdit(data)
 })

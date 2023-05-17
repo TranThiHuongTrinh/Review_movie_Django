@@ -1,29 +1,32 @@
-import {getData ,addItem, delItem } from '../handles/handles.js'
-import { movieApi, reviewMovieApi, favouriteMovieAPI , reviewApi } from '../API/api.js'
+import {getReviewsByIdMovie} from '../Review/getReview.js'
+import {getMovieByIdMovie, getFavouriteMoviesByIdMovie, getFavouriteMoviesByIds} from './getMovie.js'
+import {getUserById} from '../Account/getUser.js'
+import { addItem, delItem } from '../handles/handles.js'
 import userCurrent from './index.js'
+import {reviewMovieApi, favouriteUserApi } from '../API/api.js'
+import renderRating from '../Rating/rating.js'
 
 const movieInfo = document.querySelector('.movie__info-container')
 const params = new URLSearchParams(window.location.search);
 const idMovie = params.get('id');
 const movie = await getData(`${movieApi}${idMovie}/`)
 const previewMovie = document.querySelector('.preview__movie-youtube')
-const reviewsByIdMovie = await getData(`${reviewMovieApi}${idMovie}/`)
+// const reviewsByIdMovie = getReviewsByIdMovie(idMovie)
 const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
 const idUser = userCurrent.id
-// const favouriteMoviesByIdMovie = getData(`${favouriteMovieAPI}${idMovie}/`)
-// const countHeart = favouriteMoviesByIdMovie.length
+const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
+const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')
-const favouriteMovieByIdMovieAndIdUser = getData(`${favouriteMovieAPI}${idMovie}/${idUser}/`)
-// textHeart.innerHTML = countHeart
+const favouriteMovieByIdMovieAndIdUser = await getFavouriteMoviesByIds(idMovie, idUser)
 
 
 function renderMovieInfor(movie){
     return `
-        <img src=${movie.img}>
+        <img src=${movie.image}>
         <div class="movie__info-detail">
             <h1 class="movie__info-name">${movie.name}</h1>
-            <p>${movie.decription}</p>
+            <p>${movie.description}</p>
             <div class="movie__genre">
                 <span class="movie__genre-label">Genre :</span>
                 <span class="movie__genre-detail">${movie.genre}</span>
@@ -40,10 +43,10 @@ function renderMovieInfor(movie){
     `
 }
 
-function renderReviewMovie(review, user){
+function renderReviewMovie(review, user) {
     return `
-        <li class="movie__review-item items-center">
-            <img src=${user.img} class="w-[100px] h-[100px]"/>
+        <li class="movie__review-item">
+            <img src=${user.img} style="width: 80px;"/>
             <div class="user__info">
                 <h1 class="user__name">${user.username}</h1>
                 <div class="user__rating">
@@ -57,26 +60,18 @@ function renderReviewMovie(review, user){
     `
 }
 
-function renderRating(review){
-    let htmls = ""
-    for(let i = 0; i < review.rating; i++){
-        htmls += `<i class="fa-solid fa-star"></i>`
-    }
-    return htmls
-}
-
 function showReviewsMovie(reviews){
     let htmls = ""
-    reviews.forEach(review => {
-        const user = getData(`${reviewApi}${review.user_id}`)
-        htmls += renderReviewMovie(review, user)
+    htmls += reviews.map(review => {
+        const user = getUserById(review.user)
+        return renderReviewMovie(review, user)
     })
-    return htmls
+    reviewContainer.innerHTML = htmls
 }
 
 previewMovie.src = movie.link_video
 movieInfo.innerHTML = renderMovieInfor(movie)
-reviewContainer.innerHTML = showReviewsMovie(reviewsByIdMovie)
+getReviewsByIdMovie(idMovie, showReviewsMovie)
 
 
 // add review 
@@ -88,13 +83,16 @@ btnAddRview.addEventListener('click', () => {
     const now = new Date();
     if(textReview.value != "") {
         const data = {
-            "idUser": 1,
-            "idMovie": Number(idMovie),
             "content": textReview.value,
             "rating": countRating,
-            "time": now
+            "time": now,
+            "movie": Number(idMovie),
+            "user": Number(idUser)
+
         }
-        addItem(data, reviewApi)
+        addItem(data, `${reviewMovieApi}add/`)
+        textReview.value = ""
+        window.location.reload()
     }
     
 
@@ -122,18 +120,19 @@ ratings.forEach((rating, index) => {
 // add favourite movie
 const handleAddFavouriteMovie = () => {
     const data = {
-        "id_movie": Number(idMovie),
-        "id_user": idUser
+        "movie": Number(idMovie),
+        "user": idUser
     }
-    addItem(data,favouriteMovieAPI)
+    addItem(data,`${favouriteUserApi}add/`)
 }
 
 const handleDelFavouriteMovie = (id) => {
-    delItem(id, favouriteMovieAPI)
+    console.log(id);
+    delItem(id, `${favouriteUserApi}delete/${id}/`)
 }
 
 let toggleHeart = false
-if (favouriteMovieByIdMovieAndIdUser) {
+if (favouriteMovieByIdMovieAndIdUser.length > 0) {
     btnHeart.classList.remove('fa-regular')
     btnHeart.classList.add('fa-solid')
     toggleHeart = true
@@ -147,7 +146,9 @@ btnHeart.addEventListener('click', () => {
     } else {
         btnHeart.classList.add('fa-regular')
         btnHeart.classList.remove('fa-solid')
-        handleDelFavouriteMovie(favouriteMovieByIdMovieAndIdUser.id)
+        console.log(favouriteMovieByIdMovieAndIdUser);
+        handleDelFavouriteMovie(favouriteMovieByIdMovieAndIdUser[0].id)
     }
     toggleHeart = !toggleHeart
+    window.location.reload()
 })

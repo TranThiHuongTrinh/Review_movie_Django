@@ -1,6 +1,4 @@
-import { getData } from "../handles/handles"
-import {movieApi} from "../API/api.js"
-
+import {getMovie, getFavouriteMoviesByIdUser} from './getMovie.js'
 
 const listMovieHtml = document.querySelector('.content__movie-list')
 const modal = document.querySelector('.modal')
@@ -9,15 +7,16 @@ const iconClose = document.querySelector('.icon-close')
 const params = new URLSearchParams(window.location.search);
 const userId = params.get('id');
 
+const movies = await getMovie()
+const favouriteMoviesByIdUser = await getFavouriteMoviesByIdUser(userId)
 
-const movies = await getMovie(movieApi)
-const favouriteMoviesByIdUser = await getFavouriteMoviesByUserId(userId)
 
 function renderMovie(movie){
+    console.log(movie);
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="movie" style="width: 300px; height: 100%"/>
+                <img src=${movie.image} alt="movie" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -36,7 +35,7 @@ function renderMovie(movie){
                     <li class="movie__genre-item bg-[#F5B50A]">${movie.genre}</li> 
                 </ul>
                 <p class="movie__decription">
-                    ${movie.decription}
+                    ${movie.description}
                 </p>
             </div>
         </li>
@@ -60,7 +59,7 @@ iconClose.addEventListener('click', () => {
 let moviesByFavouriteMovies = []
 
 favouriteMoviesByIdUser.forEach(favouriteMovie => {
-    const movie = movies.find(movie => movie.id == favouriteMovie.id_movie)
+    const movie = movies.find(movie => movie.id == favouriteMovie.movie)
     moviesByFavouriteMovies.push(movie)
 });
 

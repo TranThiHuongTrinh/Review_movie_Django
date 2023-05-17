@@ -1,5 +1,5 @@
+import { movieApi } from "../API/api.js"
 
-const movieURL = "http://127.0.0.1:8000/api/movies/"
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -9,7 +9,7 @@ function main() {
     getData(showMovies)
 }
 function getData(callback) {
-    fetch(movieURL)
+    fetch(movieApi)
     .then(function (response) {
         return response.json()
     })
@@ -23,7 +23,7 @@ function showMovies(list_Movie) {
     console.log(list_Movie);
     for(let i = 0; i < 8; i++) {
         const htmls = `<div class="w-[250px] h-[340px] relative group/film">
-        <img src="${list_Movie[i].img}" alt="" class="w-full h-full">
+        <img src="${list_Movie[i].image}" alt="" class="w-full h-full">
         <div class="absolute bottom-0 left-[25%] flex flex-col items-center">
             <!-- film's name -->
             <div class="text-xl">${list_Movie[i].name}</div>

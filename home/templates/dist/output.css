@@ -368,7 +368,9 @@ textarea::placeholder {
   color: #9ca3af;
   /* 2 */
 }
-
+.text-rating {
+  color: #F5B50A;
+}
 /*
 Set the default cursor for buttons.
 */
@@ -727,7 +729,6 @@ video {
 /* review user */
 
 .movie__review-list {
-  margin-top: 4rem;
   display: flex;
   width: 80%;
   flex-direction: column;
