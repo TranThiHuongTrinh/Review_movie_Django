@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-small {
+        @apply bg-[#FF2A23] text-white h-[40px] px-3 rounded;
+    }
+    .btn-medium {
+        @apply bg-[#FF2A23] text-white h-[40px] px-8 rounded;
+    }
+
+    /* header */
+    .header {
+        @apply bg-[#0F2133] flex justify-between items-center px-12 text-white;
+    }
+    .header__search {
+        @apply flex items-center;
+    }
+    .header__search img {
+        @apply h-[100px] p-5;
+    }
+    .input-search {
+        @apply bg-[#03111F] py-1 px-12 rounded-2xl;
+    }
+    .icon-search {
+        @apply absolute right-2 top-5;
+    }
+    .header__navbar {
+        @apply flex items-center gap-6 text-xl;
+    }
+    /* user */
+    .header__user-wrap {
+        @apply relative cursor-pointer transition-all;
+    }
+    .header__user-list {
+        @apply absolute hidden z-10 p-3 top-[130%] bg-white w-[200px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
+    }
+    .header__user-title {
+        @apply w-[60%];
+    }
+    .header__user-item {
+        @apply flex gap-8 mt-3 p-1 items-center font-semibold hover:bg-[#f8f8f8] text-black;
+    }
+
+    /*movie__favourite*/
+    .header__movie-wrap {
+        @apply relative cursor-pointer transition-all;
+    }
+    .header__movie-notice {
+        @apply absolute bg-white px-[5px] rounded-[6px] text-sm top-[-8px] right-[-10px] text-[#DD003F];
+    }
+    .header__movie-heading {
+        @apply text-[#CCCCCC] text-base p-2;
+    }
+    .header__movie-list {
+        @apply absolute p-3 hidden top-[130%] z-10 shadow-xl bg-white w-[300px] right-[-26px]  rounded after:absolute after:right-4 after:top-[-24px] after:border-y-[16px] after:border-x-[20px] after:border-solid after:border-t-transparent after:border-l-transparent after:border-b-[#fff] after:border-r-transparent;
+    }
+    .header__movie-item {
+        @apply flex gap-8 mt-3 p-1 items-center font-semibold hover:bg-[#f8f8f8] text-black;
+    }
+
+    /* review user */
+    .movie__review-list {
+        @apply mt-16 w-[80%] flex flex-col gap-16;
+    }
+    .movie__review-item {
+        @apply bg-white flex text-2xl p-3 rounded;
+    }
+    .movie__review-btn {
+        @apply flex justify-between;
+    }
+    .user__rating {
+        @apply text-[#F5B50A];
+    }
+    .user__info {
+        @apply w-[30%] text-center;
+    }
+    .user__name {
+        @apply font-semibold
+    }
+
+    
+    /* my review */
+    .review__change {
+        @apply flex gap-4 cursor-pointer;
+    }
+}

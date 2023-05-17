@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Content */
+    .content {
+        @apply bg-black text-white p-16 mt-[100px];
+    }
+    .add__movie {
+        @apply text-white text-3xl border border-white p-3 cursor-pointer;
+    }
+    .content__heading {
+        @apply relative text-2xl before:absolute before:left-[-8px]  before:w-[10px] before:h-[40px] before:bg-[#FF2A23] pl-6;
+    }
+    .content__movie-img {
+        @apply h-[300px] relative cursor-pointer hover:opacity-80;
+    }
+    .content__movie-img img {
+        @apply w-[200px] h-full;
+    }
+    .icon-detail {
+        @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 hidden;
+    }
+    .content__movie-list {
+        @apply px-28;
+    }
+    .content__movie-item {
+        @apply flex mt-16 justify-between gap-[100px];
+    }
+    .movie__rating {
+        @apply flex justify-between;
+    }
+    .movie__info {
+        @apply flex flex-col justify-between;
+    }
+    .movie__name {
+        @apply text-4xl;
+    }
+    .icon-tomato {
+        @apply text-[#FF2B22];
+    }
+    .movie__genre {
+        @apply flex gap-8;
+    }
+    .movie__genre-item {
+        @apply px-3 rounded;
+    }
+    .movie__decription {
+        @apply w-[600px] text-2xl;
+    }
+    .btn__change-movie {
+        @apply w-full flex justify-between mt-16 px-28;
+    }
+
+
+    /* modal delete */
+    .modal {
+        @apply hidden fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.4)] justify-center items-center;
+    }
+    .modal__del {
+        @apply hidden relative h-[300px] w-[40%] bg-white flex-col gap-8 justify-center items-center rounded;
+    }
+    .icon-close {
+        @apply absolute right-2 top-2 text-lg cursor-pointer
+    }
+    .modal__del-text {
+        @apply text-2xl font-semibold;
+    }
+    .btn__choose {
+        @apply flex gap-16;
+    }
+
+    /* modal add */
+    .modal__add {
+        @apply relative hidden bg-white w-[30%];
+    }
+    .modal__title {
+        @apply bg-[#DC0D27] text-white p-3 text-center text-2xl;
+    }
+    .form__movie {
+        @apply px-16 py-4 flex flex-col gap-4;
+    }
+    .btn-form {
+        @apply border-none bg-[#DC0D27] text-white
+    }
+    input, select {
+        @apply p-3 mt-3 border border-black outline-none rounded
+    }
+}
+
+

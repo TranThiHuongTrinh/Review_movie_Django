@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-pg$+8o=0^4-^iv%2o7u018ro($1d&2b_&kic#)i4o6-5_s)aeg
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5501', 
+    'http://127.0.0.1:5501', 
+]
 
 # Application definition
 
@@ -37,8 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'home.apps.HomeConfig',
+    'rest_framework',
+    'ckeditor',
+    'ckeditor_uploader',
+    'corsheaders',
 
+]
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': '2'
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'PythonWeb.urls'
@@ -67,6 +81,23 @@ TEMPLATES = [
     },
 ]
 
+ALLOWED_HOSTS = ['172.20.10.6',
+                 '172.20.10.9',
+                 '172.21.3.105',
+                 '127.0.0.1',
+                 '172.21.3.44',
+                 '192.168.38.108',
+                 '192.168.1.16',
+                 'localhost',
+                 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:5501',
+    'http://127.0.0.1:5500',
+    'http://192.168.38.108',
+]
+
 WSGI_APPLICATION = 'PythonWeb.wsgi.application'
 
 
@@ -75,12 +106,16 @@ WSGI_APPLICATION = 'PythonWeb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web_moviedb',
+        'USER': 'root',
+        'PASSWORD': 'Trinh1502@@',
+        'HOST': ''
     }
 }
+AUTH_USER_MODEL = 'home.User'
 
-
+Access_Control_Allow_Origin = "127.0.0.1:5500"
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -116,6 +151,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_ROOT = '%s/home/static/' %BASE_DIR
+CKEDITOR_UPLOAD_PATH = 'review/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

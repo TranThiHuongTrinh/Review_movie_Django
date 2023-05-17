@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../../../dist/output.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body class="w-full h-screen font-['Poppins', 'san-serif'] bg-black">
+    <!-- header -->
+    <header class="header">
+        <div class="header__search">
+            <img src="../../assets/img/logo.png" alt="logo" />
+            <div class="relative">
+                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
+                <i class="fa-solid fa-magnifying-glass icon-search top-5"></i>
+            </div>
+        </div>
+        <div class="header__navbar">
+            <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
+            <div class="group header__user-wrap">
+                <i class="fa-regular fa-user"></i>        
+                <div class="header__user-list group-hover:block">
+                    <ul class="header__user-list-item">
+                        <li class="header__user-item account">
+                            <span class="header__user-title">Account</span>
+                            <i class="fa-solid fa-user"></i>
+                        </li>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </li>
+                        <li class="header__user-item signout">
+                            <span class="header__user-title">Sign out</span>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="group header__movie-wrap">
+                <span class="header__movie-notice">3</span>
+                <i class="fa-regular fa-heart icon-heart"></i>
+                <div class="header__movie-list z-10 shadow-md group-hover:block">
+                    <h4 class="header__movie-heading">New Movies Added</h4>
+                    <ul class="header__movie-list-item">
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                        <li class="header__movie-item">
+                            <img src="../../assets/img/movie.png" alt="movie" />
+                            <span class="header__movie-title text-black">Die hard</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <button class="btn-small float-right">MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="w-full h-full pt-[150px] relative bg-black">
+        <!-- nav-bar -->
+        <div class="w-[20%] h-full ml-[80px] text-xl text-white flex flex-col fixed">
+            <div class="relative before:absolute before:h-full before:bottom-0 before:-left-3 before:border-[3px] before:border-solid before:border-[#ED1B34]">ACCOUNT SETTING</div>
+            <div class="w-[200px] h-[220px] mt-10 rounded-md bg-white text-black  ">
+                <div class="w-full p-5 font-semibold cursor-pointer  hover:text-black duration-200 setting" onclick="changeFrame(1)">
+                    <i class="fa-solid fa-user-gear"></i>
+                    Profile setting</div>
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 password" onclick="changeFrame(2)">
+                    <i class="fa-solid fa-user-lock"></i>
+                    Password</div>
+                <div class="w-full p-5 font-semibold cursor-pointer text-[#ccc] hover:text-black duration-200 noti" onclick="changeFrame(3)">
+                    <i class="fa-solid fa-bell"></i>
+                    Notifications</div>
+            </div>
+        </div>
+        <!-- content -->
+        <iframe src="./setting.html" class="w-[80%] h-full absolute right-0 overflow-y-auto"
+            id="iframe"></iframe>
+    </div>
+    <script>
+        const linkToTickets = "./setting.html";
+        const linkToParking = "./password.html";
+        const linkToStatistics = "./notification.html";
+        const frame = document.querySelector("#iframe")
+        const setting = document.querySelector('.setting')
+        const password = document.querySelector('.password')
+        const noti = document.querySelector('.noti')
+        function changeFrame(index) {
+            if (index == 1) {
+                frame.src = linkToTickets;
+                setting.classList.remove('text-[#ccc]')
+                password.classList.remove('text-black')
+                noti.classList.remove('text-black')
+            }
+            else if (index == 2) {
+                frame.src = linkToParking;
+                password.classList.add('text-black')
+                setting.classList.add('text-[#ccc]')
+                noti.classList.remove('text-black')
+            }
+            else if (index == 3) {
+                frame.src = linkToStatistics;
+                noti.classList.add('text-black')
+                setting.classList.add('text-[#ccc]')
+                password.classList.remove('text-black')
+            }
+        }
+
+    </script>
+    <script src="../../assets/js/Account/getUserName.js" type="module"></script>
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
+</body>
+
+</html>
