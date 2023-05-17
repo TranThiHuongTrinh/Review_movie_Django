@@ -1,32 +1,44 @@
-export const getReviews = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/reviews');
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      throw new Error(error);
-    }
+import { reviewApi, reviewMovieApi,reviewUserApi  } from '../API/api.js'
+
+
+// export const getReviewsByIdMovie = async (idMovie) => {
+//     try {
+//       const response = await fetch(`${reviewMovieApi}${idMovie}`);
+//       const data = await response.json();
+//       return data;
+//     } catch (error) {
+//       throw new Error(error);
+//     }
+// };
+
+export function getReviewsByIdMovie(idMovie, callback) {
+  fetch(`${reviewMovieApi}${idMovie}/`)
+  .then(function (response) {
+      return response.json()
+  })
+  .then(callback)
+}
+
+
+export const getReviewByIdUser = async (id) => {
+  console.log(id);
+  try {
+    const response = await fetch(`${reviewUserApi}${id}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
-const reviews = await getReviews()
-
-export const getListReviewByIdUser = (idUser) => {
-    return reviews.filter(review => {
-      return review.idUser == idUser
-    })
-}
-
-
-export const getListReviewByIdMovie = (idMovie) => {
-  return reviews.filter(review => review.idMovie == idMovie)
-}
-
-export const getReviewByIdRview = (idReview) => {
-  return reviews.filter(review => review.id === idReview)
-}
-
-export const getReviewByIdMovie = (idMovie) => {
-    return reviews.find(review => review.idMovie === idMovie)
+export const getReviewByIdReview = async (id) => {
+  try {
+    const response = await fetch(`${reviewApi}${id}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 

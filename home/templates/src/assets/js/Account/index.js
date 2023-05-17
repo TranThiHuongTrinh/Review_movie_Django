@@ -1,12 +1,12 @@
-let list_Users = []
+import { userApi } from "../API/api.js"
 
-const userURL = "http://192.168.38.108:8000/api/users/"
+let list_Users = []
 
 function main() {
     getData()
 }
 function getData() {
-    fetch(userURL)
+    fetch(userApi)
     .then(function (response) {
         return response.json()
     })
@@ -37,7 +37,7 @@ export function getInfor() {
     return currentUser
 }
 export function handleEdit(acc) {
-    fetch(userURL + '/' + acc.id, {
+    fetch(`${userApi}update/${acc.id}/`, {
         method: 'PUT',
         body:
             JSON.stringify(acc),
@@ -45,19 +45,14 @@ export function handleEdit(acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
-        console.log(response.json());
         sessionStorage.setItem("currentUser", JSON.stringify(acc));
-        return response.json();
-    }).then(function (response) {
         list_Users = list_Users.map(acc => acc.id == response.id ? response : acc)
-        // console.log(list_Users);
-        showData(list_Users);
+        alert("Update successfully");
     })
 }
 export function submitSignUpForm(e, acc) {
     e.preventDefault();
-    acc.id = list_Users.length + 1
-    fetch(userURL, {
+    fetch(`${userApi}add/`, {
         method: 'POST',
         body:
             JSON.stringify(acc),
@@ -65,11 +60,12 @@ export function submitSignUpForm(e, acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
+        console.log(acc);
         return response.json();
     }).then(function (response) {
         list_Users.push(response)
         sessionStorage.setItem("currentUser", JSON.stringify(acc));
-        window.location.href = ("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html");
+        window.location.reload()
     })
 }
   

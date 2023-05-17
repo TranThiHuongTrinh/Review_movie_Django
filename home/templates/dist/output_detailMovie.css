@@ -588,7 +588,7 @@ video {
 
 .movie__info-detail {
   display: flex;
-  width: 50%;
+  width: 72%;
   flex-direction: column;
   gap: 2rem;
   border-radius: 0.25rem;
@@ -662,11 +662,10 @@ video {
 /* review user */
 
 .movie__review-list {
-  margin-top: 4rem;
   display: flex;
   width: 80%;
   flex-direction: column;
-  gap: 4rem;
+  gap: 1rem;
 }
 
 .movie__review-item {

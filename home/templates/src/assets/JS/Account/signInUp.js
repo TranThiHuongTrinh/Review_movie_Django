@@ -92,12 +92,11 @@ submit_btn.addEventListener('click', (e) => {
         }
         if(!isEmpty(username.value) && !isEmpty(password.value) && !isEmpty(email.value) && !isEmpty(re_password.value)) {
             data = {
-                "id": '',
-                "email": email.value,
-                "username": username.value,
                 "password": password.value,
-                "img": "../../assets/img/acc.png",
-                "is_superuser": false
+                "is_superuser": false,
+                "username": username.value,
+                "email": email.value,
+                "img": "../../assets/img/acc.png"
             }
             submitSignUpForm(e, data)
         }

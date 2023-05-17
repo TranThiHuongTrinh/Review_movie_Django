@@ -1,6 +1,8 @@
+import { movieApi, favouriteMovieApi, favouriteUserApi} from "../API/api.js";
+
 export const getMovie = async () => {
   try {
-    const response = await fetch('http://192.168.38.108:8000/api/movies/');
+    const response = await fetch(movieApi);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -8,24 +10,43 @@ export const getMovie = async () => {
   }
 };
 
-// export const getFavouriteMovies = async () => {
-//   try {
-//     const response = await fetch('http://192.168.38.108:8000/api/favouriteMovies/');
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// }
+export const getFavouriteMoviesByIdMovie = async (id) => {
+  try {
+    const response = await fetch(`${favouriteMovieApi}${id}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 
-// const movies = await getMovie()
+export const getFavouriteMoviesByIdUser = async (id) => {
+  try {
+    const response = await fetch(`${favouriteUserApi}${id}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+
+export const getFavouriteMoviesByIds = async (idMovie, idUser) => {
+  try {
+    const response = await fetch(`${favouriteUserApi}${idMovie}/${idUser}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+const movies = await getMovie()
 // const favouriteMovies = await getFavouriteMovies()
 
-// export const getMovieByIdMovie = (id) => {
-//     return movies.find(movie => {
-//       return movie.id == id
-//     })
-// }
+export const getMovieByIdMovie = (id) => {
+    return movies.find(movie => movie.id == id)
+}
 
 // export const getFavouriteMoviesByUserId = (userId) => {
 //     return favouriteMovies.filter(favouriteMovie => favouriteMovie.id_user == userId)

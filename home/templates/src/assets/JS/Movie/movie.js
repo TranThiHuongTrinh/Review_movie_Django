@@ -1,6 +1,7 @@
-import {getMovie} from "./getMovie.js"
+import {getMovie,getMovieByIdMovie} from "./getMovie.js"
 import { delItem, addItem, updateItem } from "../handles/handles.js"
 import userCurrent from "./index.js"
+import { movieApi } from "../API/api.js"
 
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
@@ -23,7 +24,7 @@ let pathImg = "http://127.0.0.1:5500/home/templates/src/assets/img/"
 // let isAdmin = getInfor().isAdmin
 let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
-const movieAPI = "http://192.168.38.108:8000/api/movies/"
+// const movieAPI = "http://192.168.38.108:8000/api/movies/"
 
 
 
@@ -31,7 +32,7 @@ function renderMovieAdmin(movie){
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="movie" style="width: 300px; height: 100%"/>
+                <img src=${movie.image} alt="movie" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block" data-id="${movie.id}">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -50,7 +51,7 @@ function renderMovieAdmin(movie){
                     <li class="movie__genre-item bg-[#F5B50A]">${movie.genre}</li> 
                 </ul>
                 <p class="movie__decription">
-                    ${movie.decription}
+                    ${movie.description}
                 </p>
             </div>
             <button class="btn-small del__movie" data-id="${movie.id}">DELETE</button>
@@ -64,7 +65,7 @@ function renderMovieUser(movie){
     return `
         <li class="content__movie-item justify-normal gap-[150px]">
             <div class="content__movie-img group">
-                <img src=${movie.img} alt="" style="width: 300px; height: 100%"/>
+                <img src=${movie.image} alt="" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block" data-id="${movie.id}">
                     <i class="fa-solid fa-circle-info text-3xl icon-more"></i>
                 </div>
@@ -83,7 +84,7 @@ function renderMovieUser(movie){
                     <li class="movie__genre-item bg-[#F5B50A]">${movie.genre}</li> 
                 </ul>
                 <p class="movie__decription">
-                    ${movie.decription}
+                    ${movie.description}
                 </p>
             </div>
         </li>
@@ -104,8 +105,9 @@ function showMovieList(listMovie){
 }
 
 const handleDel = (id) => {
-    delItem(id, movieAPI)
-    listMovie = listMovie.filter(movie => movie.id !== id)
+    delItem(id, `${movieApi}delete/${id}/`)
+    listMovie = listMovie.filter(movie => movie.id != id)
+    console.log(listMovie);
     showMovieList(listMovie)
 }
 
@@ -125,11 +127,23 @@ function openFormUp () {
     btnForm.value = 'UPDATE'
 }
 
+function closeForm () {
+    modalDel.classList.remove('flex')
+    modal.classList.remove('flex')
+    modalUp.classList.remove('block')
+}
+
 
 // Del
 function openFormDel () {
     modal.classList.add('flex')
     modalDel.classList.add('flex')
+}
+
+function closeFormDel () {
+    modalDel.classList.remove('flex')
+    modal.classList.remove('flex')
+    modalUp.classList.remove('block')
 }
 
 const btnsDel = document.querySelectorAll('.del__movie')
@@ -152,6 +166,7 @@ btnsUpdate.forEach(btn => {
 const btnYesDel = document.querySelector('.btn-yes')
 btnYesDel.addEventListener('click', (e) => {
     handleDel(idDel)
+    closeForm()
 })
 
 // Get value input
@@ -168,6 +183,17 @@ const checkInputs = () => {
         }
     })
     return check
+}
+
+// set Value input null 
+const setValueInputEmpty = () => {
+    inputs[0].value = ""
+    inputs[1].style.display = "inline-block"
+    inputs[1].value = ""
+    inputs[2].value = ""
+    inputs[3].value = ""
+    inputs[4].value = ""
+    inputs[5].value = ""
 }
 
 const getValueInput = () => {
@@ -195,11 +221,19 @@ const handleSubmit = () => {
             "image": img_src,
             "link_video": link_video,
             "run_time": runtime,
-            "release": release,
+            "release": release
           }
-          console.log(data);
-        if(checkUp == false) addItem(data, `${movieAPI}add/`)
-        else updateItem(idUp, data, movieAPI)
+        if(checkUp == false) {
+            addItem(data, `${movieApi}add/`)
+        }
+        else {
+            updateItem(idUp, data, `${movieApi}update/${idUp}/`)
+            listMovie = listMovie.map(movie => movie.id == idUp ? data : movie)
+        }
+        setValueInputEmpty()
+        closeForm()
+        console.log(listMovie);
+        showMovieList(listMovie)
     } else {
         alert('Nhập đầy đủ thông tin')
     }
@@ -219,13 +253,14 @@ formAdd.addEventListener('submit', (e) => {
 const loadDataForm = (id) => {
     checkUp = true
     const movie = getMovieByIdMovie(id)
+    console.log(movie.genre);
     movieUp = movie
     inputs[0].value = movie.name
     selectGenre.value = movie.genre
-    inputs[1].placehoder = movie.img
-    inputs[2].value = movie.decription
-    inputs[3].value = movie.link
-    inputs[4].value = movie.runtime
+    inputs[1].src = movie.img
+    inputs[2].value = movie.description
+    inputs[3].value = movie.link_video
+    inputs[4].value = movie.run_time
     inputs[5].value = movie.release
 }
 
@@ -245,7 +280,7 @@ inputSearch.addEventListener("input", (e) => {
 const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
-        const id = e.target.getAttribute('data-id');
+        const id = btnDetail.getAttribute('data-id');   
         if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
         else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
     })

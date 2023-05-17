@@ -1,6 +1,8 @@
+import { userApi } from "../API/api.js";
+
 export const getUser = async () => {
     try {
-      const response = await fetch('http://192.168.38.108:8000/api/users/');
+      const response = await fetch(userApi);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -11,6 +13,6 @@ export const getUser = async () => {
 const users = await getUser()
 
 export const getUserById = (id) => {
-    return users.find(user => user.id === id)
+    return users.find(user => user.id == id)
 }
 
