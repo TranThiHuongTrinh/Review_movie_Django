@@ -208,14 +208,6 @@ const getValueInput = () => {
     return [name, genre, img_src, decription, link_video, runtime, release]
 }
 
-const setValueInputEmpty = () => {
-    inputs[0].value = ""
-    inputs[1].files[0].name = ""
-    inputs[2].value = ""
-    inputs[3].value = ""
-    inputs[4].value = ""
-    inputs[5].value = ""
-}
 
 // Add item
 const handleSubmit = () => {
