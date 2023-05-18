@@ -46,7 +46,4 @@ urlpatterns = [
     # path('homee/', views.index, name='index'),
     # path('admin/', admin_site.urls),
     path('admin/', admin.site.urls),
-    path('', views.allMovie),
-    path('welcome/<int:year>/', views.welcome, name = "welcome"),
-    re_path(r'welcome2/(?P<year>[0-9]{4})/$', views.welcome, name = "welcome2")
 ]

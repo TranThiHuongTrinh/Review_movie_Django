@@ -242,19 +242,6 @@ def favoriteMoviesListByIdMovieAndUserId(request, id_movie, id_user):
     serializer = FavoriteMovieSerializer(favoriteMoviesList, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-def index(request):
-    taisan = ["dien thoai", "may tinh", "may bay"]
-    return render(request,template_name='home.html', context={
-        'name': 'trinh'
-    }, taisan = {'taisan': taisan})
-
-def allMovie(request):
-    return render(request,'src/pages/Movie/temViewAllmovie.html' )
 
 
-def welcome(request, year):
-    return HttpResponse("HELLO " + str(year))
 
-    
-    def post(self, request):
-        pass
