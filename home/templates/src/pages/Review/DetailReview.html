@@ -7,17 +7,15 @@
     <title>Detail Review</title>
     <link href="../../../dist/output.css" rel="stylesheet">
     <link href="../../../dist/output_detailMovie.css" rel="stylesheet">
+    <link href="../../../dist/output_ViewAllMovie.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body style="position: relative;">
     <header class="header">
         <div class="header__search">
-            <img src="../../assets/img/logo.png" alt="logo" />
-            <div class="relative">
-                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                <i class="fa-solid fa-magnifying-glass icon-search" style="top: 0.55rem;"></i>
-            </div>
+            <img class="back-home cursor-pointer ml-20" src="../../assets/img/logo.png" alt="logo" />
         </div>
         <div class="header__navbar">
             <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
@@ -29,11 +27,11 @@
                             <span class="header__user-title my-review">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
-                        <li class="header__user-item">
-                            <span class="header__user-title my-review">My review</span>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
                             <i class="fa-solid fa-clipboard-list"></i>
                         </li>
-                        <li class="header__user-item">
+                        <li class="header__user-item signout">
                             <span class="header__user-title">Sign out</span>
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </li>
@@ -59,14 +57,18 @@
     <div class="content__detail">
         <div class="flex justify-between w-[80%] text-white" style="width: 80%;">
             <h1 class="movie__title text-white">MY REVIEWS</h1>
-            <div class="relative">
-                <input class="input-search content__input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                <i class="fa-solid fa-magnifying-glass icon-search" style="top: 0.55rem;"></i>
-            </div>
         </div>
         <ul class="movie__review-list">
             
         </ul>
+        <div class="flex justify-end mt-[100px] w-[98%]">
+            <div id="prev_link" class="btn-medium text-[#666] float-left py-2 px-4 duration-300  mx-1 cursor-pointer hover:text-white hover:border-[#111] hover:bg-gradient-to-b from-[#585858] to-[#111]">
+                Previous
+            </div>
+            <div id="next_link" class="btn-medium float-left py-2 px-4 duration-300 mx-1 cursor-pointer hover:text-white hover:border-[#111] hover:bg-gradient-to-b from-[#585858] to-[#111]">
+                Next
+            </div>
+        </div>
     </div>
 
     <div class="modal__edit" style="display:none; padding-top: 150px; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgb(0 0 0 / 0.5);">
@@ -87,7 +89,19 @@
         </div>
     </div>
 
+    <div class="modal">
+        <div class="modal__del">
+            <i class="fa-solid fa-xmark icon-close icon-close-del"></i>
+            <p class="modal__del-text">Are you sure about deleting this review?</p>
+            <div class="btn__choose">
+                <button class="btn-medium btn-yes">YES</button>
+                <button class="btn-medium btn-no">NO</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../../assets/JS/Review/review.js" type="module"></script>
     <script src="../../assets/JS/Movie/index.js" type="module"></script>
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
 </body>
 </html>

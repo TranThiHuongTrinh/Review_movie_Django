@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from ckeditor.fields import RichTextField
 
 # Create your models here.
 class User(AbstractUser):
@@ -36,10 +35,3 @@ class Favorite_movie(models.Model):
 
     class Meta:
         db_table = 'favorite_movie'
-class Notification(models.Model):
-    user = models.ForeignKey(User, related_name="notifications", on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, related_name="notifications", on_delete=models.CASCADE)
-    content = models.TextField(null = False)
-    status = models.BooleanField(default=False)
-    def __str__(self):
-            return self.content

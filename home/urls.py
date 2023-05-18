@@ -40,14 +40,10 @@ urlpatterns = [
     path('fovariteMovies/add/', views.add_favoriteMovie, name = 'add_favorite_movie'),
     path('fovariteMovies/delete/<int:fovariteMovie_id>/', views.delete_fovariteMovie, name='delete_fovariteMovie'),
 
-    path('notifications/', views.notifications_list, name = 'notifications_list'),
-    path('notifications/add/<int:id_user>/', views.add_notification, name = 'add_notification'),
+   
 
     path('', include(router.urls)),
     # path('homee/', views.index, name='index'),
     # path('admin/', admin_site.urls),
     path('admin/', admin.site.urls),
-    path('', views.allMovie),
-    path('welcome/<int:year>/', views.welcome, name = "welcome"),
-    re_path(r'welcome2/(?P<year>[0-9]{4})/$', views.welcome, name = "welcome2")
 ]

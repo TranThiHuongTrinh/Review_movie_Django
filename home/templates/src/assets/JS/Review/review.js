@@ -1,23 +1,36 @@
-import {getReviewByIdUser, getReviewByIdReview} from './getReview.js'
+import {getReviewByIdUser} from './getReview.js'
 import {getMovieByIdMovie} from '../Movie/getMovie.js'
 import { delItem, updateItem } from '../handles/handles.js'
 import userCurrent from "../Movie/index.js"
 import renderRating from '../Rating/rating.js'
-import { reviewApi, reviewMovieApi, reviewUserApi } from '../API/api.js'
+import { reviewApi} from '../API/api.js'
+import { renderListPage } from "../Pagination/index.js"
 
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
 
 let idUp = 1
+let idDel = null
 let countRating = 0
 const reviewsShow = document.querySelector('.movie__review-list')
 let reviewsByIdUser = await getReviewByIdUser(idUser)
 const textReview = document.querySelector('.text-review')
 const ratings = document.querySelectorAll('.icon-rating')
-const modal = document.querySelector('.modal__edit')
+const modalEdit = document.querySelector('.modal__edit')
 const close_modal = document.querySelector('.icon-close')
-const movieRateUp = document.querySelector('.movie__rate')
+const btnYesDel = document.querySelector('.btn-yes')
+const btnNo = document.querySelector('.btn-no')
+const iconDel = document.querySelector('.icon-close-del')
+const prev_btn = document.getElementById('prev_link')
+const next_btn = document.getElementById('next_link')
+let perPage = 10
+let currentPage = 1
+let start = 0
+let end = perPage
+let totalPages = 0
 
+totalPages = Math.ceil(reviewsByIdUser.length / perPage)
+renderListPage(totalPages, reviewsByIdUser, showReviewsUser)
 
 // show tất cả review của 1 user -> show tất cả review của tất cả film mà user đó review
 function renderReviewUser(review, movie){
@@ -44,11 +57,21 @@ function renderReviewUser(review, movie){
 
 function showReviewsUser(reviews) {
     let htmls = ""
-    reviews.forEach(review => {
-        htmls += renderReviewUser(review, getMovieByIdMovie(review.movie))
-    });
+    if(reviews.length > 0) {
+        reviews.slice(start, end).forEach(review => {
+            htmls += renderReviewUser(review, getMovieByIdMovie(review.movie))
+        });
+    } else {
+        htmls = `
+            <h1 style="color: #fff">
+                Chưa có đánh giá nào!
+            </h1>
+        `
+    }
     return htmls
 }
+
+
 
 
 reviewsShow.innerHTML = showReviewsUser(reviewsByIdUser)
@@ -58,7 +81,7 @@ const btnsUp = document.querySelectorAll('.btn-up')
 // event click
 
 const handleDel = (id) => {
-    delItem(id, `${reviewApi}delete/${id}/`,)
+    delItem(`${reviewApi}delete/${id}/`)
     reviewsByIdUser = reviewsByIdUser.filter(review => review.id !== id)
     reviewsShow.innerHTML = showReviewsUser(reviewsByIdUser)
 }
@@ -75,9 +98,8 @@ const handleUp = (id) => {
         "user": idUser,
         "movie": review.movie
     }
-    updateItem(id, data, `${reviewApi}update/${id}/`)
+    updateItem(data, `${reviewApi}update/${id}/`)
     reviewsByIdUser = reviewsByIdUser.map(review => review.id == id ? review = data : review)
-    console.log(reviewsByIdUser);
     reviewsShow.innerHTML = showReviewsUser(reviewsByIdUser)
     window.location.reload()
 }
@@ -91,7 +113,6 @@ const uploadData = (id) => {
         ratings[i].classList.add('fa-solid')
         ratings[i].classList.add('text-rating')
     }
-    // movieRateUp.innerHTML = renderRating(review)
 }
 
 ratings.forEach((rating, index) => {
@@ -116,27 +137,84 @@ ratings.forEach((rating, index) => {
 
 btnsDel.forEach(btnDel => {
     btnDel.addEventListener('click', (e) => {
-        const id = e.target.dataset.id;
-        handleDel(id)
+        idDel = e.target.dataset.id;
+        openFormDel()
     })
 })
 
-// const btnUpdateRview = document.querySelector('.btn-update-review')
+const btnUpdateRview = document.querySelector('.btn-update-review')
 
 btnsUp.forEach(btnUp => {
     btnUp.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
-        modal.style.display = 'block'
+        modalEdit.style.display = 'block'
         document.body.style.overflow = 'hidden'
         uploadData(id)
     })
 })
 close_modal.addEventListener('click', () => {
-    modal.style.display = 'none'
+    modalEdit.style.display = 'none'
     document.body.style.overflow = 'unset'
 })
 btnUpdateRview.addEventListener('click', (e) => {
     handleUp(idUp)
+})
+
+btnYesDel.addEventListener('click', (e) => {
+    handleDel(idDel)
+    closeForm()
+})
+
+iconDel.addEventListener('click', (e) => {
+    closeForm()
+})
+
+btnNo.addEventListener('click', (e) => {
+    closeForm()
+})
+
+next_btn.addEventListener('click', () => {
+    currentPage++
+    if (currentPage > totalPages) {
+        currentPage = totalPages
+    }
+    if (currentPage === totalPages) {
+        next_btn.classList.add('text-[#666]')
+        next_btn.classList.remove('cursor-pointer')
+        next_btn.classList.remove('from-[#585858]')
+        next_btn.classList.remove('hover:text-white')
+        next_btn.classList.remove('to-[#111]')
+    }
+    prev_btn.classList.remove('text-[#666]')
+    prev_btn.classList.add('cursor-pointer')
+    prev_btn.classList.add('to-[#111]')
+    prev_btn.classList.add('from-[#585858]')
+    prev_btn.classList.add('hover:text-white')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
+    showReviewsUser(reviewsByIdUser)
+})
+prev_btn.addEventListener('click', () => {
+    currentPage--
+    if (currentPage < 1) {
+        currentPage = 1
+    }
+    if (currentPage === 1) {
+        prev_btn.classList.add('text-[#666]')
+        prev_btn.classList.remove('cursor-pointer')
+        prev_btn.classList.remove('to-[#111]')
+        prev_btn.classList.remove('from-[#585858]')
+        prev_btn.classList.remove('hover:text-white')
+    }
+    next_btn.classList.remove('text-[#666]')
+    next_btn.classList.add('cursor-pointer')
+    next_btn.classList.add('from-[#585858]')
+    next_btn.classList.add('hover:text-white')
+    next_btn.classList.add('to-[#111]')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
+
+    showReviewsUser(reviewsByIdUser)
 })
 
 

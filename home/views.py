@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from django.shortcuts import render
 from django.http import HttpResponse
 from  rest_framework import viewsets, permissions
-from .models import Movie, Review, Favorite_movie, Notification, User
-from .serializers import MovieSerializer, ReviewSerializer, FavoriteMovieSerializer, NotificationSerializer, Userserializer
+from .models import Movie, Review, Favorite_movie, User
+from .serializers import MovieSerializer, ReviewSerializer, FavoriteMovieSerializer, Userserializer
 from django.views import View
 from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes
@@ -22,7 +22,7 @@ class MovieViewSet(viewsets.ModelViewSet):
 
 # show all movies 
 @api_view(['GET'])
-@renderer_classes([JSONRenderer])
+# @renderer_classes([JSONRenderer])
 def movie_list(request):
     movies = Movie.objects.all()
     serializer = MovieSerializer(movies, many = True)
@@ -241,40 +241,7 @@ def favoriteMoviesListByIdMovieAndUserId(request, id_movie, id_user):
     favoriteMoviesList = Favorite_movie.objects.filter(user_id=id_user, movie_id = id_movie)
     serializer = FavoriteMovieSerializer(favoriteMoviesList, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
-# show notification list 
-@api_view(['GET'])
-@renderer_classes([JSONRenderer])
-def notifications_list(request):
-    notificationList = Notification.objects.all()
-    serializer = NotificationSerializer(notificationList, many = True)
-    return Response(serializer.data, status = status.HTTP_200_OK)
-
-# add notification
-@api_view(['POST'])
-def add_notification(request, id_user):
-    try:
-        user = User.objects.get(id=id_user)
-    except User.DoesNotExist:
-        return Response({'error': 'user not found'}, status=404)
-
-    serializer = NotificationSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save(user=user)
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
-def index(request):
-    taisan = ["dien thoai", "may tinh", "may bay"]
-    return render(request,template_name='home.html', context={
-        'name': 'trinh'
-    }, taisan = {'taisan': taisan})
-
-def allMovie(request):
-    return render(request,'src/pages/Movie/temViewAllmovie.html' )
 
 
-def welcome(request, year):
-    return HttpResponse("HELLO " + str(year))
 
-    
-    def post(self, request):
-        pass
+

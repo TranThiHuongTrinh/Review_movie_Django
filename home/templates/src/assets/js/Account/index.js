@@ -13,7 +13,6 @@ function getData() {
     })
     .then(function (response) {
         list_Users = response
-        console.log(list_Users);
     })
 }
 
@@ -22,19 +21,18 @@ export function submitSignInForm(e, email, password) {
     const account = list_Users.find(acc => acc.email == email && acc.password == password);
     if (account) {
         sessionStorage.setItem("currentUser", JSON.stringify(account));
-        window.location.href = ("http://127.0.0.1:5501/home/templates/src/pages/Unsign/homepage.html");
+        window.location.href = ("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html");
     } else {
         alert("Tên đăng nhập hoặc mật khẩu không đúng!");
-        window.location.href = "http://127.0.0.1:5501/home/templates/src/pages/Unsign/homepage.html";
+        window.location.href = "http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html";
     }
 }
 export function signOut() {
     sessionStorage.removeItem("currentUser")
-    window.location.replace("http://127.0.0.1:5501/home/templates/src/pages/Unsign/homepage.html")
+    window.location.replace("http://127.0.0.1:5500/home/templates/src/pages/Unsign/homepage.html")
 }
 export function getInfor() {
     const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    // console.log(currentUser);
     return currentUser
 }
 export function handleEdit(acc) {
@@ -61,7 +59,6 @@ export function submitSignUpForm(e, acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
-        console.log(acc);
         return response.json();
     }).then(function (response) {
         list_Users.push(response)

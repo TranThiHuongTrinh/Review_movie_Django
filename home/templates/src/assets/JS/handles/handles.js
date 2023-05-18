@@ -27,7 +27,7 @@ export const addItem = async (itemData, api) => {
 }
 
 //Update
-export const updateItem = async (id, itemData, api) => {
+export const updateItem = async (itemData, api) => {
   try {
       const response = await fetch(`${api}`, {
         method: 'PUT',
@@ -44,7 +44,7 @@ export const updateItem = async (id, itemData, api) => {
 
 
 // delete 
-export const delItem = async (id, api) => {
+export const delItem = async (api) => {
     try {
       const response = await fetch(`${api}`, {
         method: 'DELETE'

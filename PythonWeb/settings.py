@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5501', 
-    'http://127.0.0.1:5501', 
+    'http://localhost:5500', 
+    'http://127.0.0.1:5500', 
 ]
 
 # Application definition
@@ -93,7 +93,7 @@ ALLOWED_HOSTS = ['172.20.10.6',
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:5501',
+    'http://127.0.0.1:5500',
     'http://127.0.0.1:5500',
     'http://192.168.38.108',
 ]
@@ -107,9 +107,9 @@ WSGI_APPLICATION = 'PythonWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_moviedb',
+        'NAME': 'review_movie_bk',
         'USER': 'root',
-        'PASSWORD': 'Trinh1502@@',
+        'PASSWORD': 'root123',
         'HOST': ''
     }
 }
