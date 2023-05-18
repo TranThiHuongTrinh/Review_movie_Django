@@ -13,7 +13,6 @@ function getData() {
     })
     .then(function (response) {
         list_Users = response
-        console.log(list_Users);
     })
 }
 
@@ -34,7 +33,6 @@ export function signOut() {
 }
 export function getInfor() {
     const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    // console.log(currentUser);
     return currentUser
 }
 export function handleEdit(acc) {
@@ -61,7 +59,6 @@ export function submitSignUpForm(e, acc) {
             'Content-Type': 'application/json'
         },
     }).then((response) => {
-        console.log(acc);
         return response.json();
     }).then(function (response) {
         list_Users.push(response)

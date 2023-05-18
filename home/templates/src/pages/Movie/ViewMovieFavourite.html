@@ -25,14 +25,10 @@
 <body class="relative">
     <header class="header">
         <div class="header__search">
-            <img src="../../assets/img/logo.png" alt="logo" />
-            <div class="relative">
-                <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
-                <i class="fa-solid fa-magnifying-glass icon-search"></i>
-            </div>
+            <img class="back-home cursor-pointer ml-20" src="../../assets/img/logo.png" alt="logo" />
         </div>
         <div class="header__navbar">
-            <p>HELLO, <span class="text-[#DC0D27] name-user">NGUYEN VAN A</span></p>   
+            <p>HELLO, <span class="text-[#DC0D27] name-user"></span></p>   
             <div class="group header__user-wrap">
                 <i class="fa-regular fa-user"></i>        
                 <div class="header__user-list z-10 group-hover:block">
@@ -41,11 +37,11 @@
                             <span class="header__user-title">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
-                        <li class="header__user-item">
-                            <span class="header__user-title my-review">My review</span>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
                             <i class="fa-solid fa-clipboard-list"></i>
                         </li>
-                        <li class="header__user-item">
+                        <li class="header__user-item signout">
                             <span class="header__user-title">Sign out</span>
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </li>
@@ -74,10 +70,6 @@
         </div>
         <ul class="content__movie-list">
         </ul>
-        <!-- <div class="btn__change-movie">
-            <button class="btn-medium">PREV</button>
-            <button class="btn-medium">NEXT</button>
-        </div> -->
     </div>
 
     <div class="modal">
@@ -93,8 +85,7 @@
 
     <script src="../../assets/JS/Movie/favouriteMovie.js" type="module"></script>
     <script src="../../assets/JS/Movie/index.js" type="module"></script>
-
-    <!-- <script src="../../assets/js/UI/changeForm.js"></script> -->
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
     
 </body>
 </html>

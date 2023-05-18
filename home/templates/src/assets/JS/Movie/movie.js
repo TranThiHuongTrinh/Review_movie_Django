@@ -11,20 +11,19 @@ const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
 const add_btn = document.querySelector('.add__movie')
 
+
 const listMovieHtml = document.querySelector('.content__movie-list')
-let listMovie = await getData(movieApi)
+let listMovie = await getMovie(movieApi)
 let idDel = 1
 let idUp = 1
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
 let checkUp = false
-let pathImg = "../../assets/img"
+let pathImg = "../../assets/img/"
 let movieUp = null
 
-// let isAdmin = getInfor().isAdmin
 let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
-// const movieAPI = "http://192.168.38.108:8000/api/movies/"
 
 function renderMovieAdmin(movie){
     return `
@@ -61,7 +60,7 @@ function renderMovieAdmin(movie){
 function renderMovieUser(movie){
     add_btn.style.display = 'none'
     return `
-        <li class="content__movie-item justify-normal gap-[150px]">
+        <li class="content__movie-item justify-normal gap-[150px]" style="justify-content: space-around">
             <div class="content__movie-img group">
                 <img src=${movie.image} alt="" style="width: 300px; height: 100%"/>
                 <div class="icon-detail group-hover:block" data-id="${movie.id}">
@@ -93,19 +92,18 @@ function showMovieList(listMovie){
     let htmls = ""
     if(isAdmin == true){
         movieFavourite.style.display = "none"
-        htmls = listMovie.map(movie => renderMovieAdmin(movie))
+        htmls = listMovie.reverse().map(movie => renderMovieAdmin(movie))
     } else {
         movieFavourite.style.display = "block"
-        htmls = listMovie.map(movie => renderMovieUser(movie))
+        htmls = listMovie.reverse().map(movie => renderMovieUser(movie))
 
     }
     listMovieHtml.innerHTML = htmls.join('')
 }
 
 const handleDel = (id) => {
-    delItem(id, `${movieApi}delete/${id}/`)
+    delItem(`${movieApi}delete/${id}/`)
     listMovie = listMovie.filter(movie => movie.id != id)
-    console.log(listMovie);
     showMovieList(listMovie)
 }
 
@@ -131,18 +129,6 @@ function closeForm () {
     modalUp.classList.remove('block')
 }
 
-
-// Del
-function openFormDel () {
-    modal.classList.add('flex')
-    modalDel.classList.add('flex')
-}
-
-function closeFormDel () {
-    modalDel.classList.remove('flex')
-    modal.classList.remove('flex')
-    modalUp.classList.remove('block')
-}
 
 const btnsDel = document.querySelectorAll('.del__movie')
 btnsDel.forEach(btn => {
@@ -183,22 +169,19 @@ const checkInputs = () => {
     return check
 }
 
-// set Value input null 
-const setValueInputEmpty = () => {
-    inputs[0].value = ""
-    inputs[1].style.display = "inline-block"
-    inputs[1].value = ""
-    inputs[2].value = ""
-    inputs[3].value = ""
-    inputs[4].value = ""
-    inputs[5].value = ""
-}
+
 
 const getValueInput = () => {
     let name = inputs[0].value
     let genre = selectGenre.value
     inputs[1].style.display = "inline-block"
-    let img_src = pathImg + inputs[1].files[0].name
+    let img_src = ""
+    if(inputs[1].files[0]) {
+        img_src = pathImg + inputs[1].files[0].name
+    }
+    else {
+        if(checkUp) img_src = movieUp.image
+    }
     let decription = inputs[2].value
     const url = inputs[3].value;
     const videoId = url.split('/').pop();
@@ -224,15 +207,16 @@ const handleSubmit = () => {
           }
         if(checkUp == false) {
             addItem(data, `${movieApi}add/`)
+            listMovie.push(data)
         }
         else {
-            updateItem(idUp, data, `${movieApi}update/${idUp}/`)
+            updateItem(data, `${movieApi}update/${idUp}/`)
             listMovie = listMovie.map(movie => movie.id == idUp ? data : movie)
+            checkUp = false
         }
-        setValueInputEmpty()
         closeForm()
-        console.log(listMovie);
-        showMovieList(listMovie)
+        // showMovieList(listMovie)
+        window.location.reload()
     } else {
         alert('Nhập đầy đủ thông tin')
     }
@@ -240,7 +224,6 @@ const handleSubmit = () => {
 
 
 formAdd.addEventListener('submit', (e) => {
-    console.log(formAdd);
     e.preventDefault()
     handleSubmit()
     return false;
@@ -252,11 +235,10 @@ formAdd.addEventListener('submit', (e) => {
 const loadDataForm = (id) => {
     checkUp = true
     const movie = getMovieByIdMovie(id)
-    console.log(movie.genre);
     movieUp = movie
     inputs[0].value = movie.name
     selectGenre.value = movie.genre
-    inputs[1].src = movie.img
+    inputs[1].src = movie.image
     inputs[2].value = movie.description
     inputs[3].value = movie.link_video
     inputs[4].value = movie.run_time
@@ -279,7 +261,7 @@ const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
         const id = btnDetail.getAttribute('data-id');   
-        if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-        else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
+        if(idUser) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
     })
 })

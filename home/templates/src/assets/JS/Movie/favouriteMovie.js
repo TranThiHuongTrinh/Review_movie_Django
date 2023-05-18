@@ -12,7 +12,6 @@ const favouriteMoviesByIdUser = await getFavouriteMoviesByIdUser(userId)
 
 
 function renderMovie(movie){
-    console.log(movie);
     return `
         <li class="content__movie-item">
             <div class="content__movie-img group">

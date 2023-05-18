@@ -1,26 +1,12 @@
 import { movieApi } from "../API/api.js"
+import { getMovie } from "./getMovie.js"
 
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
 let userCurrent = JSON.parse(sessionStorage.getItem('currentUser'))
-let list_Movie = []
+let list_Movie = await getMovie(movieApi)
 
-function main() {
-    getData(showMovies)
-}
-function getData(callback) {
-    fetch(movieApi)
-    .then(function (response) {
-        return response.json()
-    })
-    .then(function (response) {
-        list_Movie = response
-        return response
-    })
-    .then(callback)
-}
 function showMovies(list_Movie) {
-    console.log(list_Movie);
     for(let i = 0; i < 8; i++) {
         const htmls = `<div class="w-[250px] h-[340px] relative group/film">
         <img src="${list_Movie[i].image}" alt="" class="w-full h-full">
@@ -35,7 +21,7 @@ function showMovies(list_Movie) {
         </div>
         <!-- overlay -->
         <div class="w-full h-full absolute top-0 left-0 bg-[#cccccc99] opacity-0 duration-300 group-hover/film:opacity-100">
-            <div class="w-[120px] h-[50px] rounded-xl bg-[#ED1B34] flex items-center justify-center absolute top-[50%] left-[25%] cursor-pointer opacity-80 hover:opacity-100" data-id="${list_Movie[i].id}" onclick="handleReadMore(event)">READ MORE</div>
+            <div class="w-[120px] h-[50px] rounded-xl bg-[#ED1B34] flex items-center justify-center absolute top-[50%] left-[25%] cursor-pointer opacity-80 hover:opacity-100 btn-read" data-id="${list_Movie[i].id}">READ MORE</div>
         </div>
     </div>`
         movieItems.innerHTML += htmls
@@ -53,4 +39,12 @@ btnViewMovie.addEventListener('click', (e) => {
     e.preventDefault()
     window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/ViewAllMovie.html`;
 })
-main()
+
+showMovies(list_Movie)
+
+const btnsRead = document.querySelectorAll('.btn-read')
+btnsRead.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        handleReadMore(e)
+    })
+})

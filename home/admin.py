@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movie, Review, Favorite_movie, User, Notification
+from .models import Movie, Review, Favorite_movie, User
 from django import forms
 from django.contrib.auth.models import Permission
 from django.db.models import Count
@@ -54,7 +54,6 @@ admin.site.register(Movie, MovieAdmin)
 admin.site.register(Review,ReviewAdmin)
 admin.site.register(Favorite_movie)
 admin.site.register(User)
-admin.site.register(Notification)
 admin.site.register(Permission)
 # admin_site.register(Movie, MovieAdmin)
 # admin_site.register(Review,ReviewAdmin)

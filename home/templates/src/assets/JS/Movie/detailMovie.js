@@ -1,9 +1,9 @@
 import {getReviewsByIdMovie} from '../Review/getReview.js'
-import {getMovieByIdMovie, getFavouriteMoviesByIdMovie, getFavouriteMoviesByIds} from './getMovie.js'
+import {getFavouriteMoviesByIdMovie, getFavouriteMoviesByIds} from './getMovie.js'
 import {getUserById} from '../Account/getUser.js'
-import { addItem, delItem } from '../handles/handles.js'
+import { addItem, delItem, getData } from '../handles/handles.js'
 import userCurrent from './index.js'
-import {reviewMovieApi, favouriteUserApi } from '../API/api.js'
+import {reviewMovieApi, favouriteUserApi, movieApi } from '../API/api.js'
 import renderRating from '../Rating/rating.js'
 
 const movieInfo = document.querySelector('.movie__info-container')
@@ -11,13 +11,13 @@ const params = new URLSearchParams(window.location.search);
 const idMovie = params.get('id');
 const movie = await getData(`${movieApi}${idMovie}/`)
 const previewMovie = document.querySelector('.preview__movie-youtube')
-// const reviewsByIdMovie = getReviewsByIdMovie(idMovie)
 const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
 const idUser = userCurrent.id
 const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
 const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')
+textHeart.innerHTML = countHeart
 const favouriteMovieByIdMovieAndIdUser = await getFavouriteMoviesByIds(idMovie, idUser)
 
 
@@ -44,6 +44,7 @@ function renderMovieInfor(movie){
 }
 
 function renderReviewMovie(review, user) {
+    if(user.img == null) user.img = "../../assets/img/acc.png"
     return `
         <li class="movie__review-item">
             <img src=${user.img} style="width: 80px;"/>
@@ -104,14 +105,14 @@ ratings.forEach((rating, index) => {
         if(checkRatings){
             checkRatings.forEach(rating => {
                 rating.classList.remove('fa-solid')
-                rating.classList.remove('text[#F5B50A]')
+                rating.classList.remove('rating-color')
                 rating.classList.add('fa-regular')
             })
         }
         for(let i = 0; i <= index; i++){
             ratings[i].classList.remove('fa-regular')
             ratings[i].classList.add('fa-solid')
-            ratings[i].classList.add('text[#F5B50A]')
+            ratings[i].classList.add('rating-color')
         }
         countRating = index + 1
     })
@@ -127,8 +128,7 @@ const handleAddFavouriteMovie = () => {
 }
 
 const handleDelFavouriteMovie = (id) => {
-    console.log(id);
-    delItem(id, `${favouriteUserApi}delete/${id}/`)
+    delItem(`${favouriteUserApi}delete/${id}/`)
 }
 
 let toggleHeart = false
@@ -146,7 +146,6 @@ btnHeart.addEventListener('click', () => {
     } else {
         btnHeart.classList.add('fa-regular')
         btnHeart.classList.remove('fa-solid')
-        console.log(favouriteMovieByIdMovieAndIdUser);
         handleDelFavouriteMovie(favouriteMovieByIdMovieAndIdUser[0].id)
     }
     toggleHeart = !toggleHeart

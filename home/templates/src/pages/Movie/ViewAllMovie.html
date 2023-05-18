@@ -24,7 +24,7 @@
 <body class="relative">
     <header class="header">
         <div class="header__search">
-            <img src="../../assets/img/logo.png" alt="logo"/>
+            <img class="back-home" src="../../assets/img/logo.png" alt="logo" style="cursor: pointer"/>
             <div class="relative">
                 <input class="input-search" type="text" placeholder="Search movies, TV, actors, more..." />
                 <i class="fa-solid fa-magnifying-glass icon-search"></i>
@@ -40,8 +40,8 @@
                             <span class="header__user-title">Account</span>
                             <i class="fa-solid fa-user"></i>
                         </li>
-                        <li class="header__user-item">
-                            <span class="header__user-title my-review">My review</span>
+                        <li class="header__user-item my-review">
+                            <span class="header__user-title">My review</span>
                             <i class="fa-solid fa-clipboard-list"></i>
                         </li>
                         <li class="header__user-item signout">
@@ -102,23 +102,16 @@
                     <label style="width: 32%;">Movie's name: <span>*</span></label>
                     <input class="input-text input-name input-form" type="text" placeholder="Insert movie's name here" style="width: 68%;"/>
                 </div>
-                <!-- <div class="form__movie-decription">
-                    <label>Decription: <span>*</span></label>
-                    <input class="input-text input-decription" type="text" placeholder="Insert description here" />
-                </div> -->
                 <div class="form__movie-genre" style="display: flex; justify-content: space-between; align-items: center;">
                     <label style="width: 32%;">Movie's genre:</label>
                     <select class="select-genre" style="width: 68%;">
-                        <option value="action">Action</option>
-                        <option value="magic">Magic</option>
-                        <option value="drama">Drama</option>
-                        <option value="comedy">Comedy</option>
+                        <option value="hành động">Hành động</option>
+                        <option value="ngôn tình">Ngôn tình</option>
+                        <option value="tiểu thuyết">Tiểu thuyết</option>
+                        <option value="bi kịch">Bi kịch</option>
                         <option value="sci-fi">Sci-fi</option>
-                        <option value="horror">Horror</option>
-                        <option value="romantic">Romantic</option>
-                        <option value="western">Western</option>
-                        <option value="thriller">Thriller</option>
-                        <option value="Tinh cam">Tinh cam</option>
+                        <option value="kinh dị">Kinh dị</option>
+                        <option value="lãng mạn">Lãng mạn</option>
                     </select>
                 </div>
                 <div class="form__movie-img" style="display: flex; justify-content: space-between; align-items: center;">
@@ -145,13 +138,13 @@
             </form>
         </div>
     </div>
-
-    <!-- <script src="../../assets/js/movie.js"></script> -->
-    <!-- <script src="../../assets/js/Account/getUserName.js" type="module"></script> -->
+    
     <script src="../../assets/js/Account/signOut.js" type="module"></script>
     <script src="../../assets/js/Account/openForm.js"></script>
     <script src="../../assets/JS/Movie/movie.js" type="module"></script>
-    <script src="../../assets/js/UI/changeForm.js"></script>
+    <script src="../../assets/js/UI/changeForm.js" type="module"></script>
     <script src="../../assets/JS/Movie/index.js" type="module"></script>
+    <script src="../../assets/js/Movie/setEmptyInput.js" type="module"></script>
+    <script src="../../assets/js/Account/signOut.js" type="module"></script>
 </body>
 </html>

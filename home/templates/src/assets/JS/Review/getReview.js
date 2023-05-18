@@ -1,16 +1,5 @@
 import { reviewApi, reviewMovieApi,reviewUserApi  } from '../API/api.js'
 
-
-// export const getReviewsByIdMovie = async (idMovie) => {
-//     try {
-//       const response = await fetch(`${reviewMovieApi}${idMovie}`);
-//       const data = await response.json();
-//       return data;
-//     } catch (error) {
-//       throw new Error(error);
-//     }
-// };
-
 export function getReviewsByIdMovie(idMovie, callback) {
   fetch(`${reviewMovieApi}${idMovie}/`)
   .then(function (response) {
@@ -21,7 +10,6 @@ export function getReviewsByIdMovie(idMovie, callback) {
 
 
 export const getReviewByIdUser = async (id) => {
-  console.log(id);
   try {
     const response = await fetch(`${reviewUserApi}${id}/`);
     const data = await response.json();
