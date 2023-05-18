@@ -2,6 +2,8 @@ import {getMovie,getMovieByIdMovie} from "./getMovie.js"
 import { delItem, addItem, updateItem } from "../handles/handles.js"
 import userCurrent from "./index.js"
 import { movieApi } from "../API/api.js"
+import { renderListPage } from "../Pagination/index.js"
+import renderRating from "../Rating/showRating.js"
 
 const modal = document.querySelector('.modal')
 const modalDel = document.querySelector('.modal__del')
@@ -11,6 +13,8 @@ const btnForm = document.querySelector('.btn-form')
 const movieFavourite = document.querySelector('.header__movie-wrap')
 const add_btn = document.querySelector('.add__movie')
 
+const prev_btn = document.getElementById('prev_link')
+const next_btn = document.getElementById('next_link')
 
 const listMovieHtml = document.querySelector('.content__movie-list')
 let listMovie = await getMovie(movieApi)
@@ -24,6 +28,14 @@ let movieUp = null
 
 let isAdmin = userCurrent ? userCurrent.is_superuser : false
 
+let perPage = 10
+let currentPage = 1
+let start = 0
+let end = perPage
+let totalPages = 0
+
+totalPages = Math.ceil(listMovie.length / perPage)
+renderListPage(totalPages, listMovie, showMovieList)
 
 function renderMovieAdmin(movie){
     return `
@@ -39,7 +51,7 @@ function renderMovieAdmin(movie){
                     <h1 class="movie__name">${movie.name}</h1>
                     <div style="display:flex; align-items: center; gap: 10px;">
                         <img src="../.././assets/img/tomato.png" alt="" style="max-width: 40px;"/>
-                        <span class="text-2xl">7.4/10</span>
+                        <span class="text-2xl"><span class="rating-text" id=${movie.id}></span>/5</span>
                     </div>
                 </div>
                 <ul class="movie__genre">
@@ -72,7 +84,7 @@ function renderMovieUser(movie){
                     <h1 class="movie__name">${movie.name}</h1>
                     <div style="display:flex; align-items: center; gap: 10px;">
                         <img src="../.././assets/img/tomato.png" alt="" style="max-width: 40px;"/>
-                        <span class="text-2xl">7.4/10</span>
+                        <span class="text-2xl"><span class="rating-text" id=${movie.id}></span>/5</span>
                     </div>
                 </div>
                 <ul class="movie__genre">
@@ -92,10 +104,10 @@ function showMovieList(listMovie){
     let htmls = ""
     if(isAdmin == true){
         movieFavourite.style.display = "none"
-        htmls = listMovie.reverse().map(movie => renderMovieAdmin(movie))
+        htmls = listMovie.slice(start, end).reverse().map(movie => renderMovieAdmin(movie))
     } else {
         movieFavourite.style.display = "block"
-        htmls = listMovie.reverse().map(movie => renderMovieUser(movie))
+        htmls = listMovie.slice(start, end).reverse().map(movie => renderMovieUser(movie))
 
     }
     listMovieHtml.innerHTML = htmls.join('')
@@ -261,7 +273,56 @@ const btnsDetail = document.querySelectorAll('.icon-detail')
 btnsDetail.forEach(btnDetail => {
     btnDetail.addEventListener('click', (e) => {
         const id = btnDetail.getAttribute('data-id');   
-        if(idUser) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-        else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
+        if(idUser) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+        else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
     })
+})
+
+next_btn.addEventListener('click', () => {
+    currentPage++
+    if (currentPage > totalPages) {
+        currentPage = totalPages
+    }
+    if (currentPage === totalPages) {
+        next_btn.classList.add('text-[#666]')
+        next_btn.classList.remove('cursor-pointer')
+        next_btn.classList.remove('from-[#585858]')
+        next_btn.classList.remove('hover:text-white')
+        next_btn.classList.remove('to-[#111]')
+    }
+    prev_btn.classList.remove('text-[#666]')
+    prev_btn.classList.add('cursor-pointer')
+    prev_btn.classList.add('to-[#111]')
+    prev_btn.classList.add('from-[#585858]')
+    prev_btn.classList.add('hover:text-white')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
+    showMovieList(listMovie)
+})
+prev_btn.addEventListener('click', () => {
+    currentPage--
+    if (currentPage < 1) {
+        currentPage = 1
+    }
+    if (currentPage === 1) {
+        prev_btn.classList.add('text-[#666]')
+        prev_btn.classList.remove('cursor-pointer')
+        prev_btn.classList.remove('to-[#111]')
+        prev_btn.classList.remove('from-[#585858]')
+        prev_btn.classList.remove('hover:text-white')
+    }
+    next_btn.classList.remove('text-[#666]')
+    next_btn.classList.add('cursor-pointer')
+    next_btn.classList.add('from-[#585858]')
+    next_btn.classList.add('hover:text-white')
+    next_btn.classList.add('to-[#111]')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
+
+    showMovieList(listMovie)
+})
+
+const ratingTexts = document.querySelectorAll('.rating-text')
+ratingTexts.forEach(rating => {
+    renderRating(rating.id, rating)
 })

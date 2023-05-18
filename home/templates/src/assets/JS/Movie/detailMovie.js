@@ -9,21 +9,24 @@ import renderRating from '../Rating/rating.js'
 const movieInfo = document.querySelector('.movie__info-container')
 const params = new URLSearchParams(window.location.search);
 const idMovie = params.get('id');
-const movie = await getData(`${movieApi}${idMovie}/`)
 const previewMovie = document.querySelector('.preview__movie-youtube')
 const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
-const idUser = userCurrent.id
-const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
-const countHeart = favouriteMoviesByIdMovie.length
 const textHeart = document.querySelector('.text-favourite')
+const idUser = userCurrent.id
+const countHeart = favouriteMoviesByIdMovie.length
 textHeart.innerHTML = countHeart
+
+const movie = await getData(`${movieApi}${idMovie}/`)
+const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
+const reviewsByIdMovie = await getReviewsByIdMovie(idMovie)
 const favouriteMovieByIdMovieAndIdUser = await getFavouriteMoviesByIds(idMovie, idUser)
+
 
 
 function renderMovieInfor(movie){
     return `
-        <img src=${movie.image}>
+        <img src=${movie.image} style="width: 200px;">
         <div class="movie__info-detail">
             <h1 class="movie__info-name">${movie.name}</h1>
             <p>${movie.description}</p>
@@ -72,7 +75,7 @@ function showReviewsMovie(reviews){
 
 previewMovie.src = movie.link_video
 movieInfo.innerHTML = renderMovieInfor(movie)
-getReviewsByIdMovie(idMovie, showReviewsMovie)
+showReviewsMovie(reviewsByIdMovie)
 
 
 // add review 

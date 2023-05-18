@@ -1,5 +1,6 @@
 import { movieApi } from "../API/api.js"
 import { getMovie } from "./getMovie.js"
+import renderRating from "../Rating/showRating.js"
 
 const movieItems = document.querySelector('.movie-list')
 const btnViewMovie = document.querySelector('.btn-viewmovie')
@@ -16,7 +17,7 @@ function showMovies(list_Movie) {
             <!-- film's rating -->
             <div class="flex gap-5 items-center my-4 bg-white px-2 pb-1 rounded-md">
                 <img src="../../assets/img/tomato.png" alt="" class="w-[40px] h-[40px]">
-                <div class="text-red-800 font-bold text-lg">7.4 <span class="text-base">/ 10</span> </div>
+                <div class="text-red-800 font-bold text-lg"><span class="rating-text" id=${list_Movie[i].id}></span><span class="text-base">/5</span> </div>
             </div>
         </div>
         <!-- overlay -->
@@ -30,14 +31,14 @@ function showMovies(list_Movie) {
 
 const handleReadMore = (e) => {
     const id = e.target.getAttribute('data-id');
-    if(userCurrent) window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
-    else window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Unsign/formSignIn.html`;
+    if(userCurrent) window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/DetailMovie.html?id=${id}`;
+    else window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Unsign/formSignIn.html`;
 
 }
 
 btnViewMovie.addEventListener('click', (e) => {
     e.preventDefault()
-    window.location.href = `http://127.0.0.1:5501/home/templates/src/pages/Movie/ViewAllMovie.html`;
+    window.location.href = `http://127.0.0.1:5500/home/templates/src/pages/Movie/ViewAllMovie.html`;
 })
 
 showMovies(list_Movie)
@@ -47,4 +48,9 @@ btnsRead.forEach(btn => {
     btn.addEventListener('click', (e) => {
         handleReadMore(e)
     })
+})
+
+const ratingTexts = document.querySelectorAll('.rating-text')
+ratingTexts.forEach(rating => {
+    renderRating(rating.id, rating)
 })

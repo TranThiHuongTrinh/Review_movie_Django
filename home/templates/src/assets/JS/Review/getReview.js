@@ -1,12 +1,14 @@
 import { reviewApi, reviewMovieApi,reviewUserApi  } from '../API/api.js'
 
-export function getReviewsByIdMovie(idMovie, callback) {
-  fetch(`${reviewMovieApi}${idMovie}/`)
-  .then(function (response) {
-      return response.json()
-  })
-  .then(callback)
-}
+export const getReviewsByIdMovie = async (id) => {
+  try {
+    const response = await fetch(`${reviewMovieApi}${id}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 
 export const getReviewByIdUser = async (id) => {

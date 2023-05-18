@@ -4,6 +4,7 @@ import { delItem, updateItem } from '../handles/handles.js'
 import userCurrent from "../Movie/index.js"
 import renderRating from '../Rating/rating.js'
 import { reviewApi} from '../API/api.js'
+import { renderListPage } from "../Pagination/index.js"
 
 let idUser = null
 if(userCurrent) idUser = userCurrent.id
@@ -20,8 +21,16 @@ const close_modal = document.querySelector('.icon-close')
 const btnYesDel = document.querySelector('.btn-yes')
 const btnNo = document.querySelector('.btn-no')
 const iconDel = document.querySelector('.icon-close-del')
+const prev_btn = document.getElementById('prev_link')
+const next_btn = document.getElementById('next_link')
+let perPage = 10
+let currentPage = 1
+let start = 0
+let end = perPage
+let totalPages = 0
 
-
+totalPages = Math.ceil(reviewsByIdUser.length / perPage)
+renderListPage(totalPages, reviewsByIdUser, showReviewsUser)
 
 // show tất cả review của 1 user -> show tất cả review của tất cả film mà user đó review
 function renderReviewUser(review, movie){
@@ -49,7 +58,7 @@ function renderReviewUser(review, movie){
 function showReviewsUser(reviews) {
     let htmls = ""
     if(reviews.length > 0) {
-        reviews.forEach(review => {
+        reviews.slice(start, end).forEach(review => {
             htmls += renderReviewUser(review, getMovieByIdMovie(review.movie))
         });
     } else {
@@ -137,7 +146,6 @@ const btnUpdateRview = document.querySelector('.btn-update-review')
 
 btnsUp.forEach(btnUp => {
     btnUp.addEventListener('click', (e) => {
-        console.log(123);
         const id = e.target.dataset.id;
         modalEdit.style.display = 'block'
         document.body.style.overflow = 'hidden'
@@ -165,7 +173,49 @@ btnNo.addEventListener('click', (e) => {
     closeForm()
 })
 
+next_btn.addEventListener('click', () => {
+    currentPage++
+    if (currentPage > totalPages) {
+        currentPage = totalPages
+    }
+    if (currentPage === totalPages) {
+        next_btn.classList.add('text-[#666]')
+        next_btn.classList.remove('cursor-pointer')
+        next_btn.classList.remove('from-[#585858]')
+        next_btn.classList.remove('hover:text-white')
+        next_btn.classList.remove('to-[#111]')
+    }
+    prev_btn.classList.remove('text-[#666]')
+    prev_btn.classList.add('cursor-pointer')
+    prev_btn.classList.add('to-[#111]')
+    prev_btn.classList.add('from-[#585858]')
+    prev_btn.classList.add('hover:text-white')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
+    showReviewsUser(reviewsByIdUser)
+})
+prev_btn.addEventListener('click', () => {
+    currentPage--
+    if (currentPage < 1) {
+        currentPage = 1
+    }
+    if (currentPage === 1) {
+        prev_btn.classList.add('text-[#666]')
+        prev_btn.classList.remove('cursor-pointer')
+        prev_btn.classList.remove('to-[#111]')
+        prev_btn.classList.remove('from-[#585858]')
+        prev_btn.classList.remove('hover:text-white')
+    }
+    next_btn.classList.remove('text-[#666]')
+    next_btn.classList.add('cursor-pointer')
+    next_btn.classList.add('from-[#585858]')
+    next_btn.classList.add('hover:text-white')
+    next_btn.classList.add('to-[#111]')
+    start = (currentPage - 1) * perPage
+    end = currentPage * perPage
 
+    showReviewsUser(reviewsByIdUser)
+})
 
 
 

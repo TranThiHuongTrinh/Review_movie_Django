@@ -22,7 +22,7 @@ class MovieViewSet(viewsets.ModelViewSet):
 
 # show all movies 
 @api_view(['GET'])
-@renderer_classes([JSONRenderer])
+# @renderer_classes([JSONRenderer])
 def movie_list(request):
     movies = Movie.objects.all()
     serializer = MovieSerializer(movies, many = True)
