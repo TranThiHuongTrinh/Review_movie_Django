@@ -14,15 +14,13 @@ const reviewContainer = document.querySelector('.movie__review-list')
 const btnHeart = document.querySelector('.btn-heart')
 const textHeart = document.querySelector('.text-favourite')
 const idUser = userCurrent.id
-const countHeart = favouriteMoviesByIdMovie.length
+const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
+let countHeart = favouriteMoviesByIdMovie.length
 textHeart.innerHTML = countHeart
 
 const movie = await getData(`${movieApi}${idMovie}/`)
-const favouriteMoviesByIdMovie = await getFavouriteMoviesByIdMovie(idMovie)
 const reviewsByIdMovie = await getReviewsByIdMovie(idMovie)
 const favouriteMovieByIdMovieAndIdUser = await getFavouriteMoviesByIds(idMovie, idUser)
-
-
 
 function renderMovieInfor(movie){
     return `
