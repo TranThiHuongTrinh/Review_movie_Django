@@ -35,7 +35,7 @@ let end = perPage
 let totalPages = 0
 
 totalPages = Math.ceil(listMovie.length / perPage)
-renderListPage(totalPages, listMovie, showMovieList)
+renderListPage(totalPages)
 
 function renderMovieAdmin(movie){
     return `
@@ -117,6 +117,7 @@ const handleDel = (id) => {
     delItem(`${movieApi}delete/${id}/`)
     listMovie = listMovie.filter(movie => movie.id != id)
     showMovieList(listMovie)
+    alert('Movie deleted successfully')
 }
 
 showMovieList(listMovie)
@@ -146,7 +147,7 @@ const btnsDel = document.querySelectorAll('.del__movie')
 btnsDel.forEach(btn => {
     btn.addEventListener('click', function(e) {
         idDel = e.target.dataset.id;
-        openFormDel()
+        handleDel(idDel)
     })
 });
 
@@ -203,32 +204,43 @@ const getValueInput = () => {
     return [name, genre, img_src, decription, link_video, runtime, release]
 }
 
+function isValidTimeFormat(str) {
+    const regex = /^[0-9]+h[0-9]+p$/;
+    return regex.test(str);
+  }
+  
+
 
 // Add item
 const handleSubmit = () => {
     if(checkInputs()) {
-        const [name, genre, img_src, decription,  link_video, runtime, release] = getValueInput()
-        const data = {
-            "name": name,
-            "genre": genre,
-            "description": decription,
-            "image": img_src,
-            "link_video": link_video,
-            "run_time": runtime,
-            "release": release
-          }
-        if(checkUp == false) {
-            addItem(data, `${movieApi}add/`)
-            listMovie.push(data)
+        if (isValidTimeFormat(inputs[4].value) == false) {
+            alert('Please enter a valid time (exp: 1h20p)')
         }
         else {
-            updateItem(data, `${movieApi}update/${idUp}/`)
-            listMovie = listMovie.map(movie => movie.id == idUp ? data : movie)
-            checkUp = false
+            const [name, genre, img_src, decription,  link_video, runtime, release] = getValueInput()
+            const data = {
+                "name": name,
+                "genre": genre,
+                "description": decription,
+                "image": img_src,
+                "link_video": link_video,
+                "run_time": runtime,
+                "release": release
+            }
+            if(checkUp == false) {
+                addItem(data, `${movieApi}add/`)
+                listMovie.push(data)
+            }
+            else {
+                updateItem(data, `${movieApi}update/${idUp}/`)
+                listMovie = listMovie.map(movie => movie.id == idUp ? data : movie)
+                checkUp = false
+            }
+            closeForm()
+            // showMovieList(listMovie)
+            window.location.reload()
         }
-        closeForm()
-        // showMovieList(listMovie)
-        window.location.reload()
     } else {
         alert('Nhập đầy đủ thông tin')
     }
@@ -298,6 +310,10 @@ next_btn.addEventListener('click', () => {
     start = (currentPage - 1) * perPage
     end = currentPage * perPage
     showMovieList(listMovie)
+    const ratingTexts = document.querySelectorAll('.rating-text')
+    ratingTexts.forEach(rating => {
+        renderRating(rating.id, rating)
+    })
 })
 prev_btn.addEventListener('click', () => {
     currentPage--
@@ -320,6 +336,10 @@ prev_btn.addEventListener('click', () => {
     end = currentPage * perPage
 
     showMovieList(listMovie)
+    const ratingTexts = document.querySelectorAll('.rating-text')
+    ratingTexts.forEach(rating => {
+        renderRating(rating.id, rating)
+    })
 })
 
 const ratingTexts = document.querySelectorAll('.rating-text')

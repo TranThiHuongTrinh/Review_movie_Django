@@ -30,7 +30,7 @@ let end = perPage
 let totalPages = 0
 
 totalPages = Math.ceil(reviewsByIdUser.length / perPage)
-renderListPage(totalPages, reviewsByIdUser, showReviewsUser)
+renderListPage(totalPages)
 
 // show tất cả review của 1 user -> show tất cả review của tất cả film mà user đó review
 function renderReviewUser(review, movie){
